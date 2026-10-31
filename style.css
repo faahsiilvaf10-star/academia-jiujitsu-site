@@ -1,0 +1,986 @@
+/* ==========================================================================
+   ACADEMIA JIU-JITSU — ESTILOS PRINCIPAIS
+   ========================================================================== */
+
+:root {
+  --color-yellow: #ffc400;
+  --color-yellow-hover: #ffd54f;
+  --color-yellow-dark: #cc9c00;
+  --color-bg-dark: #050505;
+  --color-bg-surface: #0b0b0e;
+  --color-bg-card: #0d0d10;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-card: #2e2e32;
+  --color-text-white: #ffffff;
+  --color-text-muted: #d0d0d0;
+  --color-text-dim: #909095;
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   HEADER / TOPBAR
+   ========================================================================== */
+
+.topbar {
+  height: 94px;
+  padding: 0 3.2%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background-color: #030304;
+  position: relative;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-style: italic;
+  line-height: 0.85;
+}
+
+.brand-sub {
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--color-yellow);
+  letter-spacing: 0.5px;
+}
+
+.brand-main {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--color-text-white);
+  letter-spacing: -0.5px;
+}
+
+/* Navigation Links */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #eaeaea;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link .nav-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-link.active {
+  background-color: var(--color-yellow);
+  color: #000;
+}
+
+.nav-link.active:hover {
+  background-color: var(--color-yellow-hover);
+}
+
+/* Header Action Buttons */
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn-icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid var(--color-yellow);
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 196, 0, 0.1);
+}
+
+.btn-yellow {
+  background-color: var(--color-yellow);
+  color: #000;
+  border: 1px solid var(--color-yellow);
+}
+
+.btn-yellow:hover {
+  background-color: var(--color-yellow-hover);
+}
+
+/* Mobile Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 2.5px;
+  background-color: var(--color-yellow);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 48px 3.7% 42px;
+  background-color: #060607;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0 0 0 32%;
+  background-image: url('public/images/hero-treino.jpg');
+  background-image: url('public/images/hero-treino.webp');
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0.95;
+  z-index: 1;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: 
+    linear-gradient(90deg, #060607 0%, #060607 30%, rgba(6,6,7,0.85) 45%, rgba(6,6,7,0.2) 68%, rgba(6,6,7,0.02) 100%),
+    linear-gradient(0deg, #060607 0%, transparent 20%);
+}
+
+.hero-stripes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  height: 180px;
+  background-image: url('public/images/faixas-hero.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 780px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--color-yellow);
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 4.4vw, 62px);
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+  margin: 6px 0 18px;
+  color: #fff;
+}
+
+.hero-highlight {
+  color: var(--color-yellow);
+  font-style: italic;
+  display: block;
+}
+
+.hero-intro {
+  font-size: 17.5px;
+  line-height: 1.44;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin: 0 0 26px;
+  max-width: 660px;
+}
+
+/* Hero CTA Buttons */
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px 12px 14px;
+  border-radius: 999px;
+  font-size: 15.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.circle-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.circle-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-cta-yellow {
+  background-color: var(--color-yellow);
+  color: #000;
+}
+
+.btn-cta-yellow .dark-circle {
+  background-color: #000;
+  color: var(--color-yellow);
+}
+
+.btn-cta-glass {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.btn-cta-glass .white-circle {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Benefits Row */
+.benefits-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.benefit-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.benefit-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-yellow);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.benefit-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #e5e5e5;
+}
+
+/* ==========================================================================
+   PROGRAM CARDS SECTION (4 CARDS)
+   ========================================================================== */
+
+.programs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 3.2%;
+  margin-top: -8px;
+  position: relative;
+  z-index: 10;
+}
+
+.program-card {
+  background-color: #0c0c0f;
+  border: 1px solid #333338;
+  border-radius: 19px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-yellow);
+}
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 152px;
+  overflow: hidden;
+  background-color: #050505;
+}
+
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.card-img-infantil {
+  object-position: center 20% !important;
+}
+
+.card-img-feminino {
+  object-position: center 30% !important;
+}
+
+.card-img-iniciante {
+  object-position: center 20% !important;
+}
+
+.card-img-avancado {
+  object-position: center 65% !important;
+}
+
+.card-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12,12,15,0) 45%, rgba(12,12,15,0.65) 80%, #0c0c0f 100%);
+  pointer-events: none;
+}
+
+.card-body {
+  padding: 10px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-yellow);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.card-titles {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-yellow);
+  font-family: var(--font-body);
+}
+
+.card-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-yellow);
+}
+
+.card-desc {
+  margin: 0 0 14px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #c0c0c0;
+  min-height: 34px;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.price-btn {
+  background-color: var(--color-yellow);
+  color: #000;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 7px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+  display: inline-block;
+}
+
+.price-btn:hover {
+  background-color: var(--color-yellow-hover);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   SCHEDULE SECTION (HORÁRIOS DAS AULAS)
+   ========================================================================== */
+
+.schedule {
+  padding: 44px 3.2% 48px;
+  background: radial-gradient(ellipse at 50% 0%, #1e1e24 0%, #08080a 60%);
+}
+
+.schedule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.schedule-title-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.schedule-calendar-icon {
+  color: var(--color-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-calendar-icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+.schedule-title-block h2 {
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin: 0 0 2px;
+  color: #fff;
+}
+
+.schedule-title-block p {
+  margin: 0;
+  font-size: 15px;
+  color: #a8a8aa;
+}
+
+.btn-all-hours {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--color-yellow);
+  color: var(--color-yellow);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-all-hours:hover {
+  background-color: var(--color-yellow);
+  color: #000;
+}
+
+/* Schedule Table */
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--color-yellow);
+  border-radius: 14px;
+  background-color: #060607;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 14px 20px;
+  border-right: 1px solid #6b5600;
+  border-bottom: 1px solid #443700;
+  text-align: left;
+}
+
+.schedule-table th:last-child,
+.schedule-table td:last-child {
+  border-right: none;
+}
+
+.schedule-table tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-table th {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 800;
+  background-color: #050505;
+  color: #fff;
+}
+
+.schedule-table td {
+  font-size: 14.5px;
+  color: #dfdfdf;
+}
+
+.schedule-table tr:hover td {
+  background-color: rgba(255, 196, 0, 0.04);
+}
+
+/* ==========================================================================
+   LOWER BANNER / PROFESSORES
+   ========================================================================== */
+
+.lower {
+  text-align: center;
+  padding: 54px 20px;
+  background-color: #111114;
+}
+
+.lower h2 {
+  font-size: 34px;
+  font-weight: 900;
+  margin: 0 0 8px;
+  letter-spacing: -0.5px;
+}
+
+.lower p {
+  color: #b0b0b5;
+  font-size: 16px;
+  margin: 0;
+}
+
+.lower-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.lower-links a {
+  border: 1px solid var(--color-yellow);
+  border-radius: 999px;
+  padding: 12px 24px;
+  color: var(--color-yellow);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.lower-links a:hover {
+  background-color: var(--color-yellow);
+  color: #000;
+}
+
+/* ==========================================================================
+   ENROLLMENT SECTION (MATRÍCULA)
+   ========================================================================== */
+
+.enroll {
+  padding: 56px 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  background-color: #09090b;
+}
+
+.enroll-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--color-yellow);
+  margin: 0 0 6px;
+}
+
+.enroll-info h2 {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+}
+
+.enroll-info p {
+  color: #b8b8be;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.enroll-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.enroll-form input,
+.enroll-form select {
+  background-color: #151518;
+  border: 1px solid #3e3e46;
+  border-radius: 12px;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+  min-width: 0;
+}
+
+.enroll-form input:focus,
+.enroll-form select:focus {
+  border-color: var(--color-yellow);
+}
+
+.enroll-form select,
+.submit-btn,
+.form-note {
+  grid-column: 1 / -1;
+}
+
+.submit-btn {
+  padding: 15px 24px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--color-yellow);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  padding: 32px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: #030304;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.brand-footer {
+  border-right: none;
+  padding-right: 0;
+}
+
+.brand-footer .brand-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.brand-footer .brand-sub {
+  font-size: 16px;
+}
+
+.brand-footer .brand-main {
+  font-size: 26px;
+}
+
+.footer-tagline {
+  color: #a0a0a5;
+  font-size: 13.5px;
+  margin: 0;
+}
+
+.footer-whatsapp {
+  color: var(--color-yellow);
+  font-size: 14px;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.footer-whatsapp:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  color: #77777c;
+  font-size: 12.5px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (BREAKPOINTS)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .topbar {
+    gap: 16px;
+    padding: 0 2%;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 12.5px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .programs {
+    gap: 12px;
+  }
+
+  .program-card {
+    height: auto;
+  }
+
+  .card-img-wrap {
+    height: 140px;
+  }
+}
+
+@media (max-width: 992px) {
+  .programs {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 16px;
+  }
+
+  .enroll {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .benefits-row {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    height: 80px;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #060608;
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: 1px solid var(--color-yellow);
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 12px 16px;
+    border-radius: 8px;
+  }
+
+  .top-actions .btn-outline {
+    display: none;
+  }
+
+  .hero {
+    min-height: 580px;
+    padding: 36px 5%;
+    align-items: flex-start;
+  }
+
+  .hero-photo {
+    inset: 0;
+    opacity: 0.45;
+  }
+
+  .hero-stripes {
+    display: none;
+  }
+
+  .schedule-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .programs {
+    grid-template-columns: 1fr;
+  }
+
+  .card-img-wrap {
+    height: 140px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-cta {
+    justify-content: center;
+  }
+
+  .enroll-form {
+    grid-template-columns: 1fr;
+  }
+}

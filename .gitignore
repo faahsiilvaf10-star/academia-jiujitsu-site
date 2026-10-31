@@ -1,0 +1,6 @@
+# Junction local
+images
+
+# Python
+__pycache__/
+*.pyc
