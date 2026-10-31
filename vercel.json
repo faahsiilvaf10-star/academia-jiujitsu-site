@@ -1,25 +1,14 @@
 {
-  "version": 2,
+  "outputDirectory": ".",
   "cleanUrls": true,
-  "headers": [
+  "rewrites": [
     {
-      "source": "/public/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "source": "/images/(.*)",
+      "destination": "/public/images/$1"
     },
     {
-      "source": "/(.*)\\.(css|js)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
-        }
-      ]
+      "source": "/public/images/(.*)",
+      "destination": "/public/images/$1"
     }
   ]
 }
-
