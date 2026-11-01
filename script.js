@@ -325,7 +325,7 @@ function cleanCPF(cpf) {
 }
 
 /* ==========================================================================
-   6. MODAL & LOGIN DO ALUNO (CLIENTE)
+   6. MODAL & LOGIN UNIFICADO (ÁREA DO ALUNO & ACESSO ADMIN)
    ========================================================================== */
 function openModalLoginAluno() {
   const modal = document.querySelector('#modalLoginAluno');
@@ -339,6 +339,15 @@ function closeModalLoginAluno() {
   if (modal) modal.classList.remove('active');
 }
 
+function handleLoginIdentificadorInput(input) {
+  const val = input.value;
+  // Se começar com letras (ex: 'admin'), permite texto livre sem máscara de CPF
+  if (/^[a-zA-Z]/.test(val)) {
+    return;
+  }
+  maskCPF(input);
+}
+
 function preencherAlunoDemo() {
   const cpfInput = document.querySelector('#loginAlunoCpf');
   const senhaInput = document.querySelector('#loginAlunoSenha');
@@ -346,30 +355,58 @@ function preencherAlunoDemo() {
   if (senhaInput) senhaInput.value = '1234';
 }
 
+function preencherAdminDemo() {
+  const cpfInput = document.querySelector('#loginAlunoCpf');
+  const senhaInput = document.querySelector('#loginAlunoSenha');
+  if (cpfInput) cpfInput.value = 'admin';
+  if (senhaInput) senhaInput.value = '1234';
+}
+
 function handleLoginAluno(event) {
   event.preventDefault();
-  const cpfDigitado = cleanCPF(document.querySelector('#loginAlunoCpf').value);
+  const ident = document.querySelector('#loginAlunoCpf').value.trim();
   const senhaDigitada = document.querySelector('#loginAlunoSenha').value.trim();
   const erroBox = document.querySelector('#loginAlunoErro');
 
-  const aluno = appState.db.alunos.find(a => cleanCPF(a.cpf) === cpfDigitado);
+  const adminPass = appState.db.config.adminPassword || '1234';
+  const adminUser = (appState.db.config.adminUser || 'admin').toLowerCase();
+  const identLower = ident.toLowerCase();
 
-  if (!aluno) {
-    erroBox.textContent = 'CPF não encontrado. Faça sua matrícula antes ou verifique os dígitos.';
+  // 1. Acesso do Administrador pelo mesmo formulário
+  if ((identLower === adminUser || identLower === 'admin' || identLower === 'mestre') && senhaDigitada === adminPass) {
+    erroBox.style.display = 'none';
+    closeModalLoginAluno();
+    entrarNoPainelAdmin();
+    return;
+  }
+
+  // 2. Acesso do Aluno por CPF
+  const cpfLimpo = cleanCPF(ident);
+  const aluno = appState.db.alunos.find(a => cleanCPF(a.cpf) === cpfLimpo);
+
+  if (aluno) {
+    if (aluno.senha && aluno.senha !== senhaDigitada) {
+      erroBox.textContent = 'Senha incorreta para este CPF. Tente 1234 se for seu primeiro acesso.';
+      erroBox.style.display = 'block';
+      return;
+    }
+    // Sucesso Aluno
+    erroBox.style.display = 'none';
+    closeModalLoginAluno();
+    entrarNoPortalAluno(aluno);
+    return;
+  }
+
+  // 3. Se for usuário 'admin' mas errou a senha
+  if (identLower === 'admin' || identLower === adminUser) {
+    erroBox.textContent = 'Senha de Administrador incorreta. A senha padrão é 1234.';
     erroBox.style.display = 'block';
     return;
   }
 
-  if (aluno.senha && aluno.senha !== senhaDigitada) {
-    erroBox.textContent = 'Senha incorreta. Caso seja o primeiro acesso, tente 1234.';
-    erroBox.style.display = 'block';
-    return;
-  }
-
-  // Sucesso no Login do Aluno
-  erroBox.style.display = 'none';
-  closeModalLoginAluno();
-  entrarNoPortalAluno(aluno);
+  // 4. CPF não encontrado
+  erroBox.textContent = 'Cadastro não localizado. Verifique os dígitos do CPF ou faça sua matrícula online.';
+  erroBox.style.display = 'block';
 }
 
 function entrarNoPortalAluno(aluno) {
