@@ -5,3 +5,5 @@ images
 __pycache__/
 *.pyc
 
+
+.vercel
