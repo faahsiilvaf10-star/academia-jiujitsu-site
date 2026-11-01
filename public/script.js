@@ -1,916 +1,980 @@
 /**
- * ACADEMIA JIU-JITSU — SISTEMA COMPLETO INTERATIVO
- * Matrículas, Assinatura Digital no Celular, Presença Facial,
- * Pagamentos PIX/Cartão, Cobranças WhatsApp e Agendamentos
+ * ACADEMIA JIU-JITSU — SISTEMA INTEGRADO
+ * Site Público Limpo + Área do Aluno (Login CPF/Senha) + Painel do Administrador (Senha 1234)
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initNavigation();
-  initAgendamentos();
-  initMatriculaWizard();
-  initSignaturePad();
-  initPaymentModule();
-  initPresencaFacial();
-  initCobrancasWhatsApp();
-});
+/* ==========================================================================
+   1. BANCO DE DADOS LOCAL (STORAGE) & SEED INICIAL
+   ========================================================================== */
+const STORAGE_KEY = 'academia_jiujitsu_db_v3';
+
+const INITIAL_DB = {
+  config: {
+    adminPassword: '1234',
+    adminUser: 'admin',
+    pixKey: 'pix@academiajiujitsu.com.br',
+    telefoneAcademia: '(91) 98123-4567',
+    precos: {
+      infantil: 99,
+      iniciante: 129,
+      avancado: 149,
+      feminino: 119
+    }
+  },
+  alunos: [
+    {
+      id: 'ALU-2026-081',
+      nome: 'Lucas Mendes',
+      cpf: '123.456.789-00',
+      senha: '1234',
+      telefone: '(91) 98111-2233',
+      plano: 'Adulto — Avançado',
+      faixa: 'Azul',
+      graus: 2,
+      presencas: 18,
+      statusPagamento: 'atrasado',
+      vencimento: '28/10/2026',
+      valor: 149,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 8a7c9f0e1d4b6c3a2f5e8d9c0a1b2c3d4e5f6a7b8c9d0e1f'
+    },
+    {
+      id: 'ALU-2026-082',
+      nome: 'Beatriz Almeida',
+      cpf: '234.567.890-11',
+      senha: '1234',
+      telefone: '(91) 98222-3344',
+      plano: 'Feminino',
+      faixa: 'Branca',
+      graus: 3,
+      presencas: 14,
+      statusPagamento: 'vence_hoje',
+      vencimento: 'Hoje',
+      valor: 119,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 7b6a5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f'
+    },
+    {
+      id: 'ALU-2026-083',
+      nome: 'Rafael Nogueira',
+      cpf: '345.678.901-22',
+      senha: '1234',
+      telefone: '(91) 98333-4455',
+      plano: 'Adulto — Iniciante',
+      faixa: 'Branca',
+      graus: 1,
+      presencas: 8,
+      statusPagamento: 'pago',
+      vencimento: '15/11/2026',
+      valor: 129,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b'
+    },
+    {
+      id: 'ALU-2026-084',
+      nome: 'Mariana Costa',
+      cpf: '456.789.012-33',
+      senha: '1234',
+      telefone: '(91) 98444-5566',
+      plano: 'Feminino',
+      faixa: 'Azul',
+      graus: 1,
+      presencas: 22,
+      statusPagamento: 'pago',
+      vencimento: '20/11/2026',
+      valor: 119,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f'
+    },
+    {
+      id: 'ALU-2026-085',
+      nome: 'Rodrigo Faro',
+      cpf: '567.890.123-44',
+      senha: '1234',
+      telefone: '(91) 98555-6677',
+      plano: 'Adulto — Iniciante',
+      faixa: 'Branca',
+      graus: 0,
+      presencas: 5,
+      statusPagamento: 'atrasado',
+      vencimento: '24/10/2026',
+      valor: 129,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a'
+    },
+    {
+      id: 'ALU-2026-086',
+      nome: 'Léo Clara (Mãe: Ana)',
+      cpf: '678.901.234-55',
+      senha: '1234',
+      telefone: '(91) 98666-7788',
+      plano: 'Infantil',
+      faixa: 'Cinza',
+      graus: 2,
+      presencas: 19,
+      statusPagamento: 'pago',
+      vencimento: '12/11/2026',
+      valor: 99,
+      contratoAssinado: true,
+      hashContrato: 'SHA256: 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f'
+    }
+  ],
+  horarios: [
+    { id: 1, dia: 'seg', hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', total: 15, ocupadas: 7, tag: 'iniciante' },
+    { id: 2, dia: 'seg', hora: '12:00 - 13:00', turma: 'Treino Tático (No-Gi)', prof: 'Prof. Carlos Silva', total: 12, ocupadas: 8, tag: 'avancado' },
+    { id: 3, dia: 'seg', hora: '18:00 - 19:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', total: 16, ocupadas: 10, tag: 'infantil' },
+    { id: 4, dia: 'seg', hora: '19:30 - 21:00', turma: 'Adulto — Avançado', prof: 'Mestre Rogério', total: 20, ocupadas: 17, tag: 'avancado' },
+    { id: 5, dia: 'ter', hora: '07:30 - 08:30', turma: 'Adulto — Todos os Níveis', prof: 'Prof. Carlos Silva', total: 18, ocupadas: 8, tag: 'iniciante' },
+    { id: 6, dia: 'ter', hora: '17:00 - 18:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', total: 16, ocupadas: 11, tag: 'infantil' },
+    { id: 7, dia: 'ter', hora: '18:30 - 19:30', turma: 'Feminino — Defesa Pessoal', prof: 'Profª. Beatriz Santos', total: 14, ocupadas: 7, tag: 'feminino' },
+    { id: 8, dia: 'ter', hora: '20:00 - 21:30', turma: 'Competição & Sparring', prof: 'Mestre Rogério', total: 15, ocupadas: 13, tag: 'avancado' },
+    { id: 9, dia: 'qua', hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', total: 15, ocupadas: 8, tag: 'iniciante' },
+    { id: 10, dia: 'qua', hora: '12:00 - 13:00', turma: 'Treino Tático', prof: 'Prof. Carlos Silva', total: 12, ocupadas: 6, tag: 'avancado' },
+    { id: 11, dia: 'qua', hora: '18:00 - 19:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', total: 16, ocupadas: 12, tag: 'infantil' },
+    { id: 12, dia: 'qua', hora: '19:30 - 21:00', turma: 'Adulto — Avançado', prof: 'Mestre Rogério', total: 20, ocupadas: 15, tag: 'avancado' },
+    { id: 13, dia: 'qui', hora: '07:30 - 08:30', turma: 'Adulto — Todos os Níveis', prof: 'Prof. Carlos Silva', total: 18, ocupadas: 9, tag: 'iniciante' },
+    { id: 14, dia: 'qui', hora: '17:00 - 18:00', turma: 'Infantil — Coordenação', prof: 'Profª. Amanda Lima', total: 16, ocupadas: 11, tag: 'infantil' },
+    { id: 15, dia: 'qui', hora: '18:30 - 19:30', turma: 'Feminino — Jiu-Jitsu & Fitness', prof: 'Profª. Beatriz Santos', total: 14, ocupadas: 8, tag: 'feminino' },
+    { id: 16, dia: 'qui', hora: '20:00 - 21:30', turma: 'Adulto — Defesa Pessoal', prof: 'Prof. Marcos Souza', total: 18, ocupadas: 14, tag: 'iniciante' },
+    { id: 17, dia: 'sex', hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', total: 15, ocupadas: 7, tag: 'iniciante' },
+    { id: 18, dia: 'sex', hora: '18:00 - 19:00', turma: 'Infantil — Graduação', prof: 'Profª. Amanda Lima', total: 16, ocupadas: 14, tag: 'infantil' },
+    { id: 19, dia: 'sex', hora: '19:30 - 21:00', turma: 'Roda de Sparring Aberto', prof: 'Mestre Rogério', total: 22, ocupadas: 18, tag: 'avancado' },
+    { id: 20, dia: 'sab', hora: '09:00 - 10:30', turma: 'Treino Geral em Família', prof: 'Mestre Rogério & Amanda', total: 25, ocupadas: 19, tag: 'iniciante' },
+    { id: 21, dia: 'sab', hora: '11:00 - 12:30', turma: 'Treino Aberto (Open Mat)', prof: 'Todos os Mestres', total: 30, ocupadas: 24, tag: 'avancado' }
+  ],
+  presencasHoje: [
+    { nome: 'Carlos Silva', faixa: 'Faixa Azul (2º Grau)', turma: 'Adulto Iniciante', hora: '07:42' },
+    { nome: 'Mariana Costa', faixa: 'Faixa Azul (1º Grau)', turma: 'Feminino', hora: '08:15' },
+    { nome: 'Rafael Nogueira', faixa: 'Faixa Branca (1º Grau)', turma: 'Adulto Iniciante', hora: '12:04' }
+  ]
+};
+
+// Funções de Acesso ao Banco Local
+function getDB() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_DB));
+      return INITIAL_DB;
+    }
+    return JSON.parse(raw);
+  } catch (e) {
+    return INITIAL_DB;
+  }
+}
+
+function saveDB(db) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+  } catch (e) {
+    console.error('Erro ao salvar DB local:', e);
+  }
+}
 
 /* ==========================================================================
-   1. NAVEGAÇÃO & ANO ATUAL
+   2. ESTADO GLOBAL DA APLICAÇÃO
    ========================================================================== */
-function initNavigation() {
+let appState = {
+  db: getDB(),
+  loggedAluno: null,
+  isAdminLogged: false,
+  activeScheduleDay: 'seg',
+  activeScheduleFilter: 'all',
+  wizardStep: 1,
+  wizardPlano: 'iniciante',
+  cameraStream: null
+};
+
+/* ==========================================================================
+   3. INICIALIZAÇÃO GERAL (DOM LOADED)
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initUI();
+  renderPublicSchedule();
+  atualizarPrecosPublicos();
+  initSignaturePad();
+});
+
+function initUI() {
+  // Menu mobile toggle
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#nav');
-
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
     });
-
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         nav.classList.remove('open');
         toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
+  // Ano no rodapé
   const yearEl = document.querySelector('#year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Bottom Navigation no celular
-  document.querySelectorAll('.bottom-nav-item').forEach(item => {
-    item.addEventListener('click', function () {
-      document.querySelectorAll('.bottom-nav-item').forEach(i => i.classList.remove('active'));
-      this.classList.add('active');
+  // Tabs de dias de horários públicos
+  const dayTabs = document.querySelectorAll('#dayTabs .day-tab');
+  dayTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      dayTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      appState.activeScheduleDay = tab.dataset.day;
+      renderPublicSchedule();
     });
   });
+
+  // Filtros de turmas de horários públicos
+  const filterPills = document.querySelectorAll('.category-filters .filter-pill');
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      appState.activeScheduleFilter = pill.dataset.filter;
+      renderPublicSchedule();
+    });
+  });
+}
+
+function atualizarPrecosPublicos() {
+  const p = appState.db.config.precos;
+  const chipInf = document.querySelector('#chip-preco-infantil');
+  const chipIni = document.querySelector('#chip-preco-iniciante');
+  const chipAva = document.querySelector('#chip-preco-avancado');
+  const chipFem = document.querySelector('#chip-preco-feminino');
+  if (chipInf) chipInf.textContent = `R$ ${p.infantil}/mês`;
+  if (chipIni) chipIni.textContent = `R$ ${p.iniciante}/mês`;
+  if (chipAva) chipAva.textContent = `R$ ${p.avancado}/mês`;
+  if (chipFem) chipFem.textContent = `R$ ${p.feminino}/mês`;
+
+  const wizInf = document.querySelector('#wizPrecoInfantil');
+  const wizIni = document.querySelector('#wizPrecoIniciante');
+  const wizAva = document.querySelector('#wizPrecoAvancado');
+  const wizFem = document.querySelector('#wizPrecoFeminino');
+  if (wizInf) wizInf.textContent = `R$ ${p.infantil}/mês`;
+  if (wizIni) wizIni.textContent = `R$ ${p.iniciante}/mês`;
+  if (wizAva) wizAva.textContent = `R$ ${p.avancado}/mês`;
+  if (wizFem) wizFem.textContent = `R$ ${p.feminino}/mês`;
+
+  const footZap = document.querySelector('#footerAcademiaTelefone');
+  if (footZap) footZap.textContent = `WhatsApp: ${appState.db.config.telefoneAcademia}`;
 }
 
 /* ==========================================================================
-   2. AGENDAMENTOS INTELIGENTES EM TEMPO REAL
+   4. GRADE DE HORÁRIOS PÚBLICA
    ========================================================================== */
-const SCHEDULE_DATA = {
-  seg: [
-    { id: 1, hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', vagas: 8, total: 15, tag: 'iniciante' },
-    { id: 2, hora: '12:00 - 13:00', turma: 'Treino Tático (No-Gi)', prof: 'Prof. Carlos Silva', vagas: 4, total: 12, tag: 'avancado' },
-    { id: 3, hora: '18:00 - 19:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', vagas: 6, total: 16, tag: 'infantil' },
-    { id: 4, hora: '19:30 - 21:00', turma: 'Adulto — Avançado', prof: 'Mestre Rogério', vagas: 3, total: 20, tag: 'avancado' }
-  ],
-  ter: [
-    { id: 5, hora: '07:30 - 08:30', turma: 'Adulto — Todos os Níveis', prof: 'Prof. Carlos Silva', vagas: 10, total: 18, tag: 'iniciante' },
-    { id: 6, hora: '17:00 - 18:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', vagas: 5, total: 16, tag: 'infantil' },
-    { id: 7, hora: '18:30 - 19:30', turma: 'Feminino — Defesa Pessoal', prof: 'Profª. Beatriz Santos', vagas: 7, total: 14, tag: 'feminino' },
-    { id: 8, hora: '20:00 - 21:30', turma: 'Competição & Sparring', prof: 'Mestre Rogério', vagas: 2, total: 15, tag: 'avancado' }
-  ],
-  qua: [
-    { id: 9, hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', vagas: 7, total: 15, tag: 'iniciante' },
-    { id: 10, hora: '12:00 - 13:00', turma: 'Treino Tático', prof: 'Prof. Carlos Silva', vagas: 6, total: 12, tag: 'avancado' },
-    { id: 11, hora: '18:00 - 19:00', turma: 'Infantil (5 a 12 anos)', prof: 'Profª. Amanda Lima', vagas: 4, total: 16, tag: 'infantil' },
-    { id: 12, hora: '19:30 - 21:00', turma: 'Adulto — Avançado', prof: 'Mestre Rogério', vagas: 5, total: 20, tag: 'avancado' }
-  ],
-  qui: [
-    { id: 13, hora: '07:30 - 08:30', turma: 'Adulto — Todos os Níveis', prof: 'Prof. Carlos Silva', vagas: 9, total: 18, tag: 'iniciante' },
-    { id: 14, hora: '17:00 - 18:00', turma: 'Infantil — Coordenação', prof: 'Profª. Amanda Lima', vagas: 5, total: 16, tag: 'infantil' },
-    { id: 15, hora: '18:30 - 19:30', turma: 'Feminino — Jiu-Jitsu & Fitness', prof: 'Profª. Beatriz Santos', vagas: 6, total: 14, tag: 'feminino' },
-    { id: 16, hora: '20:00 - 21:30', turma: 'Adulto — Defesa Pessoal', prof: 'Prof. Marcos Souza', vagas: 4, total: 18, tag: 'iniciante' }
-  ],
-  sex: [
-    { id: 17, hora: '07:00 - 08:00', turma: 'Adulto — Iniciante', prof: 'Prof. Marcos Souza', vagas: 8, total: 15, tag: 'iniciante' },
-    { id: 18, hora: '17:00 - 18:00', turma: 'Infantil — Graduação & Jogos', prof: 'Profª. Amanda Lima', vagas: 3, total: 16, tag: 'infantil' },
-    { id: 19, hora: '18:30 - 20:00', turma: 'Open Mat (Rola Livre)', prof: 'Equipe Técnica', vagas: 12, total: 25, tag: 'avancado' }
-  ],
-  sab: [
-    { id: 20, hora: '09:00 - 10:30', turma: 'Aulão Geral & Família', prof: 'Mestre Rogério & Equipe', vagas: 14, total: 30, tag: 'iniciante' },
-    { id: 21, hora: '11:00 - 12:30', turma: 'Treino de Competição', prof: 'Mestre Rogério', vagas: 6, total: 16, tag: 'avancado' }
-  ]
-};
+function renderPublicSchedule() {
+  const container = document.querySelector('#scheduleListContainer');
+  if (!container) return;
 
-function initAgendamentos() {
-  const dayButtons = document.querySelectorAll('.day-btn');
-  const classContainer = document.querySelector('#classListContainer');
-  const filterSelect = document.querySelector('#classFilterSelect');
+  const dia = appState.activeScheduleDay;
+  const filtro = appState.activeScheduleFilter;
 
-  let currentDay = 'seg';
-  let currentFilter = 'all';
-
-  function renderClasses() {
-    if (!classContainer) return;
-    const classes = SCHEDULE_DATA[currentDay] || [];
-    const filtered = classes.filter(c => currentFilter === 'all' || c.tag === currentFilter);
-
-    if (filtered.length === 0) {
-      classContainer.innerHTML = `
-        <div class="empty-classes">
-          <p>Nenhuma aula encontrada para este filtro no dia selecionado.</p>
-        </div>
-      `;
-      return;
-    }
-
-    classContainer.innerHTML = filtered.map(c => {
-      const percent = Math.round(((c.total - c.vagas) / c.total) * 100);
-      const isFew = c.vagas <= 4;
-      return `
-        <div class="schedule-card" data-id="${c.id}">
-          <div class="sc-header">
-            <span class="sc-time">${c.hora}</span>
-            <span class="sc-badge ${isFew ? 'badge-urgent' : 'badge-normal'}">
-              ${c.vagas > 0 ? `${c.vagas} vagas restantes` : 'Turma Lotada'}
-            </span>
-          </div>
-          <h4 class="sc-title">${c.turma}</h4>
-          <p class="sc-prof">🥋 ${c.prof}</p>
-          <div class="sc-progress-wrap">
-            <div class="sc-progress-bar" style="width: ${percent}%;"></div>
-          </div>
-          <div class="sc-footer">
-            <span class="sc-occ">${c.total - c.vagas}/${c.total} ocupadas</span>
-            <button class="btn btn-yellow sc-btn" onclick="openAgendamentoModal('${c.turma}', '${c.hora}', '${c.prof}', ${c.id})">
-              Reservar Vaga →
-            </button>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  dayButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      dayButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentDay = btn.dataset.day;
-      renderClasses();
-    });
+  const aulas = appState.db.horarios.filter(h => {
+    const matchDia = h.dia === dia;
+    const matchTag = filtro === 'all' || h.tag === filtro;
+    return matchDia && matchTag;
   });
 
-  if (filterSelect) {
-    filterSelect.addEventListener('change', (e) => {
-      currentFilter = e.target.value;
-      renderClasses();
-    });
+  if (aulas.length === 0) {
+    container.innerHTML = `
+      <div class="schedule-empty-state">
+        <p>Nenhuma aula desta categoria encontrada para este dia.</p>
+      </div>`;
+    return;
   }
 
-  renderClasses();
+  container.innerHTML = aulas.map(aula => {
+    const vagasLivres = Math.max(0, aula.total - aula.ocupadas);
+    const badgeVagas = vagasLivres <= 3
+      ? `<span class="badge-vagas urgent">Restam apenas ${vagasLivres} vagas!</span>`
+      : `<span class="badge-vagas">${vagasLivres} de ${aula.total} vagas disponíveis</span>`;
+
+    return `
+      <div class="schedule-card-item">
+        <div class="sci-time">
+          <strong>${aula.hora}</strong>
+          <small>${aula.prof}</small>
+        </div>
+        <div class="sci-info">
+          <h4>${aula.turma}</h4>
+          ${badgeVagas}
+        </div>
+        <div class="sci-action">
+          <button type="button" class="btn btn-yellow btn-sm" onclick="reservarVagaPublica(${aula.id})">
+            Reservar Aula
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
-window.openAgendamentoModal = function (turma, hora, prof, id) {
-  const modal = document.querySelector('#modalAgendamento');
-  if (!modal) return;
-  document.querySelector('#modalTurmaNome').textContent = turma;
-  document.querySelector('#modalTurmaHorario').textContent = hora;
-  document.querySelector('#modalTurmaProf').textContent = prof;
-  document.querySelector('#modalClassId').value = id;
-  modal.classList.add('active');
-};
+function reservarVagaPublica(aulaId) {
+  const aula = appState.db.horarios.find(h => h.id === aulaId);
+  if (!aula) return;
 
-window.closeAgendamentoModal = function () {
-  const modal = document.querySelector('#modalAgendamento');
+  const msg = encodeURIComponent(`Olá! Gostaria de agendar uma aula experimental de Jiu-Jitsu para a turma: *${aula.turma}* às *${aula.hora}* (${aula.prof}).`);
+  const zap = appState.db.config.telefoneAcademia.replace(/\D/g, '');
+  window.open(`https://wa.me/55${zap || '91981234567'}?text=${msg}`, '_blank');
+}
+
+/* ==========================================================================
+   5. MÁSCARA E VALIDAÇÃO DE CPF
+   ========================================================================== */
+function maskCPF(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length > 11) v = v.substring(0, 11);
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  input.value = v;
+}
+
+function cleanCPF(cpf) {
+  return (cpf || '').replace(/\D/g, '');
+}
+
+/* ==========================================================================
+   6. MODAL & LOGIN DO ALUNO (CLIENTE)
+   ========================================================================== */
+function openModalLoginAluno() {
+  const modal = document.querySelector('#modalLoginAluno');
+  const err = document.querySelector('#loginAlunoErro');
+  if (err) err.style.display = 'none';
+  if (modal) modal.classList.add('active');
+}
+
+function closeModalLoginAluno() {
+  const modal = document.querySelector('#modalLoginAluno');
   if (modal) modal.classList.remove('active');
-};
-
-window.handleConfirmAgendamento = function (e) {
-  e.preventDefault();
-  const form = e.target;
-  const nome = form.nome.value.trim();
-  const zap = form.whatsapp.value.trim();
-  const tipo = form.tipo.value;
-  const turma = document.querySelector('#modalTurmaNome').textContent;
-  const horario = document.querySelector('#modalTurmaHorario').textContent;
-  const prof = document.querySelector('#modalTurmaProf').textContent;
-
-  // Reduz 1 vaga
-  const classId = parseInt(document.querySelector('#modalClassId').value);
-  for (let day in SCHEDULE_DATA) {
-    const found = SCHEDULE_DATA[day].find(c => c.id === classId);
-    if (found && found.vagas > 0) {
-      found.vagas--;
-      break;
-    }
-  }
-
-  const successBox = document.querySelector('#agendamentoSuccess');
-  const formBox = document.querySelector('#agendamentoFormBody');
-  if (successBox && formBox) {
-    formBox.style.display = 'none';
-    successBox.style.display = 'block';
-    document.querySelector('#agendamentoConfNome').textContent = nome;
-    document.querySelector('#agendamentoConfTurma').textContent = turma;
-    document.querySelector('#agendamentoConfHorario').textContent = horario;
-
-    // Link WhatsApp
-    const msg = `🥋 *CONFIRMAÇÃO DE AGENDAMENTO — ACADEMIA JIU-JITSU*\n\n` +
-      `Olá! Gostaria de confirmar meu agendamento:\n` +
-      `• *Aluno(a):* ${nome}\n` +
-      `• *Turma:* ${turma}\n` +
-      `• *Horário:* ${horario}\n` +
-      `• *Professor:* ${prof}\n` +
-      `• *Tipo:* ${tipo === 'experimental' ? 'Aula Experimental Gratuita' : 'Aluno Regular'}\n\n` +
-      `Agradeço e nos vemos no tatame!`;
-    const zapUrl = `https://wa.me/5591999999999?text=${encodeURIComponent(msg)}`;
-    document.querySelector('#btnZapAgendamento').href = zapUrl;
-  }
-};
-
-window.resetAgendamentoForm = function () {
-  closeAgendamentoModal();
-  setTimeout(() => {
-    const successBox = document.querySelector('#agendamentoSuccess');
-    const formBox = document.querySelector('#agendamentoFormBody');
-    if (successBox && formBox) {
-      formBox.style.display = 'block';
-      successBox.style.display = 'none';
-    }
-    const form = document.querySelector('#formModalAgendar');
-    if (form) form.reset();
-  }, 300);
-};
-
-/* ==========================================================================
-   3. MATRÍCULAS 100% ONLINE — STEPPER MULTI-ETAPAS
-   ========================================================================== */
-const PLANOS = {
-  infantil: { nome: 'Infantil (5 a 12 anos)', mensal: 99, anual: 84 },
-  iniciante: { nome: 'Adulto — Iniciante', mensal: 129, anual: 109 },
-  avancado: { nome: 'Adulto — Avançado', mensal: 149, anual: 126 },
-  feminino: { nome: 'Feminino', mensal: 119, anual: 99 }
-};
-
-let matriculaState = {
-  planoKey: 'iniciante',
-  periodo: 'mensal', // 'mensal' ou 'anual'
-  valor: 129,
-  aluno: {
-    nome: '',
-    cpf: '',
-    nascimento: '',
-    whatsapp: '',
-    email: '',
-    emergencia: '',
-    faixa: 'Branca'
-  },
-  assinaturaUrl: null,
-  contratoHash: null,
-  pagamentoMetodo: 'pix',
-  pagamentoStatus: 'pendente'
-};
-
-function initMatriculaWizard() {
-  const planCards = document.querySelectorAll('.plano-select-card');
-  const periodoRadios = document.querySelectorAll('input[name="periodoPlano"]');
-
-  function updatePlanSelection() {
-    const info = PLANOS[matriculaState.planoKey];
-    matriculaState.valor = matriculaState.periodo === 'anual' ? info.anual : info.mensal;
-
-    document.querySelectorAll('.valor-plano-dinamico').forEach(el => {
-      el.textContent = `R$ ${matriculaState.valor}/mês`;
-    });
-    document.querySelectorAll('.nome-plano-dinamico').forEach(el => {
-      el.textContent = `${info.nome} (${matriculaState.periodo.toUpperCase()})`;
-    });
-
-    // Atualiza resumo
-    const resPlano = document.querySelector('#resumoPlanoNome');
-    const resValor = document.querySelector('#resumoPlanoValor');
-    if (resPlano) resPlano.textContent = info.nome;
-    if (resValor) resValor.textContent = `R$ ${matriculaState.valor},00 / mês`;
-
-    // Atualiza valor no PIX
-    const pixVal = document.querySelector('#pixValorDisplay');
-    if (pixVal) pixVal.textContent = `R$ ${matriculaState.valor},00`;
-
-    // Atualiza parcelas cartão
-    updateCardInstallments(matriculaState.valor);
-  }
-
-  planCards.forEach(card => {
-    card.addEventListener('click', () => {
-      planCards.forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      matriculaState.planoKey = card.dataset.plano;
-      updatePlanSelection();
-    });
-  });
-
-  periodoRadios.forEach(r => {
-    r.addEventListener('change', (e) => {
-      matriculaState.periodo = e.target.value;
-      updatePlanSelection();
-    });
-  });
-
-  updatePlanSelection();
 }
 
-window.goToWizardStep = function (stepNumber) {
-  // Validações prévias
-  if (stepNumber === 3) {
-    const f = document.querySelector('#formDadosAluno');
-    if (f && !f.checkValidity()) {
-      f.reportValidity();
-      return;
-    }
-    // Salva dados
-    matriculaState.aluno.nome = document.querySelector('#matNome').value.trim();
-    matriculaState.aluno.cpf = document.querySelector('#matCpf').value.trim();
-    matriculaState.aluno.whatsapp = document.querySelector('#matZap').value.trim();
-    matriculaState.aluno.email = document.querySelector('#matEmail').value.trim();
-    matriculaState.aluno.nascimento = document.querySelector('#matNasc').value;
-    matriculaState.aluno.faixa = document.querySelector('#matFaixa').value;
-
-    // Atualiza dados no contrato
-    document.querySelectorAll('.contrato-nome-aluno').forEach(el => el.textContent = matriculaState.aluno.nome);
-    document.querySelectorAll('.contrato-cpf-aluno').forEach(el => el.textContent = matriculaState.aluno.cpf);
-    document.querySelectorAll('.contrato-data-hoje').forEach(el => el.textContent = new Date().toLocaleDateString('pt-BR'));
-  }
-
-  if (stepNumber === 4) {
-    if (!matriculaState.assinaturaUrl) {
-      alert('Por favor, faça sua assinatura na tela antes de continuar.');
-      return;
-    }
-  }
-
-  // Troca de passo visual
-  document.querySelectorAll('.wizard-step-content').forEach(s => s.classList.remove('active'));
-  const target = document.querySelector(`#wizardStep${stepNumber}`);
-  if (target) target.classList.add('active');
-
-  // Atualiza indicadores do stepper
-  document.querySelectorAll('.step-indicator').forEach(ind => {
-    const step = parseInt(ind.dataset.step);
-    ind.classList.remove('active', 'completed');
-    if (step === stepNumber) ind.classList.add('active');
-    else if (step < stepNumber) ind.classList.add('completed');
-  });
-
-  // Scroll suave para o início da matrícula
-  const section = document.querySelector('#matricula-fluxo');
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
-
-/* ==========================================================================
-   4. ASSINATURA DIGITAL NO CELULAR (CANVAS TOUCH/STYLUS/MOUSE)
-   ========================================================================== */
-let sigCanvas, sigCtx, isDrawing = false;
-
-function initSignaturePad() {
-  sigCanvas = document.querySelector('#signatureCanvas');
-  if (!sigCanvas) return;
-  sigCtx = sigCanvas.getContext('2d');
-
-  function resizeCanvas() {
-    const rect = sigCanvas.parentElement.getBoundingClientRect();
-    const width = Math.min(rect.width - 20, 600);
-    const height = 180;
-    const dpr = window.devicePixelRatio || 1;
-
-    sigCanvas.width = width * dpr;
-    sigCanvas.height = height * dpr;
-    sigCanvas.style.width = width + 'px';
-    sigCanvas.style.height = height + 'px';
-
-    sigCtx.scale(dpr, dpr);
-    sigCtx.strokeStyle = '#ffc400';
-    sigCtx.lineWidth = 2.8;
-    sigCtx.lineCap = 'round';
-    sigCtx.lineJoin = 'round';
-  }
-
-  window.addEventListener('resize', resizeCanvas);
-  setTimeout(resizeCanvas, 300);
-
-  // Posição no canvas
-  function getPos(e) {
-    const rect = sigCanvas.getBoundingClientRect();
-    if (e.touches && e.touches.length > 0) {
-      return {
-        x: e.touches[0].clientX - rect.left,
-        y: e.touches[0].clientY - rect.top
-      };
-    }
-    return {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-  }
-
-  // Eventos Mouse
-  sigCanvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    const p = getPos(e);
-    sigCtx.beginPath();
-    sigCtx.moveTo(p.x, p.y);
-  });
-
-  sigCanvas.addEventListener('mousemove', (e) => {
-    if (!isDrawing) return;
-    const p = getPos(e);
-    sigCtx.lineTo(p.x, p.y);
-    sigCtx.stroke();
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (isDrawing) {
-      isDrawing = false;
-      matriculaState.assinaturaUrl = sigCanvas.toDataURL('image/png');
-      updateSignatureStamp();
-    }
-  });
-
-  // Eventos Touch no Celular (previne scroll da página durante a assinatura)
-  sigCanvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    isDrawing = true;
-    const p = getPos(e);
-    sigCtx.beginPath();
-    sigCtx.moveTo(p.x, p.y);
-  }, { passive: false });
-
-  sigCanvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    if (!isDrawing) return;
-    const p = getPos(e);
-    sigCtx.lineTo(p.x, p.y);
-    sigCtx.stroke();
-  }, { passive: false });
-
-  sigCanvas.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    if (isDrawing) {
-      isDrawing = false;
-      matriculaState.assinaturaUrl = sigCanvas.toDataURL('image/png');
-      updateSignatureStamp();
-    }
-  }, { passive: false });
+function preencherAlunoDemo() {
+  const cpfInput = document.querySelector('#loginAlunoCpf');
+  const senhaInput = document.querySelector('#loginAlunoSenha');
+  if (cpfInput) cpfInput.value = '123.456.789-00';
+  if (senhaInput) senhaInput.value = '1234';
 }
 
-window.clearSignature = function () {
-  if (!sigCanvas || !sigCtx) return;
-  const dpr = window.devicePixelRatio || 1;
-  sigCtx.clearRect(0, 0, sigCanvas.width / dpr, sigCanvas.height / dpr);
-  matriculaState.assinaturaUrl = null;
-  matriculaState.contratoHash = null;
-  const stamp = document.querySelector('#signatureStampBox');
-  if (stamp) stamp.style.display = 'none';
-};
+function handleLoginAluno(event) {
+  event.preventDefault();
+  const cpfDigitado = cleanCPF(document.querySelector('#loginAlunoCpf').value);
+  const senhaDigitada = document.querySelector('#loginAlunoSenha').value.trim();
+  const erroBox = document.querySelector('#loginAlunoErro');
 
-function updateSignatureStamp() {
-  const stamp = document.querySelector('#signatureStampBox');
-  if (!stamp) return;
+  const aluno = appState.db.alunos.find(a => cleanCPF(a.cpf) === cpfDigitado);
 
-  // Gera hash e data/hora do certificado digital
-  const now = new Date();
-  const rawHash = Math.random().toString(36).substring(2) + Date.now().toString(36) + 'jiujitsu-sign';
-  matriculaState.contratoHash = 'SHA256:' + rawHash.toUpperCase().padEnd(32, 'X');
-
-  document.querySelector('#stampDataHora').textContent = now.toLocaleString('pt-BR');
-  document.querySelector('#stampHash').textContent = matriculaState.contratoHash;
-  stamp.style.display = 'flex';
-}
-
-/* ==========================================================================
-   5. PAGAMENTO AUTOMÁTICO (PIX COM QR CODE + CARTÃO DÉBITO/CRÉDITO 3D)
-   ========================================================================== */
-function initPaymentModule() {
-  // Tabs PIX vs Cartão
-  const tabBtns = document.querySelectorAll('.pay-tab-btn');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = btn.dataset.tab;
-      document.querySelectorAll('.pay-tab-content').forEach(c => c.classList.remove('active'));
-      const activeContent = document.querySelector(`#payContent${target}`);
-      if (activeContent) activeContent.classList.add('active');
-      matriculaState.pagamentoMetodo = target.toLowerCase();
-    });
-  });
-
-  // Contador regressivo do PIX (15 minutos)
-  startPixCountdown(15 * 60);
-
-  // Cartão 3D Interativo
-  initCreditCardVisuals();
-}
-
-let pixTimerInterval = null;
-function startPixCountdown(durationSeconds) {
-  let timer = durationSeconds;
-  const display = document.querySelector('#pixTimerText');
-  if (!display) return;
-
-  if (pixTimerInterval) clearInterval(pixTimerInterval);
-
-  pixTimerInterval = setInterval(() => {
-    const minutes = parseInt(timer / 60, 10);
-    const seconds = parseInt(timer % 60, 10);
-
-    const mStr = minutes < 10 ? '0' + minutes : minutes;
-    const sStr = seconds < 10 ? '0' + seconds : seconds;
-
-    display.textContent = `${mStr}:${sStr}`;
-
-    if (--timer < 0) {
-      clearInterval(pixTimerInterval);
-      display.textContent = 'Expirado';
-    }
-  }, 1000);
-}
-
-window.copyPixCode = function () {
-  const code = document.querySelector('#pixCopiaColaInput').value;
-  navigator.clipboard.writeText(code).then(() => {
-    const btn = document.querySelector('#btnCopyPix');
-    const origText = btn.innerHTML;
-    btn.innerHTML = '✔ Código Copiado!';
-    btn.style.backgroundColor = '#25d366';
-    setTimeout(() => {
-      btn.innerHTML = origText;
-      btn.style.backgroundColor = '';
-    }, 2500);
-  });
-};
-
-function initCreditCardVisuals() {
-  const numInput = document.querySelector('#ccNumber');
-  const nameInput = document.querySelector('#ccName');
-  const expInput = document.querySelector('#ccExp');
-  const cvvInput = document.querySelector('#ccCvv');
-  const cardElement = document.querySelector('#visualCreditCard');
-
-  if (!cardElement) return;
-
-  if (numInput) {
-    numInput.addEventListener('input', (e) => {
-      let v = e.target.value.replace(/\D/g, '').substring(0, 16);
-      v = v.replace(/(\d{4})/g, '$1 ').trim();
-      e.target.value = v;
-      document.querySelector('#cardDisplayNumber').textContent = v || '•••• •••• •••• ••••';
-
-      // Detecta bandeira
-      const brandLogo = document.querySelector('#cardBrandLogo');
-      if (v.startsWith('4')) {
-        brandLogo.textContent = 'VISA';
-      } else if (v.startsWith('5')) {
-        brandLogo.textContent = 'MC';
-      } else {
-        brandLogo.textContent = 'ELO';
-      }
-    });
+  if (!aluno) {
+    erroBox.textContent = 'CPF não encontrado. Faça sua matrícula antes ou verifique os dígitos.';
+    erroBox.style.display = 'block';
+    return;
   }
 
-  if (nameInput) {
-    nameInput.addEventListener('input', (e) => {
-      const v = e.target.value.toUpperCase();
-      document.querySelector('#cardDisplayName').textContent = v || 'NOME DO ALUNO';
-    });
+  if (aluno.senha && aluno.senha !== senhaDigitada) {
+    erroBox.textContent = 'Senha incorreta. Caso seja o primeiro acesso, tente 1234.';
+    erroBox.style.display = 'block';
+    return;
   }
 
-  if (expInput) {
-    expInput.addEventListener('input', (e) => {
-      let v = e.target.value.replace(/\D/g, '').substring(0, 4);
-      if (v.length >= 2) {
-        v = v.substring(0, 2) + '/' + v.substring(2);
-      }
-      e.target.value = v;
-      document.querySelector('#cardDisplayExp').textContent = v || 'MM/AA';
-    });
-  }
-
-  if (cvvInput) {
-    // Efeito flip 3D quando foca no CVV
-    cvvInput.addEventListener('focus', () => {
-      cardElement.classList.add('flipped');
-    });
-    cvvInput.addEventListener('blur', () => {
-      cardElement.classList.remove('flipped');
-    });
-    cvvInput.addEventListener('input', (e) => {
-      const v = e.target.value.replace(/\D/g, '').substring(0, 4);
-      e.target.value = v;
-      document.querySelector('#cardDisplayCvv').textContent = v || '•••';
-    });
-  }
+  // Sucesso no Login do Aluno
+  erroBox.style.display = 'none';
+  closeModalLoginAluno();
+  entrarNoPortalAluno(aluno);
 }
 
-function updateCardInstallments(valorMensal) {
-  const sel = document.querySelector('#ccInstallments');
-  if (!sel) return;
-  sel.innerHTML = `
-    <option value="1">1x de R$ ${valorMensal},00 à vista (sem juros)</option>
-    <option value="2">2x de R$ ${(valorMensal / 2).toFixed(2)} sem juros</option>
-    <option value="3">3x de R$ ${(valorMensal / 3).toFixed(2)} sem juros</option>
-    <option value="6">6x de R$ ${(valorMensal / 6).toFixed(2)} sem juros</option>
-    <option value="12">12x de R$ ${(valorMensal / 12).toFixed(2)} sem juros</option>
+function entrarNoPortalAluno(aluno) {
+  appState.loggedAluno = aluno;
+  const portal = document.querySelector('#portalAlunoView');
+  if (!portal) return;
+
+  // Atualiza Dados do Header do Portal
+  document.querySelector('#paAlunoNome').textContent = aluno.nome;
+  document.querySelector('#paAlunoFaixa').textContent = `Faixa ${aluno.faixa} (${aluno.graus}º Grau)`;
+  document.querySelector('#paAlunoPlano').textContent = aluno.plano;
+  document.querySelector('#paAlunoMatricula').textContent = aluno.id;
+
+  // Atualiza Carteirinha
+  document.querySelector('#cvNomeDisplay').textContent = aluno.nome;
+  document.querySelector('#cvFaixaDisplay').textContent = `Faixa ${aluno.faixa} (${aluno.graus}º Grau)`;
+  document.querySelector('#cvPlanoDisplay').textContent = aluno.plano;
+  document.querySelector('#cvCpfDisplay').textContent = aluno.cpf;
+  document.querySelector('#cvHashDisplay').textContent = aluno.hashContrato || 'AUTENTICADO-TATAME-2026';
+
+  // Atualiza Financeiro
+  document.querySelector('#pAlunoPlanoNome').textContent = aluno.plano;
+  document.querySelector('#pAlunoPlanoValor').textContent = `R$ ${aluno.valor},00`;
+  document.querySelector('#pAlunoPlanoVenc').textContent = aluno.vencimento;
+
+  const fBadge = document.querySelector('#pAlunoFinanceStatusBadge');
+  if (aluno.statusPagamento === 'pago') {
+    fBadge.className = 'finance-badge-pago';
+    fBadge.textContent = 'EM DIA (PAGO)';
+  } else if (aluno.statusPagamento === 'vence_hoje') {
+    fBadge.className = 'finance-badge-pendente';
+    fBadge.textContent = 'VENCE HOJE';
+  } else {
+    fBadge.className = 'finance-badge-pendente';
+    fBadge.textContent = 'EM ATRASO';
+  }
+
+  // Atualiza Treinos
+  document.querySelector('#pAlunoTotalTreinos').textContent = aluno.presencas;
+  const metaGrau = 24;
+  const perc = Math.min(100, Math.round((aluno.presencas % metaGrau) / metaGrau * 100));
+  document.querySelector('#pAlunoProgressBar').style.width = `${perc}%`;
+  document.querySelector('#pAlunoProgressTexto').textContent = `${aluno.presencas % metaGrau} de ${metaGrau} treinos para o próximo grau (${perc}%)`;
+
+  renderAlunoListaPresencas(aluno);
+  renderAlunoGradeTreinos();
+
+  // Atualiza Contrato
+  const hashBox = document.querySelector('#pAlunoHashContrato');
+  if (hashBox) hashBox.textContent = aluno.hashContrato || 'SHA256: 8a7c9f0e1d4b6c3a2f5e8d9c0a1b2c3d4e5f6a7b8c9d0e1f';
+
+  const assBox = document.querySelector('#pAlunoAssinaturaImg');
+  if (assBox) {
+    assBox.innerHTML = `
+      <div style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 28px; color: #111;">
+        ${aluno.nome}
+      </div>`;
+  }
+
+  switchPortalTab('carteirinha');
+  portal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function renderAlunoListaPresencas(aluno) {
+  const container = document.querySelector('#pAlunoListaPresencas');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="p-presenca-item">
+      <div><strong>Presença no Tatame</strong> • Treino Técnico</div>
+      <span class="text-yellow">Hoje às 18:32 • Validado Facial</span>
+    </div>
+    <div class="p-presenca-item">
+      <div><strong>Presença no Tatame</strong> • Sparring</div>
+      <span class="sub-muted">Anteontem às 19:35 • Validado Facial</span>
+    </div>
+    <div class="p-presenca-item">
+      <div><strong>Presença no Tatame</strong> • Defesa Pessoal</div>
+      <span class="sub-muted">Há 4 dias às 18:05 • Validado Facial</span>
+    </div>
   `;
 }
 
-// Simulação de confirmação de pagamento
-window.simularConfirmacaoPagamento = function (metodo) {
-  matriculaState.pagamentoStatus = 'pago';
-
-  // Toca som de vitória
-  playChimeTone(659.25, 0.25); // E5
-
-  goToWizardStep(5);
-
-  // Preenche carteirinha
-  document.querySelector('#carteirinhaNome').textContent = matriculaState.aluno.nome || 'Aluno Cadastrado';
-  document.querySelector('#carteirinhaFaixa').textContent = `Faixa ${matriculaState.aluno.faixa || 'Branca'}`;
-  document.querySelector('#carteirinhaTurma').textContent = PLANOS[matriculaState.planoKey].nome;
-  document.querySelector('#carteirinhaStatus').textContent = 'MATRÍCULA ATIVA';
-  document.querySelector('#carteirinhaHash').textContent = matriculaState.contratoHash || 'AUTENTICADO VIA PIX';
-
-  // Envia confirmação via WhatsApp
-  const zapMsg = `🥋 *MATRÍCULA CONFIRMADA — ACADEMIA JIU-JITSU*\n\n` +
-    `Parabéns, *${matriculaState.aluno.nome}*!\n` +
-    `Sua matrícula na turma *${PLANOS[matriculaState.planoKey].nome}* foi confirmada com sucesso!\n\n` +
-    `• *Assinatura Digital:* Concluída e autenticada\n` +
-    `• *Forma de Pagamento:* ${metodo.toUpperCase()}\n` +
-    `• *Próximo passo:* Venha fazer seu primeiro treino!\n\n` +
-    `Oss! Seja bem-vindo à nossa família!`;
-
-  const btnZap = document.querySelector('#btnZapMatriculaConf');
-  if (btnZap) {
-    btnZap.href = `https://wa.me/5591999999999?text=${encodeURIComponent(zapMsg)}`;
-  }
-};
-
-/* ==========================================================================
-   6. PRESENÇA FACIAL NO TATAME (WEBCAM + BIOMETRIA + AUDIO)
-   ========================================================================== */
-let videoStream = null;
-const ATTENDANCE_LOG_KEY = 'jiujitsu_attendance_log';
-
-function initPresencaFacial() {
-  loadAttendanceLog();
-}
-
-window.startFacialCamera = async function () {
-  const video = document.querySelector('#facialVideo');
-  const overlay = document.querySelector('#facialOverlay');
-  const btnStart = document.querySelector('#btnStartCamera');
-  const btnScan = document.querySelector('#btnScanFace');
-
-  try {
-    videoStream = await navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: 'user',
-        width: { ideal: 640 },
-        height: { ideal: 480 }
-      },
-      audio: false
-    });
-    video.srcObject = videoStream;
-    video.style.display = 'block';
-    if (overlay) overlay.classList.add('scanning');
-    if (btnStart) btnStart.style.display = 'none';
-    if (btnScan) btnScan.style.display = 'inline-flex';
-
-    document.querySelector('#facialStatusMsg').textContent = 'Câmera ativa. Posicione o rosto no círculo central...';
-  } catch (err) {
-    console.warn('Erro ao acessar webcam:', err);
-    alert('Não foi possível abrir a câmera diretamente. Você pode simular o escaneamento facial com a simulação biométrica interativa!');
-    simularCameraFallback();
-  }
-};
-
-function simularCameraFallback() {
-  const video = document.querySelector('#facialVideo');
-  const overlay = document.querySelector('#facialOverlay');
-  const btnStart = document.querySelector('#btnStartCamera');
-  const btnScan = document.querySelector('#btnScanFace');
-
-  if (video) video.style.display = 'none';
-  if (overlay) overlay.classList.add('scanning');
-  if (btnStart) btnStart.style.display = 'none';
-  if (btnScan) btnScan.style.display = 'inline-flex';
-
-  document.querySelector('#facialStatusMsg').textContent = 'Modo Biométrico Ativo. Clique em "Confirmar Presença Facial".';
-}
-
-window.captureAndScanFace = function () {
-  const statusMsg = document.querySelector('#facialStatusMsg');
-  const scannerLine = document.querySelector('#scannerLaser');
-  if (scannerLine) scannerLine.classList.add('active-laser');
-
-  statusMsg.innerHTML = '<span class="loading-spin">⏳</span> Mapeando pontos biométricos (3D Face Mesh)...';
-
-  // Simula análise neural de 1.6 segundos
-  setTimeout(() => {
-    if (scannerLine) scannerLine.classList.remove('active-laser');
-
-    // Toca som tradicional de sino de academia / gongo marcial via Web Audio API
-    playMartialGong();
-
-    // Sorteia aluno para o simulador ou usa aluno matriculado
-    const mockAlunos = [
-      { nome: matriculaState.aluno.nome || 'Carlos Silva', faixa: 'Azul (2º Grau)', turma: 'Adulto — Iniciante', presencas: 28, meta: 30 },
-      { nome: 'Mariana Costa', faixa: 'Branca (3º Grau)', turma: 'Feminino', presencas: 19, meta: 20 },
-      { nome: 'Pedro Henrique', faixa: 'Amarela', turma: 'Infantil', presencas: 14, meta: 15 },
-      { nome: 'Lucas Mendes', faixa: 'Roxa', turma: 'Adulto — Avançado', presencas: 42, meta: 50 }
-    ];
-    const aluno = mockAlunos[Math.floor(Math.random() * mockAlunos.length)];
-    aluno.presencas = Math.min(aluno.presencas + 1, aluno.meta);
-
-    // Exibe card de sucesso
-    const resultBox = document.querySelector('#facialResultModal');
-    if (resultBox) {
-      document.querySelector('#frAlunoNome').textContent = aluno.nome;
-      document.querySelector('#frAlunoFaixa').textContent = aluno.faixa;
-      document.querySelector('#frAlunoTurma').textContent = aluno.turma;
-      document.querySelector('#frAlunoDataHora').textContent = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-      const perc = Math.round((aluno.presencas / aluno.meta) * 100);
-      document.querySelector('#frAlunoProgresso').style.width = perc + '%';
-      document.querySelector('#frAlunoProgressoTexto').textContent = `${aluno.presencas}/${aluno.meta} treinos para o próximo grau (${perc}%)`;
-
-      resultBox.classList.add('active');
-    }
-
-    // Salva no log
-    saveAttendanceEntry({
-      nome: aluno.nome,
-      faixa: aluno.faixa,
-      turma: aluno.turma,
-      horario: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-      tipo: 'Reconhecimento Facial'
-    });
-
-    statusMsg.innerHTML = '✔ <strong>Presença confirmada no Tatame!</strong> Bom treino!';
-  }, 1600);
-};
-
-window.closeFacialResult = function () {
-  const resultBox = document.querySelector('#facialResultModal');
-  if (resultBox) resultBox.classList.remove('active');
-  document.querySelector('#facialStatusMsg').textContent = 'Pronto para o próximo aluno...';
-};
-
-function saveAttendanceEntry(entry) {
-  let list = [];
-  try {
-    list = JSON.parse(localStorage.getItem(ATTENDANCE_LOG_KEY)) || [];
-  } catch (e) { list = []; }
-  list.unshift(entry);
-  if (list.length > 8) list.pop();
-  localStorage.setItem(ATTENDANCE_LOG_KEY, JSON.stringify(list));
-  loadAttendanceLog();
-}
-
-function loadAttendanceLog() {
-  const container = document.querySelector('#attendanceHistoryList');
+function renderAlunoGradeTreinos() {
+  const container = document.querySelector('#pAlunoGradeAgendamento');
   if (!container) return;
 
-  let list = [];
-  try {
-    list = JSON.parse(localStorage.getItem(ATTENDANCE_LOG_KEY)) || [];
-  } catch (e) { list = []; }
-
-  if (list.length === 0) {
-    // Alunos padrão para demonstração inicial
-    list = [
-      { nome: 'Gabriel Oliveira', faixa: 'Faixa Azul', turma: 'Adulto — Iniciante', horario: '07:05', tipo: 'Facial' },
-      { nome: 'Juliana Ferreira', faixa: 'Faixa Branca', turma: 'Feminino', horario: '07:02', tipo: 'Facial' }
-    ];
-  }
-
-  container.innerHTML = list.map(item => `
-    <div class="attendance-item">
-      <div class="att-avatar">🥋</div>
-      <div class="att-info">
-        <strong>${item.nome}</strong>
-        <span>${item.faixa} • ${item.turma}</span>
+  const aulas = appState.db.horarios.slice(0, 6);
+  container.innerHTML = aulas.map(a => `
+    <div class="schedule-card-item mb-2">
+      <div class="sci-time">
+        <strong>${a.dia.toUpperCase()} • ${a.hora}</strong>
+        <small>${a.prof}</small>
       </div>
-      <div class="att-time">
-        <span class="att-clock">🕒 ${item.horario}</span>
-        <span class="att-badge">✔ Presente</span>
+      <div class="sci-info">
+        <h4>${a.turma}</h4>
+        <span class="badge-vagas">${a.total - a.ocupadas} vagas</span>
+      </div>
+      <div class="sci-action">
+        <button type="button" class="btn btn-yellow btn-sm" onclick="alunoConfirmarPresenca(${a.id})">
+          Confirmar Vaga
+        </button>
       </div>
     </div>
   `).join('');
 }
 
-// Síntese de som do sino marcial via Web Audio API (sem arquivos externos)
-function playMartialGong() {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-
-    // Harmônico 1
-    const osc1 = ctx.createOscillator();
-    const gain1 = ctx.createGain();
-    osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(440, ctx.currentTime);
-    osc1.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 1.2);
-    gain1.gain.setValueAtTime(0.5, ctx.currentTime);
-    gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
-    osc1.connect(gain1);
-    gain1.connect(ctx.destination);
-    osc1.start();
-    osc1.stop(ctx.currentTime + 1.2);
-
-    // Harmônico 2 (tom de sino agudo)
-    const osc2 = ctx.createOscillator();
-    const gain2 = ctx.createGain();
-    osc2.type = 'triangle';
-    osc2.frequency.setValueAtTime(880, ctx.currentTime);
-    gain2.gain.setValueAtTime(0.3, ctx.currentTime);
-    gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
-    osc2.connect(gain2);
-    gain2.connect(ctx.destination);
-    osc2.start();
-    osc2.stop(ctx.currentTime + 0.8);
-  } catch (e) {
-    // AudioContext não disponível
-  }
+function alunoConfirmarPresenca(aulaId) {
+  const aula = appState.db.horarios.find(h => h.id === aulaId);
+  if (!aula) return;
+  alert(`✅ Vaga confirmada com sucesso para a aula:\n${aula.turma} (${aula.dia.toUpperCase()} às ${aula.hora})!\nNos vemos no tatame!`);
 }
 
-function playChimeTone(freq, dur) {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-    gain.gain.setValueAtTime(0.4, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + dur);
-  } catch (e) { }
+function switchPortalTab(tabName) {
+  document.querySelectorAll('.portal-nav-tabs .p-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabName);
+  });
+  document.querySelectorAll('.portal-content .p-tab-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === `tabPane-${tabName}`);
+  });
+}
+
+function logoutAluno() {
+  appState.loggedAluno = null;
+  const portal = document.querySelector('#portalAlunoView');
+  if (portal) portal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function compartilharCarteirinhaZap() {
+  if (!appState.loggedAluno) return;
+  const a = appState.loggedAluno;
+  const msg = encodeURIComponent(`🥋 *Minha Carteira Digital — Academia Jiu-Jitsu*\nAtleta: *${a.nome}*\nGraduação: *${a.faixa} (${a.graus}º Grau)*\nPlano: *${a.plano}*\nStatus: *ATIVO*\nID: ${a.id}`);
+  window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
 }
 
 /* ==========================================================================
-   7. COBRANÇAS AUTOMÁTICAS VIA WHATSAPP (GESTÃO FINANCEIRA)
+   7. PAGAMENTO DO ALUNO (PIX & CARTÃO 3D)
    ========================================================================== */
-const ALUNOS_COBRANCA = [
-  { id: 101, nome: 'Lucas Mendes', fone: '5591981112233', plano: 'Adulto — Avançado', valor: 149, status: 'atrasado', dias: 4, venc: '28/10' },
-  { id: 102, nome: 'Beatriz Almeida', fone: '5591982223344', plano: 'Feminino', valor: 119, status: 'vence_hoje', dias: 0, venc: 'Hoje' },
-  { id: 103, nome: 'Rafael Nogueira', fone: '5591983334455', plano: 'Adulto — Iniciante', valor: 129, status: 'lembrete', dias: -3, venc: 'Em 3 dias' },
-  { id: 104, nome: 'Mariana Costa', fone: '5591984445566', plano: 'Feminino', valor: 119, status: 'pago', dias: 0, venc: 'Pago' },
-  { id: 105, nome: 'Rodrigo Faro', fone: '5591985556677', plano: 'Adulto — Iniciante', valor: 129, status: 'atrasado', dias: 8, venc: '24/10' },
-  { id: 106, nome: 'Ana Clara (Mãe do Leo)', fone: '5591986667788', plano: 'Infantil', valor: 99, status: 'lembrete', dias: -2, venc: 'Em 2 dias' }
-];
+function switchAlunoPayMethod(method) {
+  document.querySelector('#btnPayTabPix').classList.toggle('active', method === 'pix');
+  document.querySelector('#btnPayTabCard').classList.toggle('active', method === 'card');
+  document.querySelector('#panelPayPix').style.display = method === 'pix' ? 'block' : 'none';
+  document.querySelector('#panelPayCard').style.display = method === 'card' ? 'block' : 'none';
+}
 
-function initCobrancasWhatsApp() {
-  renderTabelaCobrancas('all');
+function copiarPixAluno() {
+  const input = document.querySelector('#pixCopiaColaAluno');
+  if (!input) return;
+  input.select();
+  navigator.clipboard.writeText(input.value);
+  alert('Chave PIX copiada para a área de transferência!');
+}
 
-  const filterBtns = document.querySelectorAll('.cob-filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderTabelaCobrancas(btn.dataset.filter);
-    });
+function simularConfirmacaoPixAluno() {
+  if (!appState.loggedAluno) return;
+  appState.loggedAluno.statusPagamento = 'pago';
+  saveDB(appState.db);
+
+  const fBadge = document.querySelector('#pAlunoFinanceStatusBadge');
+  if (fBadge) {
+    fBadge.className = 'finance-badge-pago';
+    fBadge.textContent = 'EM DIA (PAGO)';
+  }
+  alert('⚡ Pagamento PIX identificado e confirmado com sucesso!\nSua mensalidade está 100% em dia.');
+}
+
+function flipCardAluno(isBack) {
+  const card = document.querySelector('#creditCard3dAluno');
+  if (card) {
+    if (isBack) card.classList.add('flipped');
+    else card.classList.remove('flipped');
+  }
+}
+
+function formatCardNumberAluno(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length > 16) v = v.substring(0, 16);
+  v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+  input.value = v;
+
+  const display = document.querySelector('#cardNumberDisplayAluno');
+  if (display) display.textContent = v || '•••• •••• •••• ••••';
+
+  const brand = document.querySelector('#cardBrandLogoAluno');
+  if (brand) {
+    if (v.startsWith('4')) brand.textContent = 'VISA';
+    else if (v.startsWith('5')) brand.textContent = 'MASTERCARD';
+    else if (v.startsWith('3')) brand.textContent = 'AMEX';
+    else brand.textContent = 'CARTÃO';
+  }
+}
+
+function formatCardHolderAluno(input) {
+  const display = document.querySelector('#cardHolderDisplayAluno');
+  if (display) display.textContent = input.value.toUpperCase() || 'SEU NOME';
+}
+
+function formatCardExpAluno(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length > 4) v = v.substring(0, 4);
+  if (v.length >= 2) v = v.substring(0, 2) + '/' + v.substring(2);
+  input.value = v;
+
+  const display = document.querySelector('#cardExpDisplayAluno');
+  if (display) display.textContent = v || 'MM/AA';
+}
+
+function formatCardCvvAluno(input) {
+  let v = input.value.replace(/\D/g, '');
+  input.value = v;
+  const display = document.querySelector('#cardCvvDisplayAluno');
+  if (display) display.textContent = v || '•••';
+}
+
+function processarPagamentoCartaoAluno(e) {
+  e.preventDefault();
+  if (!appState.loggedAluno) return;
+  appState.loggedAluno.statusPagamento = 'pago';
+  saveDB(appState.db);
+
+  const fBadge = document.querySelector('#pAlunoFinanceStatusBadge');
+  if (fBadge) {
+    fBadge.className = 'finance-badge-pago';
+    fBadge.textContent = 'EM DIA (PAGO)';
+  }
+  alert('💳 Pagamento no cartão processado com sucesso!\nMensalidade quitada.');
+}
+
+/* ==========================================================================
+   8. MODAL & LOGIN DO ADMINISTRADOR (SENHA 1234)
+   ========================================================================== */
+function openModalLoginAdmin() {
+  const modal = document.querySelector('#modalLoginAdmin');
+  const err = document.querySelector('#loginAdminErro');
+  if (err) err.style.display = 'none';
+  if (modal) modal.classList.add('active');
+}
+
+function closeModalLoginAdmin() {
+  const modal = document.querySelector('#modalLoginAdmin');
+  if (modal) modal.classList.remove('active');
+}
+
+function preencherAdminDemo() {
+  const userInput = document.querySelector('#loginAdminUsuario');
+  const passInput = document.querySelector('#loginAdminSenha');
+  if (userInput) userInput.value = 'admin';
+  if (passInput) passInput.value = '1234';
+}
+
+function handleLoginAdmin(event) {
+  event.preventDefault();
+  const senhaDigitada = document.querySelector('#loginAdminSenha').value.trim();
+  const erroBox = document.querySelector('#loginAdminErro');
+
+  const adminPass = appState.db.config.adminPassword || '1234';
+
+  if (senhaDigitada !== adminPass) {
+    erroBox.textContent = 'Senha administrativa incorreta. A senha padrão do sistema é 1234.';
+    erroBox.style.display = 'block';
+    return;
+  }
+
+  erroBox.style.display = 'none';
+  closeModalLoginAdmin();
+  entrarNoPainelAdmin();
+}
+
+function entrarNoPainelAdmin() {
+  appState.isAdminLogged = true;
+  const painel = document.querySelector('#painelAdminView');
+  if (!painel) return;
+
+  renderAdminTabelaAlunos();
+  renderAdminAttendanceHistory();
+  renderAdminCobrancas();
+  renderAdminTabelaHorarios();
+  carregarConfiguracoesAdmin();
+
+  switchAdminTab('alunos');
+  painel.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function switchAdminTab(tabName) {
+  document.querySelectorAll('.admin-nav-tabs .p-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.atab === tabName);
+  });
+  document.querySelectorAll('#painelAdminView .p-tab-pane').forEach(pane => {
+    pane.classList.toggle('active', pane.id === `adminPane-${tabName}`);
   });
 }
 
-function renderTabelaCobrancas(filter) {
-  const container = document.querySelector('#tabelaCobrancasBody');
-  if (!container) return;
+function logoutAdmin() {
+  appState.isAdminLogged = false;
+  if (appState.cameraStream) {
+    appState.cameraStream.getTracks().forEach(t => t.stop());
+    appState.cameraStream = null;
+  }
+  const painel = document.querySelector('#painelAdminView');
+  if (painel) painel.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
 
-  const filtered = ALUNOS_COBRANCA.filter(a => {
-    if (filter === 'all') return true;
-    return a.status === filter;
-  });
+/* ==========================================================================
+   9. ADMIN: GESTÃO DE ALUNOS & MATRÍCULAS
+   ========================================================================== */
+function renderAdminTabelaAlunos() {
+  const tbody = document.querySelector('#tabelaAdminAlunosBody');
+  if (!tbody) return;
 
-  container.innerHTML = filtered.map(a => {
-    let badgeClass = 'badge-ok';
-    let statusLabel = 'Em dia';
-
-    if (a.status === 'atrasado') {
-      badgeClass = 'badge-danger';
-      statusLabel = `Atrasado (${a.dias} dias)`;
-    } else if (a.status === 'vence_hoje') {
-      badgeClass = 'badge-warning';
+  tbody.innerHTML = appState.db.alunos.map(aluno => {
+    let statusClass = 'finance-badge-pago';
+    let statusLabel = 'Em Dia';
+    if (aluno.statusPagamento === 'vence_hoje') {
+      statusClass = 'finance-badge-pendente';
       statusLabel = 'Vence Hoje';
-    } else if (a.status === 'lembrete') {
-      badgeClass = 'badge-info';
-      statusLabel = `Vence ${a.venc}`;
+    } else if (aluno.statusPagamento === 'atrasado') {
+      statusClass = 'finance-badge-pendente';
+      statusLabel = 'Atrasado';
     }
 
     return `
       <tr>
+        <td><strong>${aluno.nome}</strong><br><small class="sub-muted">${aluno.id}</small></td>
+        <td>${aluno.cpf}</td>
+        <td>${aluno.plano}</td>
+        <td><span class="text-yellow">Faixa ${aluno.faixa} (${aluno.graus}º Grau)</span></td>
+        <td><strong>${aluno.presencas}</strong> aulas</td>
+        <td><span class="${statusClass}">${statusLabel}</span></td>
         <td>
-          <strong>${a.nome}</strong>
-          <small class="sub-muted">${a.plano}</small>
+          <button class="btn btn-outline btn-sm" onclick="abrirModalEditarAluno('${aluno.id}')">Editar</button>
+          <button class="btn btn-dark-subtle btn-sm text-danger" onclick="excluirAlunoAdmin('${aluno.id}')">Excluir</button>
         </td>
-        <td>R$ ${a.valor},00</td>
-        <td><span class="table-badge ${badgeClass}">${statusLabel}</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function abrirModalEditarAluno(alunoId) {
+  const aluno = appState.db.alunos.find(a => a.id === alunoId);
+  if (!aluno) return;
+
+  document.querySelector('#editAlunoId').value = aluno.id;
+  document.querySelector('#editAlunoNome').value = aluno.nome;
+  document.querySelector('#editAlunoFaixa').value = aluno.faixa;
+  document.querySelector('#editAlunoGraus').value = aluno.graus;
+  document.querySelector('#editAlunoPlano').value = aluno.plano;
+  document.querySelector('#editAlunoStatusPag').value = aluno.statusPagamento;
+  document.querySelector('#editAlunoPresencas').value = aluno.presencas;
+
+  document.querySelector('#modalEditarAlunoAdmin').classList.add('active');
+}
+
+function fecharModalEditarAlunoAdmin() {
+  document.querySelector('#modalEditarAlunoAdmin').classList.remove('active');
+}
+
+function salvarEdicaoAlunoAdmin(e) {
+  e.preventDefault();
+  const id = document.querySelector('#editAlunoId').value;
+  const aluno = appState.db.alunos.find(a => a.id === id);
+  if (!aluno) return;
+
+  aluno.nome = document.querySelector('#editAlunoNome').value;
+  aluno.faixa = document.querySelector('#editAlunoFaixa').value;
+  aluno.graus = parseInt(document.querySelector('#editAlunoGraus').value);
+  aluno.plano = document.querySelector('#editAlunoPlano').value;
+  aluno.statusPagamento = document.querySelector('#editAlunoStatusPag').value;
+  aluno.presencas = parseInt(document.querySelector('#editAlunoPresencas').value);
+
+  saveDB(appState.db);
+  fecharModalEditarAlunoAdmin();
+  renderAdminTabelaAlunos();
+  renderAdminCobrancas();
+  alert('Aluno atualizado com sucesso!');
+}
+
+function excluirAlunoAdmin(id) {
+  if (!confirm('Deseja realmente remover este aluno?')) return;
+  appState.db.alunos = appState.db.alunos.filter(a => a.id !== id);
+  saveDB(appState.db);
+  renderAdminTabelaAlunos();
+  renderAdminCobrancas();
+}
+
+function openModalNovoAlunoAdmin() {
+  const nome = prompt('Nome completo do novo aluno:');
+  if (!nome) return;
+  const cpf = prompt('CPF do aluno (com pontos ou números):') || '000.000.000-00';
+  const novo = {
+    id: `ALU-2026-${Math.floor(100 + Math.random() * 900)}`,
+    nome,
+    cpf,
+    senha: '1234',
+    telefone: '(91) 98888-0000',
+    plano: 'Adulto — Iniciante',
+    faixa: 'Branca',
+    graus: 0,
+    presencas: 1,
+    statusPagamento: 'pago',
+    vencimento: '10/11/2026',
+    valor: 129,
+    contratoAssinado: true,
+    hashContrato: 'SHA256: NOVO-CADASTRO-ADMIN'
+  };
+  appState.db.alunos.unshift(novo);
+  saveDB(appState.db);
+  renderAdminTabelaAlunos();
+  renderAdminCobrancas();
+  alert(`Aluno ${nome} cadastrado com sucesso!`);
+}
+
+/* ==========================================================================
+   10. ADMIN: TOTEM DE PRESENÇA FACIAL NO TATAME
+   ========================================================================== */
+async function startFacialCamera() {
+  const video = document.querySelector('#facialVideo');
+  const btnStart = document.querySelector('#btnStartCamera');
+  const btnScan = document.querySelector('#btnScanFace');
+  const statusMsg = document.querySelector('#facialStatusMsg');
+
+  try {
+    statusMsg.textContent = 'Solicitando acesso à câmera do tatame...';
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+      audio: false
+    });
+
+    appState.cameraStream = stream;
+    video.srcObject = stream;
+    btnStart.style.display = 'none';
+    btnScan.style.display = 'inline-flex';
+    statusMsg.innerHTML = '<span class="text-yellow">● Totem Ativo</span> • Posicione o rosto no retículo';
+  } catch (err) {
+    statusMsg.innerHTML = '<span class="text-danger">Aviso:</span> Câmera não detectada. Modo de simulação biométrica ativado.';
+    btnStart.style.display = 'none';
+    btnScan.style.display = 'inline-flex';
+  }
+}
+
+function captureAndScanFace() {
+  const laser = document.querySelector('#scannerLaser');
+  const statusMsg = document.querySelector('#facialStatusMsg');
+
+  if (laser) laser.style.display = 'block';
+  if (statusMsg) statusMsg.textContent = 'Escaneando biometria facial...';
+
+  playMartialChime();
+
+  setTimeout(() => {
+    if (laser) laser.style.display = 'none';
+
+    // Seleciona um aluno cadastrado da base para validar
+    const alunos = appState.db.alunos;
+    const aluno = alunos[Math.floor(Math.random() * alunos.length)] || {
+      nome: 'Carlos Silva',
+      faixa: 'Azul',
+      graus: 2,
+      plano: 'Adulto Iniciante'
+    };
+
+    aluno.presencas = (aluno.presencas || 0) + 1;
+    saveDB(appState.db);
+
+    const horaAtual = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    appState.db.presencasHoje.unshift({
+      nome: aluno.nome,
+      faixa: `Faixa ${aluno.faixa} (${aluno.graus}º Grau)`,
+      turma: aluno.plano,
+      hora: horaAtual
+    });
+
+    renderAdminAttendanceHistory();
+
+    // Modal de Sucesso Facial
+    document.querySelector('#frAlunoNome').textContent = aluno.nome;
+    document.querySelector('#frAlunoFaixa').textContent = `Faixa ${aluno.faixa} (${aluno.graus}º Grau)`;
+    document.querySelector('#frAlunoTurma').textContent = aluno.plano;
+    document.querySelector('#frAlunoDataHora').textContent = horaAtual;
+
+    document.querySelector('#facialResultModal').classList.add('active');
+    if (statusMsg) statusMsg.innerHTML = '<span class="text-yellow">Presença confirmada!</span> Totem pronto para o próximo aluno.';
+  }, 1200);
+}
+
+function closeFacialResult() {
+  document.querySelector('#facialResultModal').classList.remove('active');
+}
+
+function renderAdminAttendanceHistory() {
+  const list = document.querySelector('#attendanceHistoryList');
+  if (!list) return;
+
+  const pres = appState.db.presencasHoje || [];
+  list.innerHTML = pres.map(p => `
+    <div class="attendance-item">
+      <div class="ai-avatar">🥋</div>
+      <div class="ai-info">
+        <strong>${p.nome}</strong>
+        <small>${p.faixa} • ${p.turma}</small>
+      </div>
+      <div class="ai-time">${p.hora}</div>
+    </div>
+  `).join('');
+}
+
+function playMartialChime() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+
+    const osc1 = ctx.createOscillator();
+    const osc2 = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc1.frequency.exponentialRampToValueAtTime(659.25, ctx.currentTime + 0.15);
+
+    osc2.type = 'triangle';
+    osc2.frequency.setValueAtTime(783.99, ctx.currentTime);
+
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+
+    osc1.connect(gain);
+    osc2.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc1.start();
+    osc2.start();
+    osc1.stop(ctx.currentTime + 0.85);
+    osc2.stop(ctx.currentTime + 0.85);
+  } catch (e) {}
+}
+
+/* ==========================================================================
+   11. ADMIN: COBRANÇAS WHATSAPP
+   ========================================================================== */
+function renderAdminCobrancas(filtro = 'all') {
+  const tbody = document.querySelector('#tabelaCobrancasBody');
+  if (!tbody) return;
+
+  const alunos = appState.db.alunos;
+  const atrasados = alunos.filter(a => a.statusPagamento === 'atrasado');
+  const vencemHoje = alunos.filter(a => a.statusPagamento === 'vence_hoje');
+  const pagos = alunos.filter(a => a.statusPagamento === 'pago');
+
+  // Atualiza métricas
+  const mTotal = document.querySelector('#metricAlunosTotal');
+  const mPerc = document.querySelector('#metricPercEmDia');
+  const mVenc = document.querySelector('#metricVencemHoje');
+  const mAtr = document.querySelector('#metricEmAtraso');
+
+  if (mTotal) mTotal.textContent = alunos.length;
+  if (mVenc) mVenc.textContent = vencemHoje.length;
+  if (mAtr) mAtr.textContent = atrasados.length;
+  if (mPerc && alunos.length > 0) {
+    mPerc.textContent = `${Math.round((pagos.length / alunos.length) * 100)}%`;
+  }
+
+  const filtrados = alunos.filter(a => {
+    if (filtro === 'all') return true;
+    return a.statusPagamento === filtro;
+  });
+
+  tbody.innerHTML = filtrados.map(a => {
+    let statusClass = 'finance-badge-pago';
+    let statusLabel = 'Em Dia';
+    if (a.statusPagamento === 'vence_hoje') {
+      statusClass = 'finance-badge-pendente';
+      statusLabel = 'Vence Hoje';
+    } else if (a.statusPagamento === 'atrasado') {
+      statusClass = 'finance-badge-pendente';
+      statusLabel = 'Atrasado';
+    }
+
+    return `
+      <tr>
+        <td><strong>${a.nome}</strong></td>
+        <td>${a.telefone}</td>
+        <td>${a.plano}</td>
+        <td><strong>R$ ${a.valor},00</strong></td>
+        <td><span class="${statusClass}">${statusLabel}</span></td>
         <td>
-          <button class="btn btn-zap-sm" onclick="dispararCobrancaIndividual(${a.id})">
-            📲 Cobrar WhatsApp
+          <button type="button" class="btn btn-zap btn-sm" onclick="enviarCobrancaWhatsApp('${a.id}')">
+            💬 Cobrar via WhatsApp
           </button>
         </td>
       </tr>
@@ -918,53 +982,315 @@ function renderTabelaCobrancas(filter) {
   }).join('');
 }
 
-window.dispararCobrancaIndividual = function (id) {
-  const aluno = ALUNOS_COBRANCA.find(a => a.id === id);
+function filtrarCobrancas(tipo) {
+  document.querySelectorAll('.cob-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === tipo);
+  });
+  renderAdminCobrancas(tipo);
+}
+
+function enviarCobrancaWhatsApp(alunoId) {
+  const aluno = appState.db.alunos.find(a => a.id === alunoId);
   if (!aluno) return;
 
-  let msg = '';
-  const chavePix = 'pix@academiajiujitsu.com.br';
+  const pix = appState.db.config.pixKey;
+  const msg = encodeURIComponent(`Olá ${aluno.nome}! Tudo bem?🥋\nPassando para lembrar da mensalidade do seu plano *${aluno.plano}* (R$ ${aluno.valor},00).\nVocê pode pagar com a chave PIX: *${pix}* ou diretamente pelo seu Portal do Aluno com seu CPF.\nQualquer dúvida, estamos à disposição!`);
+  const tel = aluno.telefone.replace(/\D/g, '');
+  window.open(`https://wa.me/55${tel}?text=${msg}`, '_blank');
+}
 
-  if (aluno.status === 'atrasado') {
-    msg = `🥋 *ACADEMIA JIU-JITSU — REGULARIZAÇÃO DE MENSALIDADE*\n\n` +
-      `Olá, *${aluno.nome}*! Tudo bem?\n\n` +
-      `Constatamos que sua mensalidade referente ao plano *${aluno.plano}* (R$ ${aluno.valor},00) venceu em *${aluno.venc}*.\n\n` +
-      `Para garantir seu acesso liberado no totem facial e no tatame, você pode regularizar via PIX instantâneo:\n\n` +
-      `🔑 *Chave PIX:* \`${chavePix}\`\n` +
-      `💰 *Valor:* R$ ${aluno.valor},00\n\n` +
-      `Se já efetuou o pagamento, favor desconsiderar. Oss!`;
-  } else if (aluno.status === 'vence_hoje') {
-    msg = `🥋 *ACADEMIA JIU-JITSU — LEMBRETE DE VENCIMENTO*\n\n` +
-      `Olá, *${aluno.nome}*! Passando para lembrar que sua mensalidade de Jiu-Jitsu vence hoje.\n\n` +
-      `• *Plano:* ${aluno.plano}\n` +
-      `• *Valor:* R$ ${aluno.valor},00\n` +
-      `• *Chave PIX:* \`${chavePix}\`\n\n` +
-      `Agradecemos pela parceria de sempre nos tatames! Oss!`;
-  } else {
-    msg = `🥋 *ACADEMIA JIU-JITSU — LEMBRETE PREVENTIVO*\n\n` +
-      `Olá, *${aluno.nome}*! Sua mensalidade de Jiu-Jitsu vencerá em breve (${aluno.venc}).\n\n` +
-      `• *Valor:* R$ ${aluno.valor},00\n` +
-      `• *Chave PIX:* \`${chavePix}\`\n\n` +
-      `Tenha uma excelente semana de treinos!`;
+function dispararCobrancaLote() {
+  const pendentes = appState.db.alunos.filter(a => a.statusPagamento === 'atrasado' || a.statusPagamento === 'vence_hoje');
+  if (pendentes.length === 0) {
+    alert('Nenhum aluno com pendência financeira no momento!');
+    return;
   }
+  alert(`⚡ Disparadas mensagens de cobrança automáticas via WhatsApp para ${pendentes.length} alunos pendentes com QR Code e Chave PIX.`);
+}
 
-  const url = `https://wa.me/${aluno.fone}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank', 'noopener');
+/* ==========================================================================
+   12. ADMIN: HORÁRIOS & CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
+function renderAdminTabelaHorarios() {
+  const tbody = document.querySelector('#tabelaAdminHorariosBody');
+  if (!tbody) return;
+
+  tbody.innerHTML = appState.db.horarios.map(h => `
+    <tr>
+      <td><strong>${h.dia.toUpperCase()}</strong></td>
+      <td>${h.hora}</td>
+      <td>${h.turma}</td>
+      <td>${h.prof}</td>
+      <td>
+        <input type="number" value="${h.total}" style="width: 60px;" class="input-field" onchange="alterarCapacidadeHorario(${h.id}, this.value)">
+      </td>
+      <td><strong>${Math.max(0, h.total - h.ocupadas)}</strong> livres</td>
+      <td>
+        <button class="btn btn-outline btn-sm text-danger" onclick="removerHorarioAdmin(${h.id})">Remover</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function alterarCapacidadeHorario(id, novoTotal) {
+  const h = appState.db.horarios.find(item => item.id === id);
+  if (h) {
+    h.total = parseInt(novoTotal) || h.total;
+    saveDB(appState.db);
+    renderPublicSchedule();
+  }
+}
+
+function removerHorarioAdmin(id) {
+  if (!confirm('Remover este horário da grade?')) return;
+  appState.db.horarios = appState.db.horarios.filter(h => h.id !== id);
+  saveDB(appState.db);
+  renderAdminTabelaHorarios();
+  renderPublicSchedule();
+}
+
+function abrirModalNovaAula() {
+  const dia = prompt('Dia da semana (seg, ter, qua, qui, sex, sab):', 'seg');
+  const hora = prompt('Horário (ex: 19:00 - 20:00):', '19:00 - 20:00');
+  const turma = prompt('Nome da turma:', 'Treino Especial');
+  const prof = prompt('Professor:', 'Mestre Rogério');
+  if (!dia || !hora || !turma) return;
+
+  appState.db.horarios.push({
+    id: Date.now(),
+    dia: dia.toLowerCase(),
+    hora,
+    turma,
+    prof: prof || 'Mestre da Casa',
+    total: 20,
+    ocupadas: 0,
+    tag: 'iniciante'
+  });
+  saveDB(appState.db);
+  renderAdminTabelaHorarios();
+  renderPublicSchedule();
+  alert('Nova aula adicionada com sucesso!');
+}
+
+function carregarConfiguracoesAdmin() {
+  const cfg = appState.db.config;
+  document.querySelector('#cfgPrecoInfantil').value = cfg.precos.infantil;
+  document.querySelector('#cfgPrecoIniciante').value = cfg.precos.iniciante;
+  document.querySelector('#cfgPrecoAvancado').value = cfg.precos.avancado;
+  document.querySelector('#cfgPrecoFeminino').value = cfg.precos.feminino;
+  document.querySelector('#cfgChavePix').value = cfg.pixKey;
+  document.querySelector('#cfgTelefoneAcademia').value = cfg.telefoneAcademia;
+}
+
+function salvarConfiguracoesAdmin(e) {
+  e.preventDefault();
+  const cfg = appState.db.config;
+  cfg.precos.infantil = parseFloat(document.querySelector('#cfgPrecoInfantil').value);
+  cfg.precos.iniciante = parseFloat(document.querySelector('#cfgPrecoIniciante').value);
+  cfg.precos.avancado = parseFloat(document.querySelector('#cfgPrecoAvancado').value);
+  cfg.precos.feminino = parseFloat(document.querySelector('#cfgPrecoFeminino').value);
+  cfg.pixKey = document.querySelector('#cfgChavePix').value.trim();
+  cfg.telefoneAcademia = document.querySelector('#cfgTelefoneAcademia').value.trim();
+
+  const novaSenha = document.querySelector('#cfgNovaSenhaAdmin').value.trim();
+  if (novaSenha) cfg.adminPassword = novaSenha;
+
+  saveDB(appState.db);
+  atualizarPrecosPublicos();
+  alert('Configurações salvas e aplicadas em todo o site!');
+}
+
+/* ==========================================================================
+   13. WIZARD DE MATRÍCULA ONLINE (PÚBLICO)
+   ========================================================================== */
+function openModalMatricula() {
+  document.querySelector('#modalMatriculaWizard').classList.add('active');
+  goToWizardStep(1);
+}
+
+function openModalMatriculaComPlano(planoKey) {
+  selectPlanOpt(planoKey);
+  openModalMatricula();
+  goToWizardStep(2);
+}
+
+function closeModalMatricula() {
+  document.querySelector('#modalMatriculaWizard').classList.remove('active');
+}
+
+function selectPlanOpt(plano) {
+  appState.wizardPlano = plano;
+  document.querySelectorAll('.plan-opt-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.plano === plano);
+  });
+}
+
+function goToWizardStep(stepNum) {
+  appState.wizardStep = stepNum;
+
+  document.querySelectorAll('.wizard-stepper .step-item').forEach(item => {
+    const s = parseInt(item.dataset.step);
+    item.classList.toggle('active', s === stepNum);
+    item.classList.toggle('completed', s < stepNum);
+  });
+
+  document.querySelectorAll('.wizard-step-content').forEach(content => {
+    content.classList.toggle('active', content.id === `wStep${stepNum}`);
+  });
+
+  if (stepNum === 3) resizeCanvas();
+  if (stepNum === 4) {
+    const precos = appState.db.config.precos;
+    const valor = precos[appState.wizardPlano] || 129;
+    document.querySelector('#wPixValorPlano').textContent = `Valor: R$ ${valor},00`;
+  }
+}
+
+/* ==========================================================================
+   14. ASSINATURA TOUCH NO CELULAR
+   ========================================================================== */
+let canvasState = {
+  canvas: null,
+  ctx: null,
+  isDrawing: false,
+  hasSigned: false
 };
 
-window.simularEnvioEmLote = function () {
-  const pendentes = ALUNOS_COBRANCA.filter(a => a.status === 'atrasado' || a.status === 'vence_hoje');
-  const alertBox = document.querySelector('#cobrancaLoteAlert');
-  if (alertBox) {
-    alertBox.innerHTML = `
-      <div class="cobranca-lote-msg">
-        🚀 <strong>Régua de Cobrança Automática Disparada!</strong><br>
-        Foram enviados lembretes automatizados via WhatsApp para <strong>${pendentes.length} alunos</strong> pendentes com chave PIX e código copia-e-cola.
-      </div>
-    `;
-    alertBox.style.display = 'block';
-    setTimeout(() => {
-      alertBox.style.display = 'none';
-    }, 6000);
+function initSignaturePad() {
+  const canvas = document.querySelector('#signatureCanvas');
+  if (!canvas) return;
+
+  canvasState.canvas = canvas;
+  canvasState.ctx = canvas.getContext('2d');
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: (clientX - rect.left) * (canvas.width / rect.width),
+      y: (clientY - rect.top) * (canvas.height / rect.height)
+    };
   }
-};
+
+  function start(e) {
+    e.preventDefault();
+    canvasState.isDrawing = true;
+    const pos = getPos(e);
+    canvasState.ctx.beginPath();
+    canvasState.ctx.moveTo(pos.x, pos.y);
+    const hint = document.querySelector('#canvasHint');
+    if (hint) hint.style.opacity = '0';
+  }
+
+  function draw(e) {
+    if (!canvasState.isDrawing) return;
+    e.preventDefault();
+    const pos = getPos(e);
+    canvasState.ctx.lineTo(pos.x, pos.y);
+    canvasState.ctx.strokeStyle = '#050505';
+    canvasState.ctx.lineWidth = 3;
+    canvasState.ctx.lineCap = 'round';
+    canvasState.ctx.lineJoin = 'round';
+    canvasState.ctx.stroke();
+    canvasState.hasSigned = true;
+  }
+
+  function stop() {
+    canvasState.isDrawing = false;
+  }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', draw);
+  window.addEventListener('mouseup', stop);
+
+  canvas.addEventListener('touchstart', start, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  window.addEventListener('touchend', stop);
+}
+
+function resizeCanvas() {
+  const canvas = canvasState.canvas;
+  if (!canvas) return;
+  canvas.width = 500;
+  canvas.height = 180;
+  clearSignatureCanvas();
+}
+
+function clearSignatureCanvas() {
+  if (!canvasState.ctx) return;
+  canvasState.ctx.clearRect(0, 0, canvasState.canvas.width, canvasState.canvas.height);
+  canvasState.hasSigned = false;
+  const hint = document.querySelector('#canvasHint');
+  if (hint) hint.style.opacity = '1';
+}
+
+function validarAssinaturaEAvançar() {
+  if (!canvasState.hasSigned) {
+    alert('Por favor, faça sua assinatura na tela com o dedo ou mouse antes de avançar.');
+    return;
+  }
+  goToWizardStep(4);
+}
+
+function switchWizardPayMethod(m) {
+  document.querySelector('#wBtnPayPix').classList.toggle('active', m === 'pix');
+  document.querySelector('#wBtnPayCard').classList.toggle('active', m === 'card');
+  document.querySelector('#wPanelPix').style.display = m === 'pix' ? 'block' : 'none';
+  document.querySelector('#wPanelCard').style.display = m === 'card' ? 'block' : 'none';
+}
+
+function copiarPixWizard() {
+  const input = document.querySelector('#pixCopiaColaWizard');
+  if (input) {
+    input.select();
+    navigator.clipboard.writeText(input.value);
+    alert('Código PIX copiado!');
+  }
+}
+
+function concluirMatriculaComSucesso() {
+  const nome = document.querySelector('#matNome').value || 'Novo Aluno';
+  const cpf = document.querySelector('#matCpf').value || '000.000.000-00';
+  const senha = document.querySelector('#matSenha').value || '1234';
+  const zap = document.querySelector('#matZap').value || '(91) 98888-0000';
+
+  const planosNomes = {
+    infantil: 'Infantil',
+    iniciante: 'Adulto — Iniciante',
+    avancado: 'Adulto — Avançado',
+    feminino: 'Feminino'
+  };
+
+  const valor = appState.db.config.precos[appState.wizardPlano] || 129;
+
+  const novoAluno = {
+    id: `ALU-2026-${Math.floor(100 + Math.random() * 900)}`,
+    nome,
+    cpf,
+    senha,
+    telefone: zap,
+    plano: planosNomes[appState.wizardPlano] || 'Adulto — Iniciante',
+    faixa: 'Branca',
+    graus: 0,
+    presencas: 1,
+    statusPagamento: 'pago',
+    vencimento: 'Hoje',
+    valor,
+    contratoAssinado: true,
+    hashContrato: `SHA256: ${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`
+  };
+
+  appState.db.alunos.unshift(novoAluno);
+  saveDB(appState.db);
+  appState.loggedAluno = novoAluno;
+
+  goToWizardStep(5);
+}
+
+function entrarNoPortalAposMatricula() {
+  closeModalMatricula();
+  if (appState.loggedAluno) {
+    entrarNoPortalAluno(appState.loggedAluno);
+  }
+}

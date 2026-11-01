@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Academia Jiu-Jitsu — matrículas online com assinatura no celular, presença facial no tatame, agendamentos e pagamento automático por PIX e cartão.">
+  <meta name="description" content="Academia Jiu-Jitsu — Portal do Aluno com Carteirinha e Pagamentos, Totem Facial no Tatame, Gestão Administrativa e Cobranças no WhatsApp.">
   <title>Academia Jiu-Jitsu | Disciplina, Defesa e Tecnologia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,9 @@
 </head>
 <body>
 
-  <!-- TOPBAR -->
+  <!-- ====================================================================
+       TOPBAR DO SITE PÚBLICO
+       ==================================================================== -->
   <header class="topbar">
     <a class="brand" href="#inicio" aria-label="Academia Jiu-Jitsu - Início">
       <img src="public/images/logo-simbolo.png" alt="Símbolo Academia Jiu-Jitsu" class="brand-logo">
@@ -33,23 +35,15 @@
       </a>
       <a class="nav-link" href="#aulas">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        <span>Aulas</span>
+        <span>Turmas</span>
       </a>
-      <a class="nav-link" href="#agendamento">
+      <a class="nav-link" href="#horarios">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-        <span>Agendamentos</span>
+        <span>Horários</span>
       </a>
-      <a class="nav-link" href="#matricula-fluxo">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-        <span>Matrículas</span>
-      </a>
-      <a class="nav-link" href="#presenca-facial">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
-        <span>Presença Facial</span>
-      </a>
-      <a class="nav-link" href="#gestao-cobrancas">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.136 8.136 0 0 1-1.25-4.29c0-4.51 3.67-8.18 8.18-8.18 2.18 0 4.24.85 5.78 2.39a8.13 8.13 0 0 1 2.4 5.79c0 4.51-3.67 8.14-8.11 8.14z"/></svg>
-        <span>Cobranças</span>
+      <a class="nav-link" href="#professores">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        <span>Professores</span>
       </a>
       <a class="nav-link" href="#contato">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -58,667 +52,510 @@
     </nav>
 
     <div class="top-actions">
-      <a class="btn btn-outline" href="https://wa.me/5591999999999" target="_blank" rel="noreferrer">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.136 8.136 0 0 1-1.25-4.29c0-4.51 3.67-8.18 8.18-8.18 2.18 0 4.24.85 5.78 2.39a8.13 8.13 0 0 1 2.4 5.79c0 4.51-3.67 8.14-8.11 8.14zm4.49-6.11c-.24-.12-1.45-.71-1.68-.79-.22-.08-.39-.12-.55.12-.17.24-.63.79-.77.95-.14.16-.28.18-.52.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.24-.02-.37.1-.49.11-.11.25-.28.37-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.41-.41-.56-.42h-.47c-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.16 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
-        <span>WhatsApp</span>
-      </a>
-      <a class="btn btn-yellow" href="#matricula-fluxo">
+      <!-- BOTÃO ÁREA DO ALUNO -->
+      <button type="button" class="btn btn-outline btn-aluno-portal" onclick="openModalLoginAluno()">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Área do Aluno</span>
+      </button>
+
+      <!-- BOTÃO PAINEL ADMIN -->
+      <button type="button" class="btn btn-dark-subtle btn-admin-panel" onclick="openModalLoginAdmin()" title="Acesso Administrativo (Senha: 1234)">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        <span>Painel Admin</span>
+      </button>
+
+      <!-- BOTÃO MATRICULE-SE -->
+      <button type="button" class="btn btn-yellow" onclick="openModalMatricula()">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
         <span>Matricule-se</span>
-      </a>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- ====================================================================
+         HERO SECTION (SITE PÚBLICO LIMPO)
+         ==================================================================== -->
     <section class="hero" id="inicio">
       <div class="hero-photo" aria-hidden="true"></div>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-stripes" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <p class="hero-eyebrow">ACADEMIA DE JIU-JITSU</p>
+        <span class="badge">TRADIÇÃO, DEFESA PESSOAL E DISCIPLINA</span>
+
         <h1 class="hero-title">
-          Aprenda Jiu-Jitsu de verdade.<br>
-          <span class="hero-highlight">Disciplina, defesa e confiança.</span>
+          Aprenda Jiu-Jitsu da <em>verdadeira essência</em>
+          <span class="hero-title-sub">com método seguro para todas as idades</span>
         </h1>
-        <p class="hero-intro">
-          Do iniciante ao faixa preta. Turmas infantil, adulto e feminino, com professores certificados.
-          Matrícula online com assinatura no celular, presença facial e pagamento por PIX e Cartão.
+
+        <p class="hero-lead">
+          Treinamento técnico estruturado para crianças, iniciantes adultos e competidores avançados.
+          Metodologia comprovada, acompanhamento individual e ambiente familiar acolhedor.
         </p>
 
         <div class="hero-buttons">
-          <a class="btn-cta btn-cta-yellow" href="#matricula-fluxo">
-            <span class="circle-icon dark-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z"/></svg>
-            </span>
-            <span>Matricule-se Online</span>
+          <button type="button" class="btn btn-yellow btn-lg" onclick="openModalMatricula()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+            <span>Fazer Minha Matrícula Online</span>
+          </button>
+
+          <a class="btn btn-outline btn-lg" href="#horarios">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+            <span>Consultar Horários</span>
           </a>
-          <a class="btn-cta btn-cta-glass" href="#agendamento">
-            <span class="circle-icon white-circle">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
-            </span>
-            <span>Agendar Aula Grátis</span>
-          </a>
+
+          <button type="button" class="btn btn-dark-subtle btn-lg" onclick="openModalLoginAluno()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Já sou Aluno (Entrar)</span>
+          </button>
         </div>
 
-        <div class="benefits-row">
-          <div class="benefit-item">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <ul class="hero-stats" aria-label="Nossos pilares fundamentais">
+          <li class="stat-pill">
+            <span class="stat-icon" aria-hidden="true">🛡️</span>
+            <div>
+              <strong>Ambiente Seguro</strong>
+              <small>Tatame com proteção reforçada</small>
             </div>
-            <div class="benefit-text">Ambiente<br>Seguro</div>
-          </div>
-
-          <div class="benefit-item">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </li>
+          <li class="stat-pill">
+            <span class="stat-icon" aria-hidden="true">🥋</span>
+            <div>
+              <strong>Professores Certificados</strong>
+              <small>Faixas pretas diplomados</small>
             </div>
-            <div class="benefit-text">Professores<br>Certificados</div>
-          </div>
-
-          <div class="benefit-item">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+          </li>
+          <li class="stat-pill">
+            <span class="stat-icon" aria-hidden="true">🏆</span>
+            <div>
+              <strong>Disciplina & Respeito</strong>
+              <small>Formação de caráter e foco</small>
             </div>
-            <div class="benefit-text">Disciplina e<br>Respeito</div>
-          </div>
-
-          <div class="benefit-item">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+          </li>
+          <li class="stat-pill">
+            <span class="stat-icon" aria-hidden="true">⚡</span>
+            <div>
+              <strong>Saúde & Defesa</strong>
+              <small>Condicionamento completo</small>
             </div>
-            <div class="benefit-text">Mais Saúde e<br>Bem-estar</div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-    </section>
-
-    <!-- PROGRAM CARDS (4 TURMAS) -->
-    <section class="programs" id="aulas">
-      <!-- Card 1: Infantil -->
-      <article class="program-card">
-        <div class="card-img-wrap">
-          <img src="public/images/turma-infantil.jpg" alt="Treino Infantil de Jiu-Jitsu" class="card-img-infantil" loading="lazy">
-        </div>
-        <div class="card-body">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-            </div>
-            <div class="card-titles">
-              <h3 class="card-title">Infantil</h3>
-              <span class="card-subtitle">(5 a 12 anos)</span>
-            </div>
-          </div>
-          <p class="card-desc">Disciplina, coordenação e anti-bullying, em ambiente seguro e lúdico.</p>
-          <div class="card-footer">
-            <a class="price-btn" href="#matricula-fluxo">R$ 99/mês</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 2: Adulto - Iniciante -->
-      <article class="program-card">
-        <div class="card-img-wrap">
-          <picture>
-            <source srcset="public/images/turma-iniciante.webp" type="image/webp">
-            <img src="public/images/turma-iniciante.jpg" alt="Treino Adulto Iniciante de Jiu-Jitsu" class="card-img-iniciante" loading="lazy">
-          </picture>
-        </div>
-        <div class="card-body">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2.5"/><path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-1-.7-1.64-.7-.41 0-.8.12-1.13.34L6 10.5V15h2v-3.26l2.36-1.57L9 22h2l1.62-7.27L15 17v5h2v-6.33l-2.45-2.73c.77.67 1.76 1.06 2.82 1.06H19z"/></svg>
-            </div>
-            <div class="card-titles">
-              <h3 class="card-title">Adulto – Iniciante</h3>
-            </div>
-          </div>
-          <p class="card-desc">Base, posições, quedas e defesa pessoal. Sem experiência necessária.</p>
-          <div class="card-footer">
-            <a class="price-btn" href="#matricula-fluxo">R$ 129/mês</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3: Adulto - Avançado -->
-      <article class="program-card">
-        <div class="card-img-wrap">
-          <picture>
-            <source srcset="public/images/turma-avancado.webp" type="image/webp">
-            <img src="public/images/turma-avancado.jpg" alt="Treino Adulto Avançado de Jiu-Jitsu" class="card-img-avancado" loading="lazy">
-          </picture>
-        </div>
-        <div class="card-body">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 19h16v2H2V4h2v15zm3-2h3v-6H7v6zm5 0h3V8h-3v9zm5 0h3V4h-3v13z"/></svg>
-            </div>
-            <div class="card-titles">
-              <h3 class="card-title">Adulto – Avançado</h3>
-            </div>
-          </div>
-          <p class="card-desc">Competição, sparring e evolução de faixa com acompanhamento.</p>
-          <div class="card-footer">
-            <a class="price-btn" href="#matricula-fluxo">R$ 149/mês</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 4: Feminino -->
-      <article class="program-card">
-        <div class="card-img-wrap">
-          <img src="public/images/turma-feminino.jpg" alt="Turma Feminina de Jiu-Jitsu" class="card-img-feminino" loading="lazy">
-        </div>
-        <div class="card-body">
-          <div class="card-header">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 17h6"/></svg>
-            </div>
-            <div class="card-titles">
-              <h3 class="card-title">Feminino</h3>
-            </div>
-          </div>
-          <p class="card-desc">Turma só para mulheres: defesa pessoal, condicionamento e confiança.</p>
-          <div class="card-footer">
-            <a class="price-btn" href="#matricula-fluxo">R$ 119/mês</a>
-          </div>
-        </div>
-      </article>
     </section>
 
     <!-- ====================================================================
-         MÓDULO 1: AGENDAMENTOS INTELIGENTES EM TEMPO REAL
+         PROGRAMAS / TURMAS
          ==================================================================== -->
-    <section class="system-section agendamento-section" id="agendamento">
-      <div class="section-container">
-        <div class="system-section-head">
-          <span class="badge-tag">RESERVA DE VAGAS EM TEMPO REAL</span>
-          <h2>Agendamento de Aulas & Experimental</h2>
-          <p>Escolha o melhor dia e horário para seu treino. Vagas limitadas por tatame para garantir máxima atenção técnica.</p>
+    <section class="programs" id="aulas">
+      <div class="programs-inner">
+        <div class="programs-header">
+          <div>
+            <span class="badge">NOSSAS TURMAS</span>
+            <h2 class="section-title">Programas para Todos os Objetivos</h2>
+          </div>
+          <p class="section-sub">
+            Do primeiro contato até o alto rendimento competitivo, turmas separadas por idade e nível técnico.
+          </p>
         </div>
 
-        <div class="schedule-controls">
-          <!-- Dias da Semana -->
-          <div class="days-bar">
-            <button class="day-btn active" data-day="seg"><span>SEG</span><strong>Segunda</strong></button>
-            <button class="day-btn" data-day="ter"><span>TER</span><strong>Terça</strong></button>
-            <button class="day-btn" data-day="qua"><span>QUA</span><strong>Quarta</strong></button>
-            <button class="day-btn" data-day="qui"><span>QUI</span><strong>Quinta</strong></button>
-            <button class="day-btn" data-day="sex"><span>SEX</span><strong>Sexta</strong></button>
-            <button class="day-btn" data-day="sab"><span>SÁB</span><strong>Sábado</strong></button>
-          </div>
+        <div class="programs-grid">
+          <!-- CARD 1: INFANTIL -->
+          <article class="card card-program">
+            <div class="card-thumb">
+              <picture>
+                <img src="public/images/turma-infantil.jpg" alt="Turma Infantil de Jiu-Jitsu" loading="lazy">
+              </picture>
+              <span class="price-chip" id="chip-preco-infantil">R$ 99/mês</span>
+            </div>
+            <div class="card-body">
+              <div class="program-title-row">
+                <span class="program-icon" aria-hidden="true">🥋</span>
+                <h3 class="program-name">Infantil (5 a 12 anos)</h3>
+              </div>
+              <p class="program-desc">
+                Disciplina, coordenação motora, respeito e anti-bullying em ambiente lúdico, seguro e motivador.
+              </p>
+              <div class="program-footer">
+                <span class="program-meta">Seg, Qua, Sex • 18:00</span>
+                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('infantil')">Matricular</button>
+              </div>
+            </div>
+          </article>
 
-          <!-- Filtro de Turma -->
-          <div class="filter-bar">
-            <label for="classFilterSelect">Filtrar por Categoria:</label>
-            <select id="classFilterSelect" class="custom-select">
-              <option value="all">🥋 Todas as Turmas</option>
-              <option value="iniciante">Adulto Iniciante</option>
-              <option value="avancado">Adulto Avançado / No-Gi</option>
-              <option value="infantil">Infantil (Kids)</option>
-              <option value="feminino">Feminino</option>
-            </select>
-          </div>
-        </div>
+          <!-- CARD 2: ADULTO INICIANTE -->
+          <article class="card card-program">
+            <div class="card-thumb">
+              <picture>
+                <source srcset="public/images/turma-iniciante.webp" type="image/webp">
+                <img src="public/images/turma-iniciante.jpg" alt="Turma Adulto Iniciante" loading="lazy">
+              </picture>
+              <span class="price-chip" id="chip-preco-iniciante">R$ 129/mês</span>
+            </div>
+            <div class="card-body">
+              <div class="program-title-row">
+                <span class="program-icon" aria-hidden="true">🥋</span>
+                <h3 class="program-name">Adulto — Iniciante</h3>
+              </div>
+              <p class="program-desc">
+                Base sólida, pegadas, quedas suaves e defesa pessoal inteligente. Não é necessária experiência prévia.
+              </p>
+              <div class="program-footer">
+                <span class="program-meta">Seg a Sex • Manhã e Noite</span>
+                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('iniciante')">Matricular</button>
+              </div>
+            </div>
+          </article>
 
-        <!-- Grade Dinâmica de Aulas -->
-        <div class="schedule-grid" id="classListContainer">
-          <!-- Renderizado via JS -->
+          <!-- CARD 3: ADULTO AVANÇADO -->
+          <article class="card card-program">
+            <div class="card-thumb">
+              <picture>
+                <source srcset="public/images/turma-avancado.webp" type="image/webp">
+                <img src="public/images/turma-avancado.jpg" alt="Turma Adulto Avançado" loading="lazy">
+              </picture>
+              <span class="price-chip" id="chip-preco-avancado">R$ 149/mês</span>
+            </div>
+            <div class="card-body">
+              <div class="program-title-row">
+                <span class="program-icon" aria-hidden="true">🥋</span>
+                <h3 class="program-name">Adulto — Avançado</h3>
+              </div>
+              <p class="program-desc">
+                Estratégias competitivas, transições avançadas, sparring de alto nível e acompanhamento detalhado de faixas.
+              </p>
+              <div class="program-footer">
+                <span class="program-meta">Seg, Qua, Sex • 19:30</span>
+                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('avancado')">Matricular</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD 4: FEMININO -->
+          <article class="card card-program">
+            <div class="card-thumb">
+              <picture>
+                <img src="public/images/turma-feminino.jpg" alt="Turma Feminina de Jiu-Jitsu" loading="lazy">
+              </picture>
+              <span class="price-chip" id="chip-preco-feminino">R$ 119/mês</span>
+            </div>
+            <div class="card-body">
+              <div class="program-title-row">
+                <span class="program-icon" aria-hidden="true">🥋</span>
+                <h3 class="program-name">Feminino</h3>
+              </div>
+              <p class="program-desc">
+                Turma exclusiva para mulheres: defesa pessoal real, ganho expressivo de flexibilidade, queima calórica e autoconfiança.
+              </p>
+              <div class="program-footer">
+                <span class="program-meta">Ter e Qui • 18:30</span>
+                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('feminino')">Matricular</button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- MODAL DE AGENDAMENTO -->
-    <div class="modal-backdrop" id="modalAgendamento">
-      <div class="modal-box">
-        <button class="modal-close-btn" onclick="closeAgendamentoModal()" aria-label="Fechar">&times;</button>
-        
-        <div id="agendamentoFormBody">
-          <div class="modal-header">
-            <span class="modal-tag">RESERVAR VAGA</span>
-            <h3 id="modalTurmaNome">Turma Selecionada</h3>
-            <p>Horário: <strong id="modalTurmaHorario" class="text-yellow">--:--</strong> • <span id="modalTurmaProf">Professor</span></p>
-          </div>
-
-          <form id="formModalAgendar" onsubmit="handleConfirmAgendamento(event)" class="modal-form">
-            <input type="hidden" id="modalClassId">
-            <div class="form-group">
-              <label>Tipo de Reserva:</label>
-              <div class="radio-toggle-group">
-                <label class="radio-pill">
-                  <input type="radio" name="tipo" value="experimental" checked>
-                  <span>Aula Experimental (Gratuita)</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="tipo" value="aluno">
-                  <span>Aluno Matriculado</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="agNome">Seu Nome Completo:</label>
-              <input type="text" id="agNome" name="nome" required placeholder="Ex: Lucas Ferreira">
-            </div>
-
-            <div class="form-group">
-              <label for="agZap">WhatsApp com DDD:</label>
-              <input type="tel" id="agZap" name="whatsapp" required placeholder="(91) 99999-9999">
-            </div>
-
-            <button type="submit" class="btn btn-yellow w-100 btn-lg">
-              Confirmar Reserva de Vaga →
-            </button>
-          </form>
+    <!-- ====================================================================
+         HORÁRIOS & AGENDAMENTOS (PÚBLICO)
+         ==================================================================== -->
+    <section class="system-section agendamento-section" id="horarios">
+      <div class="section-container">
+        <div class="system-section-head">
+          <span class="badge-tag">GRADE DE AULAS SEMANAL</span>
+          <h2>Horários das Aulas & Vagas por Turma</h2>
+          <p>Consulte a grade completa de treinos e reserve uma aula experimental com nossos professores.</p>
         </div>
 
-        <!-- Confirmação de Sucesso -->
-        <div id="agendamentoSuccess" style="display: none;" class="modal-success">
-          <div class="success-icon">🥋</div>
-          <h3>Vaga Reservada com Sucesso!</h3>
-          <p>Sua presença está confirmada na turma <strong id="agendamentoConfTurma" class="text-yellow"></strong> às <strong id="agendamentoConfHorario"></strong> em nome de <strong id="agendamentoConfNome"></strong>.</p>
-          
-          <div class="success-actions">
-            <a id="btnZapAgendamento" class="btn btn-zap w-100" target="_blank" rel="noreferrer">
-              📲 Receber Lembrete no WhatsApp
-            </a>
-            <button class="btn btn-outline w-100 mt-2" onclick="resetAgendamentoForm()">
-              Fechar e Voltar à Grade
-            </button>
+        <div class="agendamento-bar">
+          <div class="day-selector-tabs" id="dayTabs">
+            <button class="day-tab active" data-day="seg">Segunda</button>
+            <button class="day-tab" data-day="ter">Terça</button>
+            <button class="day-tab" data-day="qua">Quarta</button>
+            <button class="day-tab" data-day="qui">Quinta</button>
+            <button class="day-tab" data-day="sex">Sexta</button>
+            <button class="day-tab" data-day="sab">Sábado</button>
+          </div>
+
+          <div class="category-filters">
+            <button class="filter-pill active" data-filter="all">Todas</button>
+            <button class="filter-pill" data-filter="iniciante">Iniciante</button>
+            <button class="filter-pill" data-filter="avancado">Avançado</button>
+            <button class="filter-pill" data-filter="infantil">Infantil</button>
+            <button class="filter-pill" data-filter="feminino">Feminino</button>
           </div>
         </div>
+
+        <div class="schedule-grid" id="scheduleListContainer">
+          <!-- Renderizado via script.js -->
+        </div>
+
+        <div class="banner-cta-matricula mt-4">
+          <div class="bcm-text">
+            <strong>Pronto para entrar no tatame?</strong>
+            <span>Faça sua matrícula online pelo celular e receba sua carteirinha digital imediatamente.</span>
+          </div>
+          <button class="btn btn-yellow btn-lg" onclick="openModalMatricula()">Matricular-se Agora</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PROFESSORES & DIFERENCIAIS
+         ==================================================================== -->
+    <section class="lower" id="professores">
+      <div class="lower-inner">
+        <div class="card card-wide">
+          <span class="badge">MESTRES E INSTRUTORES</span>
+          <h2 class="section-title">Linhagem Tradicional com Metodologia Moderna</h2>
+          <p class="section-sub">
+            Nossa equipe técnica é formada por faixas-pretas certificados pelas principais confederações internacionais.
+            Priorizamos o aprendizado individualizado, segurança máxima e a evolução constante de cada atleta.
+          </p>
+          <div class="teachers-grid mt-4">
+            <div class="teacher-box">
+              <div class="teacher-avatar">🥋</div>
+              <strong>Mestre Rogério</strong>
+              <small>Faixa Preta 4º Grau • 22 anos de tatame</small>
+            </div>
+            <div class="teacher-box">
+              <div class="teacher-avatar">🥋</div>
+              <strong>Prof. Marcos Souza</strong>
+              <small>Faixa Preta • Especialista em Iniciantes</small>
+            </div>
+            <div class="teacher-box">
+              <div class="teacher-avatar">🥋</div>
+              <strong>Profª Amanda Lima</strong>
+              <small>Faixa Preta • Responsável pela Turma Kids</small>
+            </div>
+            <div class="teacher-box">
+              <div class="teacher-avatar">🥋</div>
+              <strong>Profª Beatriz Santos</strong>
+              <small>Faixa Marrom • Especialista em Defesa Feminina</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer id="contato">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="public/images/logo-simbolo.png" alt="Logo" class="footer-logo">
+        <div>
+          <strong>ACADEMIA JIU-JITSU</strong>
+          <p>Tatame de alto rendimento com tecnologia integrada.</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#aulas">Turmas</a></li>
+            <li><a href="#horarios">Horários</a></li>
+            <li><a href="#professores">Professores</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Acesso Restrito</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openModalLoginAluno()">🥋 Área do Aluno (Entrar com CPF)</a></li>
+            <li><a href="javascript:void(0)" onclick="openModalLoginAdmin()">⚙️ Painel do Administrador (Senha 1234)</a></li>
+            <li><a href="javascript:void(0)" onclick="openModalMatricula()">✍️ Matrícula Online com Assinatura</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Atendimento</h4>
+          <p id="footerAcademiaTelefone">WhatsApp: (91) 98123-4567</p>
+          <p>Segunda a Sexta: 06:30 às 22:00</p>
+          <p>Sábado: 08:00 às 13:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> Academia Jiu-Jitsu. Todos os direitos reservados.</p>
       </div>
     </div>
+  </footer>
 
-    <!-- ====================================================================
-         MÓDULO 2: MATRÍCULAS ONLINE COM ASSINATURA NO CELULAR E PAGAMENTO
-         ==================================================================== -->
-    <section class="system-section matricula-section" id="matricula-fluxo">
-      <div class="section-container">
-        <div class="system-section-head">
-          <span class="badge-tag">MATRÍCULA 100% ONLINE</span>
-          <h2>Matrícula Digital & Assinatura no Celular</h2>
-          <p>Sem burocracia ou papelada. Escolha seu plano, assine o termo diretamente na tela do seu celular e pague com PIX ou Cartão.</p>
+  <!-- BARRA DE NAVEGAÇÃO MOBILE INFERIOR -->
+  <nav class="mobile-bottom-nav">
+    <a href="#inicio" class="bottom-nav-item active">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Início</span>
+    </a>
+    <a href="#aulas" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      <span>Turmas</span>
+    </a>
+    <a href="#horarios" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+      <span>Horários</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openModalLoginAluno()" class="bottom-nav-item highlight-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <span>Área Aluno</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openModalLoginAdmin()" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+      <span>Admin</span>
+    </a>
+  </nav>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a href="https://wa.me/5591999999999" class="floating-whatsapp" target="_blank" rel="noreferrer" aria-label="Fale no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.136 8.136 0 0 1-1.25-4.29c0-4.51 3.67-8.18 8.18-8.18 2.18 0 4.24.85 5.78 2.39a8.13 8.13 0 0 1 2.4 5.79c0 4.51-3.67 8.14-8.11 8.14zm4.49-6.11c-.24-.12-1.45-.71-1.68-.79-.22-.08-.39-.12-.55.12-.17.24-.63.79-.77.95-.14.16-.28.18-.52.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.24-.02-.37.1-.49.11-.11.25-.28.37-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.41-.41-.56-.42h-.47c-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.16 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+  </a>
+
+  <!-- ====================================================================
+       MODAL 1: LOGIN DO ALUNO (CLIENTE CADASTRADO)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="modalLoginAluno">
+    <div class="modal-box modal-auth">
+      <button class="modal-close-btn" onclick="closeModalLoginAluno()" aria-label="Fechar">&times;</button>
+      
+      <div class="auth-header">
+        <div class="auth-icon">🥋</div>
+        <h2>Área do Aluno</h2>
+        <p>Entre com seu CPF e senha para acessar sua carteirinha, treinos, pagamentos e contrato.</p>
+      </div>
+
+      <form id="formLoginAluno" onsubmit="handleLoginAluno(event)">
+        <div class="form-group mb-3">
+          <label for="loginAlunoCpf">CPF do Aluno</label>
+          <input type="text" id="loginAlunoCpf" class="input-field" placeholder="000.000.000-00" required maxlength="14" oninput="maskCPF(this)">
         </div>
 
-        <!-- Stepper Visual -->
-        <div class="wizard-stepper">
-          <div class="step-indicator active" data-step="1">
-            <span class="step-num">1</span>
-            <span class="step-title">Plano</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-indicator" data-step="2">
-            <span class="step-num">2</span>
-            <span class="step-title">Dados</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-indicator" data-step="3">
-            <span class="step-num">3</span>
-            <span class="step-title">Assinar</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-indicator" data-step="4">
-            <span class="step-num">4</span>
-            <span class="step-title">Pagamento</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-indicator" data-step="5">
-            <span class="step-num">5</span>
-            <span class="step-title">Carteirinha</span>
-          </div>
+        <div class="form-group mb-3">
+          <label for="loginAlunoSenha">Senha</label>
+          <input type="password" id="loginAlunoSenha" class="input-field" placeholder="Sua senha cadastrada" required>
         </div>
 
-        <!-- ETAPA 1: ESCOLHA DO PLANO -->
-        <div class="wizard-step-content active" id="wizardStep1">
-          <div class="periodo-toggle-wrap">
-            <span class="toggle-label">Mensal</span>
-            <label class="switch-toggle">
-              <input type="checkbox" id="chkPeriodoAnual" onchange="document.querySelector('input[name=periodoPlano][value=' + (this.checked ? 'anual' : 'mensal') + ']').click()">
-              <span class="slider-toggle"></span>
-            </label>
-            <span class="toggle-label">Anual <span class="badge-discount">-15% OFF</span></span>
-            <!-- Hidden inputs para lógica interna -->
-            <input type="radio" name="periodoPlano" value="mensal" checked style="display:none">
-            <input type="radio" name="periodoPlano" value="anual" style="display:none">
-          </div>
+        <div id="loginAlunoErro" class="auth-error-msg" style="display: none;"></div>
 
-          <div class="planos-grid">
-            <div class="plano-select-card" data-plano="infantil">
-              <div class="psc-badge">5 a 12 anos</div>
-              <h4>Infantil</h4>
-              <p>Disciplina lúdica, coordenação e anti-bullying.</p>
-              <div class="psc-price">R$ 99<span>/mês</span></div>
-              <button class="btn btn-outline btn-sm">Selecionar</button>
-            </div>
+        <button type="submit" class="btn btn-yellow w-100 btn-lg mb-2">
+          <span>Acessar Portal do Aluno</span>
+        </button>
 
-            <div class="plano-select-card selected" data-plano="iniciante">
-              <div class="psc-badge popular">Mais Escolhido</div>
-              <h4>Adulto Iniciante</h4>
-              <p>Defesa pessoal, bases, quedas e primeiros passos.</p>
-              <div class="psc-price">R$ 129<span>/mês</span></div>
-              <button class="btn btn-yellow btn-sm">Selecionado</button>
-            </div>
-
-            <div class="plano-select-card" data-plano="avancado">
-              <div class="psc-badge">Performance</div>
-              <h4>Adulto Avançado</h4>
-              <p>Competição, No-Gi, sparring e evolução de graus.</p>
-              <div class="psc-price">R$ 149<span>/mês</span></div>
-              <button class="btn btn-outline btn-sm">Selecionar</button>
-            </div>
-
-            <div class="plano-select-card" data-plano="feminino">
-              <div class="psc-badge">Exclusivo</div>
-              <h4>Feminino</h4>
-              <p>Turma só para mulheres: força, técnica e segurança.</p>
-              <div class="psc-price">R$ 119<span>/mês</span></div>
-              <button class="btn btn-outline btn-sm">Selecionar</button>
-            </div>
-          </div>
-
-          <div class="wizard-nav-btns mt-4 text-center">
-            <button class="btn btn-yellow btn-lg" onclick="goToWizardStep(2)">
-              Continuar para Dados do Aluno →
-            </button>
-          </div>
+        <!-- Atalho Rápido para Teste -->
+        <div class="demo-login-box">
+          <small>⚡ Aluno de Demonstração:</small>
+          <button type="button" class="btn-demo-fill" onclick="preencherAlunoDemo()">
+            Usar Aluno Demo (Lucas Mendes)
+          </button>
         </div>
 
-        <!-- ETAPA 2: DADOS DO ALUNO -->
-        <div class="wizard-step-content" id="wizardStep2">
-          <div class="form-card-box">
-            <h3>Ficha Cadastral do Aluno</h3>
-            <p class="sub-muted">Preencha seus dados para geração do Termo de Matrícula.</p>
+        <div class="auth-footer-links mt-3">
+          <p>Ainda não é aluno? <a href="javascript:void(0)" onclick="closeModalLoginAluno(); openModalMatricula();">Faça sua matrícula aqui</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
 
-            <form id="formDadosAluno" onsubmit="event.preventDefault(); goToWizardStep(3);" class="modern-grid-form">
-              <div class="form-group col-span-2">
-                <label for="matNome">Nome Completo *</label>
-                <input type="text" id="matNome" required placeholder="Nome e sobrenome">
-              </div>
+  <!-- ====================================================================
+       MODAL 2: LOGIN DO ADMINISTRADOR (SENHA 1234)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="modalLoginAdmin">
+    <div class="modal-box modal-auth">
+      <button class="modal-close-btn" onclick="closeModalLoginAdmin()" aria-label="Fechar">&times;</button>
+      
+      <div class="auth-header">
+        <div class="auth-icon">⚙️</div>
+        <h2>Painel do Administrador</h2>
+        <p>Gestão completa da academia, totem facial, cobranças no WhatsApp, horários e alunos.</p>
+      </div>
 
-              <div class="form-group">
-                <label for="matCpf">CPF *</label>
-                <input type="text" id="matCpf" required placeholder="000.000.000-00">
-              </div>
-
-              <div class="form-group">
-                <label for="matNasc">Data de Nascimento *</label>
-                <input type="date" id="matNasc" required>
-              </div>
-
-              <div class="form-group">
-                <label for="matZap">WhatsApp (com DDD) *</label>
-                <input type="tel" id="matZap" required placeholder="(91) 99999-9999">
-              </div>
-
-              <div class="form-group">
-                <label for="matEmail">E-mail *</label>
-                <input type="email" id="matEmail" required placeholder="seu@email.com">
-              </div>
-
-              <div class="form-group col-span-2">
-                <label for="matFaixa">Graduação Atual:</label>
-                <select id="matFaixa" class="custom-select">
-                  <option value="Branca">Faixa Branca (Iniciante)</option>
-                  <option value="Cinza">Faixa Cinza (Infantil)</option>
-                  <option value="Amarela">Faixa Amarela (Infantil)</option>
-                  <option value="Laranja">Faixa Laranja (Infantil)</option>
-                  <option value="Verde">Faixa Verde (Infantil)</option>
-                  <option value="Azul">Faixa Azul</option>
-                  <option value="Roxa">Faixa Roxa</option>
-                  <option value="Marrom">Faixa Marrom</option>
-                  <option value="Preta">Faixa Preta</option>
-                </select>
-              </div>
-
-              <div class="wizard-nav-btns col-span-2 flex-between">
-                <button type="button" class="btn btn-outline" onclick="goToWizardStep(1)">← Voltar ao Plano</button>
-                <button type="submit" class="btn btn-yellow">Ir para Assinatura do Contrato →</button>
-              </div>
-            </form>
-          </div>
+      <form id="formLoginAdmin" onsubmit="handleLoginAdmin(event)">
+        <div class="form-group mb-3">
+          <label for="loginAdminUsuario">Usuário ou E-mail</label>
+          <input type="text" id="loginAdminUsuario" class="input-field" value="admin" required>
         </div>
 
-        <!-- ETAPA 3: ASSINATURA DIGITAL NO CELULAR -->
-        <div class="wizard-step-content" id="wizardStep3">
-          <div class="form-card-box">
-            <div class="contract-header">
-              <span class="badge-tag">DOCUMENTO OFICIAL</span>
-              <h3>Termo de Adesão & Responsabilidade Técnica</h3>
-              <p class="sub-muted">Leia os termos e use a ponta do dedo ou caneta na tela do celular para assinar.</p>
+        <div class="form-group mb-3">
+          <div class="label-row">
+            <label for="loginAdminSenha">Senha de Administrador</label>
+            <span class="badge-hint">Senha padrão: <strong>1234</strong></span>
+          </div>
+          <input type="password" id="loginAdminSenha" class="input-field" placeholder="Digite a senha (1234)" required>
+        </div>
+
+        <div id="loginAdminErro" class="auth-error-msg" style="display: none;"></div>
+
+        <button type="submit" class="btn btn-yellow w-100 btn-lg mb-2">
+          <span>Entrar no Painel Administrativo</span>
+        </button>
+
+        <div class="demo-login-box">
+          <button type="button" class="btn-demo-fill" onclick="preencherAdminDemo()">
+            ⚡ Preencher Senha 1234 e Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL / VIEW: PORTAL DO ALUNO LOGADO
+       ==================================================================== -->
+  <div class="portal-overlay" id="portalAlunoView" style="display: none;">
+    <div class="portal-container">
+      
+      <!-- Topbar do Aluno Logado -->
+      <header class="portal-header">
+        <div class="ph-profile">
+          <div class="ph-avatar">🥋</div>
+          <div class="ph-info">
+            <div class="ph-name-row">
+              <strong id="paAlunoNome">Lucas Mendes</strong>
+              <span class="badge-status-ativo" id="paAlunoStatusBadge">ATIVO</span>
             </div>
-
-            <!-- Visualizador do Contrato -->
-            <div class="contract-scroll-box">
-              <h4>TERMO DE ADESÃO E COMPROMISSO MARCIAL</h4>
-              <p>Pelo presente instrumento, o(a) aluno(a) <strong class="contrato-nome-aluno text-yellow">[Nome do Aluno]</strong>, inscrito(a) no CPF nº <strong class="contrato-cpf-aluno">[CPF]</strong>, declara formalmente adesão aos treinamentos de Brazilian Jiu-Jitsu ministrados pela <strong>ACADEMIA JIU-JITSU</strong> em <span class="contrato-data-hoje">[Data]</span>.</p>
-              <p><strong>1. DA CONDUTA E RESPEITO:</strong> O aluno compromete-se a zelar pelo respeito aos mestres, instrutores e companheiros de tatame, mantendo o kimono higienizado e unhas aparadas.</p>
-              <p><strong>2. DO RECONHECIMENTO FACIAL E ACESSO:</strong> O aluno autoriza a captura e o processamento de sua biometria facial para liberação de acesso e controle automatizado de presença às aulas no tatame.</p>
-              <p><strong>3. DO PAGAMENTO E RECORRÊNCIA:</strong> As mensalidades deverão ser quitadas até a data de vencimento via PIX ou Débito/Crédito para manutenção do plano ativo.</p>
-            </div>
-
-            <!-- Canvas de Assinatura -->
-            <div class="signature-area">
-              <div class="sig-header">
-                <label>✍ Assine abaixo com o dedo ou caneta stylus:</label>
-                <button type="button" class="btn-clear-sig" onclick="clearSignature()">🗑 Limpar</button>
-              </div>
-              <div class="canvas-wrapper">
-                <canvas id="signatureCanvas"></canvas>
-                <span class="sig-watermark">ASSINE NA LINHA PONTILHADA</span>
-              </div>
-
-              <!-- Carimbo Criptográfico -->
-              <div class="signature-stamp" id="signatureStampBox" style="display: none;">
-                <div class="stamp-icon">🛡</div>
-                <div class="stamp-text">
-                  <strong>Assinatura Digital Autenticada</strong>
-                  <small>Data/Hora: <span id="stampDataHora"></span></small>
-                  <small>Protocolo: <span id="stampHash"></span></small>
-                </div>
-              </div>
-            </div>
-
-            <div class="wizard-nav-btns flex-between mt-4">
-              <button type="button" class="btn btn-outline" onclick="goToWizardStep(2)">← Voltar aos Dados</button>
-              <button type="button" class="btn btn-yellow" onclick="goToWizardStep(4)">Confirmar Assinatura e Pagar →</button>
+            <div class="ph-sub">
+              <span id="paAlunoFaixa" class="text-yellow">Faixa Azul (2º Grau)</span> • <span id="paAlunoPlano">Adulto — Avançado</span> • Matrícula: <strong id="paAlunoMatricula">ALU-2026-081</strong>
             </div>
           </div>
         </div>
 
-        <!-- ETAPA 4: PAGAMENTO AUTOMÁTICO (PIX OU CARTÃO) -->
-        <div class="wizard-step-content" id="wizardStep4">
-          <div class="form-card-box payment-card-box">
-            <div class="payment-header">
-              <span class="badge-tag">CHECKOUT SEGURO</span>
-              <h3>Pagamento Automático da Matrícula</h3>
-              <div class="summary-pill">
-                Plano: <strong id="resumoPlanoNome" class="text-yellow">Adulto Iniciante</strong> • 
-                Valor: <strong id="resumoPlanoValor">R$ 129,00 / mês</strong>
-              </div>
-            </div>
-
-            <!-- Seletor de Método de Pagamento -->
-            <div class="pay-method-tabs">
-              <button type="button" class="pay-tab-btn active" data-tab="Pix">
-                <span class="icon">⚡</span>
-                <span>PIX Instantâneo</span>
-              </button>
-              <button type="button" class="pay-tab-btn" data-tab="Card">
-                <span class="icon">💳</span>
-                <span>Cartão de Crédito ou Débito</span>
-              </button>
-            </div>
-
-            <!-- CONTEÚDO PIX -->
-            <div class="pay-tab-content active" id="payContentPix">
-              <div class="pix-checkout-box">
-                <div class="pix-qr-wrapper">
-                  <!-- QR Code Renderizado em SVG Nativo -->
-                  <svg class="pix-qr-code" viewBox="0 0 100 100">
-                    <rect width="100" height="100" fill="#ffffff" rx="8"/>
-                    <!-- Padrões de Alinhamento QR Code -->
-                    <rect x="10" y="10" width="24" height="24" fill="#000000"/>
-                    <rect x="14" y="14" width="16" height="16" fill="#ffffff"/>
-                    <rect x="18" y="18" width="8" height="8" fill="#000000"/>
-
-                    <rect x="66" y="10" width="24" height="24" fill="#000000"/>
-                    <rect x="70" y="14" width="16" height="16" fill="#ffffff"/>
-                    <rect x="74" y="18" width="8" height="8" fill="#000000"/>
-
-                    <rect x="10" y="66" width="24" height="24" fill="#000000"/>
-                    <rect x="14" y="70" width="16" height="16" fill="#ffffff"/>
-                    <rect x="18" y="74" width="8" height="8" fill="#000000"/>
-
-                    <!-- Módulo Central do PIX -->
-                    <circle cx="50" cy="50" r="10" fill="#00bdae"/>
-                    <path d="M47 47 L53 47 L53 53 L47 53 Z" fill="#ffffff"/>
-
-                    <!-- Pontos de Dados -->
-                    <rect x="38" y="14" width="4" height="4" fill="#000"/>
-                    <rect x="46" y="18" width="4" height="4" fill="#000"/>
-                    <rect x="54" y="14" width="4" height="4" fill="#000"/>
-                    <rect x="40" y="70" width="4" height="4" fill="#000"/>
-                    <rect x="52" y="78" width="4" height="4" fill="#000"/>
-                    <rect x="70" y="46" width="4" height="4" fill="#000"/>
-                    <rect x="78" y="58" width="4" height="4" fill="#000"/>
-                    <rect x="82" y="74" width="4" height="4" fill="#000"/>
-                  </svg>
-                  <div class="pix-timer-badge">
-                    ⏳ Expira em: <strong id="pixTimerText">15:00</strong>
-                  </div>
-                </div>
-
-                <div class="pix-info-side">
-                  <h4>Pague com o PIX Copia e Cola</h4>
-                  <p class="sub-muted">Abra seu aplicativo de banco, selecione a opção <strong>PIX</strong> e cole o código abaixo. A liberação do seu acesso é instantânea.</p>
-
-                  <div class="pix-copy-input-group">
-                    <input type="text" id="pixCopiaColaInput" readonly value="00020126580014br.gov.bcb.pix0136pix@academiajiujitsu.com.br5204000053039865406129.005802BR5921ACADEMIA JIU JITSU6009BELEM62070503***6304E8A2">
-                    <button type="button" id="btnCopyPix" class="btn btn-yellow" onclick="copyPixCode()">
-                      📋 Copiar Código
-                    </button>
-                  </div>
-
-                  <div class="pix-amount-pill">
-                    Valor a pagar: <strong id="pixValorDisplay">R$ 129,00</strong>
-                  </div>
-
-                  <div class="pix-webhook-sim mt-3">
-                    <button type="button" class="btn btn-green w-100" onclick="simularConfirmacaoPagamento('pix')">
-                      ⚡ Simular Confirmação Instantânea do PIX
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CONTEÚDO CARTÃO DÉBITO / CRÉDITO 3D -->
-            <div class="pay-tab-content" id="payContentCard">
-              <div class="card-checkout-wrap">
-                <!-- Espelho 3D Interativo do Cartão -->
-                <div class="card-3d-scene">
-                  <div class="card-3d-flipper" id="visualCreditCard">
-                    <!-- Frente -->
-                    <div class="card-front">
-                      <div class="card-front-top">
-                        <div class="card-chip"></div>
-                        <div class="card-brand" id="cardBrandLogo">VISA</div>
-                      </div>
-                      <div class="card-number-display" id="cardDisplayNumber">•••• •••• •••• ••••</div>
-                      <div class="card-front-bottom">
-                        <div class="card-holder-info">
-                          <small>TITULAR DO CARTÃO</small>
-                          <strong id="cardDisplayName">NOME DO ALUNO</strong>
-                        </div>
-                        <div class="card-exp-info">
-                          <small>VALIDADE</small>
-                          <strong id="cardDisplayExp">MM/AA</strong>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Verso -->
-                    <div class="card-back">
-                      <div class="card-mag-strip"></div>
-                      <div class="card-cvv-box">
-                        <small>CVV</small>
-                        <div class="cvv-white-strip" id="cardDisplayCvv">•••</div>
-                      </div>
-                      <div class="card-back-brand">ACADEMIA JIU-JITSU • PARCEIRO SEGURO</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Formulário do Cartão -->
-                <form id="formCartao" onsubmit="event.preventDefault(); simularConfirmacaoPagamento('cartão');" class="card-inputs-grid">
-                  <div class="form-group col-span-2">
-                    <label>Tipo de Cartão:</label>
-                    <div class="radio-toggle-group">
-                      <label class="radio-pill">
-                        <input type="radio" name="cardType" value="credito" checked>
-                        <span>Crédito</span>
-                      </label>
-                      <label class="radio-pill">
-                        <input type="radio" name="cardType" value="debito">
-                        <span>Débito</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="form-group col-span-2">
-                    <label for="ccNumber">Número do Cartão:</label>
-                    <input type="text" id="ccNumber" required placeholder="0000 0000 0000 0000" maxlength="19">
-                  </div>
-
-                  <div class="form-group col-span-2">
-                    <label for="ccName">Nome Impresso no Cartão:</label>
-                    <input type="text" id="ccName" required placeholder="NOME COMO NO CARTÃO">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="ccExp">Validade:</label>
-                    <input type="text" id="ccExp" required placeholder="MM/AA" maxlength="5">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="ccCvv">Código de Segurança (CVV):</label>
-                    <input type="password" id="ccCvv" required placeholder="123" maxlength="4">
-                  </div>
-
-                  <div class="form-group col-span-2">
-                    <label for="ccInstallments">Opção de Parcelamento:</label>
-                    <select id="ccInstallments" class="custom-select">
-                      <!-- Preenchido dinamicamente -->
-                    </select>
-                  </div>
-
-                  <div class="col-span-2">
-                    <button type="submit" class="btn btn-yellow w-100 btn-lg">
-                      🔒 Confirmar Pagamento do Cartão →
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <div class="wizard-nav-btns mt-4">
-              <button type="button" class="btn btn-outline" onclick="goToWizardStep(3)">← Voltar à Assinatura</button>
-            </div>
-          </div>
+        <div class="ph-actions">
+          <button type="button" class="btn btn-outline btn-sm" onclick="logoutAluno()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+            <span>Sair da Conta</span>
+          </button>
         </div>
+      </header>
 
-        <!-- ETAPA 5: CARTEIRINHA DIGITAL DO ALUNO (CONCLUÍDO) -->
-        <div class="wizard-step-content" id="wizardStep5">
-          <div class="conclusao-card-box">
-            <div class="conclusao-head">
-              <div class="success-badge-large">🏆</div>
-              <h2>Parabéns! Sua Matrícula está Ativa!</h2>
-              <p>Você agora faz parte da nossa equipe de Jiu-Jitsu. Sua carteirinha digital foi emitida e seu acesso facial está pré-liberado no tatame.</p>
-            </div>
+      <!-- Abas do Portal do Aluno -->
+      <nav class="portal-nav-tabs">
+        <button class="p-tab-btn active" data-tab="carteirinha" onclick="switchPortalTab('carteirinha')">
+          <span>💳 Minha Carteirinha</span>
+        </button>
+        <button class="p-tab-btn" data-tab="pagamento" onclick="switchPortalTab('pagamento')">
+          <span>💰 Mensalidade & Pagamento</span>
+        </button>
+        <button class="p-tab-btn" data-tab="treinos" onclick="switchPortalTab('treinos')">
+          <span>🥋 Meus Treinos & Presenças</span>
+        </button>
+        <button class="p-tab-btn" data-tab="contrato" onclick="switchPortalTab('contrato')">
+          <span>✍️ Meu Contrato Assinado</span>
+        </button>
+        <button class="p-tab-btn" data-tab="agendar" onclick="switchPortalTab('agendar')">
+          <span>📅 Agendar Treino</span>
+        </button>
+      </nav>
 
-            <!-- Carteirinha Virtual Estilizada -->
+      <!-- Conteúdo das Abas do Aluno -->
+      <div class="portal-content">
+        
+        <!-- ABA 1: CARTEIRINHA DIGITAL -->
+        <div class="p-tab-pane active" id="tabPane-carteirinha">
+          <div class="carteirinha-display-wrap">
             <div class="carteirinha-virtual">
               <div class="cv-header">
                 <img src="public/images/logo-simbolo.png" alt="Logo" class="cv-logo">
@@ -726,7 +563,7 @@
                   <span>ACADEMIA DE JIU-JITSU</span>
                   <strong>CARTEIRA DIGITAL OFICIAL</strong>
                 </div>
-                <div class="cv-status" id="carteirinhaStatus">ATIVO</div>
+                <div class="cv-status" id="cvStatusDisplay">ATIVO</div>
               </div>
 
               <div class="cv-body">
@@ -736,23 +573,27 @@
                 <div class="cv-details">
                   <div class="cv-field">
                     <small>NOME DO ATLETA</small>
-                    <strong id="carteirinhaNome">Nome do Aluno</strong>
+                    <strong id="cvNomeDisplay">Lucas Mendes</strong>
                   </div>
                   <div class="cv-field">
-                    <small>GRADUAÇÃO</small>
-                    <strong id="carteirinhaFaixa" class="text-yellow">Faixa Branca</strong>
+                    <small>GRADUAÇÃO & FAIXA</small>
+                    <strong id="cvFaixaDisplay" class="text-yellow">Faixa Azul (2º Grau)</strong>
                   </div>
                   <div class="cv-field">
                     <small>TURMA / PLANO</small>
-                    <strong id="carteirinhaTurma">Adulto — Iniciante</strong>
+                    <strong id="cvPlanoDisplay">Adulto — Avançado</strong>
+                  </div>
+                  <div class="cv-field">
+                    <small>CPF</small>
+                    <span id="cvCpfDisplay">123.456.789-00</span>
                   </div>
                 </div>
               </div>
 
               <div class="cv-footer">
                 <div class="cv-hash">
-                  <small>AUTENTICAÇÃO DIGITAL</small>
-                  <span id="carteirinhaHash">HASH-AUTENTICADO</span>
+                  <small>AUTENTICAÇÃO DIGITAL NO TATAME</small>
+                  <span id="cvHashDisplay">HASH-VALIDADO-2026-JIU</span>
                 </div>
                 <div class="cv-qr">
                   <svg viewBox="0 0 40 40" width="40" height="40">
@@ -766,257 +607,870 @@
               </div>
             </div>
 
-            <div class="conclusao-actions mt-4">
-              <a id="btnZapMatriculaConf" class="btn btn-zap btn-lg" target="_blank" rel="noreferrer">
-                📲 Receber Confirmação no WhatsApp
-              </a>
-              <button class="btn btn-outline btn-lg mt-2" onclick="location.href='#presenca-facial'">
-                Ir para o Totem Facial do Tatame →
+            <div class="cv-action-row mt-3">
+              <button class="btn btn-zap btn-sm" onclick="compartilharCarteirinhaZap()">
+                💬 Enviar para meu WhatsApp
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="window.print()">
+                🖨️ Imprimir / Salvar PDF
               </button>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ====================================================================
-         MÓDULO 3: TOTEM DE PRESENÇA FACIAL NO TATAME
-         ==================================================================== -->
-    <section class="system-section presenca-section" id="presenca-facial">
-      <div class="section-container">
-        <div class="system-section-head">
-          <span class="badge-tag">RECONHECIMENTO FACIAL BIOMÉTRICO</span>
-          <h2>Totem de Presença Facial do Tatame</h2>
-          <p>Check-in automático em menos de 2 segundos. O aluno posiciona o rosto na câmera para registrar a presença, computar graus para a próxima faixa e liberar o treino.</p>
-        </div>
-
-        <div class="totem-grid">
-          <!-- Visor da Câmera Facial -->
-          <div class="totem-camera-card">
-            <div class="camera-viewport">
-              <video id="facialVideo" autoplay playsinline muted></video>
-              
-              <!-- HUD Retículo de Reconhecimento -->
-              <div class="facial-overlay" id="facialOverlay">
-                <div class="face-target-box">
-                  <div class="corner top-left"></div>
-                  <div class="corner top-right"></div>
-                  <div class="corner bottom-left"></div>
-                  <div class="corner bottom-right"></div>
-                  <div class="biometric-mesh"></div>
+        <!-- ABA 2: MENSALIDADE & PAGAMENTO (PIX & CARTÃO) -->
+        <div class="p-tab-pane" id="tabPane-pagamento">
+          <div class="portal-finance-wrap">
+            <div class="portal-card-box mb-4">
+              <div class="p-status-card-header">
+                <div>
+                  <h3>Situação da Minha Mensalidade</h3>
+                  <p class="sub-muted">Mantenha sua mensalidade regularizada para liberar o acesso ao tatame e presenças faciais.</p>
                 </div>
-                <div class="scanner-laser" id="scannerLaser"></div>
+                <div id="pAlunoFinanceStatusBadge" class="finance-badge-pago">EM DIA</div>
               </div>
 
-              <!-- Indicador de Status -->
-              <div class="camera-status-hud" id="facialStatusMsg">
-                Clique em "Ativar Câmera" para iniciar o totem facial.
+              <div class="finance-summary-grid">
+                <div class="f-item">
+                  <small>PLANO CONTRATADO</small>
+                  <strong id="pAlunoPlanoNome">Adulto — Avançado</strong>
+                </div>
+                <div class="f-item">
+                  <small>VALOR MENSAL</small>
+                  <strong id="pAlunoPlanoValor" class="text-yellow">R$ 149,00</strong>
+                </div>
+                <div class="f-item">
+                  <small>PRÓXIMO VENCIMENTO</small>
+                  <strong id="pAlunoPlanoVenc">10/11/2026</strong>
+                </div>
               </div>
             </div>
 
-            <!-- Controles do Totem -->
-            <div class="totem-controls">
-              <button type="button" id="btnStartCamera" class="btn btn-outline" onclick="startFacialCamera()">
-                📷 Ativar Câmera do Totem
-              </button>
-              <button type="button" id="btnScanFace" class="btn btn-yellow" style="display: none;" onclick="captureAndScanFace()">
-                🔍 Confirmar Presença Facial
-              </button>
+            <!-- OPÇÕES DE PAGAMENTO INTEGRADO -->
+            <div class="payment-tabs-box">
+              <h3>Realizar Pagamento Agora</h3>
+              
+              <div class="pay-method-selector mb-3">
+                <button type="button" class="pay-btn active" id="btnPayTabPix" onclick="switchAlunoPayMethod('pix')">
+                  ⚡ Pagar com PIX Instantâneo
+                </button>
+                <button type="button" class="pay-btn" id="btnPayTabCard" onclick="switchAlunoPayMethod('card')">
+                  💳 Cartão de Crédito ou Débito
+                </button>
+              </div>
+
+              <!-- PAINEL PIX DO ALUNO -->
+              <div class="pay-panel" id="panelPayPix">
+                <div class="pix-checkout-card">
+                  <div class="pix-qr-wrap">
+                    <svg class="pix-svg-qr" viewBox="0 0 160 160" width="160" height="160">
+                      <rect width="160" height="160" fill="#ffffff" rx="8"/>
+                      <rect x="16" y="16" width="40" height="40" fill="#000000"/>
+                      <rect x="24" y="24" width="24" height="24" fill="#ffffff"/>
+                      <rect x="28" y="28" width="16" height="16" fill="#000000"/>
+                      <rect x="104" y="16" width="40" height="40" fill="#000000"/>
+                      <rect x="112" y="24" width="24" height="24" fill="#ffffff"/>
+                      <rect x="116" y="28" width="16" height="16" fill="#000000"/>
+                      <rect x="16" y="104" width="40" height="40" fill="#000000"/>
+                      <rect x="24" y="112" width="24" height="24" fill="#ffffff"/>
+                      <rect x="28" y="116" width="16" height="16" fill="#000000"/>
+                      <circle cx="80" cy="80" r="14" fill="#ffc400"/>
+                    </svg>
+                    <div class="pix-timer-chip">Expira em: <span id="pixTimerAluno">14:59</span></div>
+                  </div>
+
+                  <div class="pix-info-wrap">
+                    <h4>Chave PIX Copia e Cola</h4>
+                    <p class="sub-muted">Abra o aplicativo do seu banco, escolha PIX Copia e Cola e conclua o pagamento.</p>
+
+                    <div class="copia-cola-box">
+                      <input type="text" id="pixCopiaColaAluno" readonly value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406149.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***6304E8A2">
+                      <button type="button" class="btn btn-yellow btn-sm" onclick="copiarPixAluno()">Copiar</button>
+                    </div>
+
+                    <div class="mt-3">
+                      <button type="button" class="btn btn-zap btn-sm" onclick="simularConfirmacaoPixAluno()">
+                        ⚡ Simular Confirmação Automática de Pagamento
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PAINEL CARTÃO 3D DO ALUNO -->
+              <div class="pay-panel" id="panelPayCard" style="display: none;">
+                <div class="card-checkout-grid">
+                  <div class="card-preview-column">
+                    <div class="credit-card-3d" id="creditCard3dAluno">
+                      <div class="card-side card-front">
+                        <div class="card-top-row">
+                          <span class="card-chip"></span>
+                          <span class="card-brand-logo" id="cardBrandLogoAluno">VISA</span>
+                        </div>
+                        <div class="card-number-display" id="cardNumberDisplayAluno">•••• •••• •••• ••••</div>
+                        <div class="card-bottom-row">
+                          <div class="card-holder-info">
+                            <small>TITULAR</small>
+                            <strong id="cardHolderDisplayAluno">SEU NOME</strong>
+                          </div>
+                          <div class="card-exp-info">
+                            <small>VALIDADE</small>
+                            <strong id="cardExpDisplayAluno">MM/AA</strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-side card-back">
+                        <div class="card-mag-strip"></div>
+                        <div class="card-cvv-band">
+                          <small>CVV</small>
+                          <span id="cardCvvDisplayAluno">•••</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <form class="card-form-column" id="cardFormAluno" onsubmit="processarPagamentoCartaoAluno(event)">
+                    <div class="form-group mb-2">
+                      <label>Número do Cartão</label>
+                      <input type="text" id="ccNumeroAluno" class="input-field" placeholder="4532 •••• •••• ••••" maxlength="19" required oninput="formatCardNumberAluno(this)">
+                    </div>
+                    <div class="form-group mb-2">
+                      <label>Nome no Cartão</label>
+                      <input type="text" id="ccNomeAluno" class="input-field" placeholder="COMO ESTÁ IMPRESSO" required oninput="formatCardHolderAluno(this)">
+                    </div>
+                    <div class="form-row mb-2">
+                      <div class="form-group col-6">
+                        <label>Validade</label>
+                        <input type="text" id="ccExpAluno" class="input-field" placeholder="MM/AA" maxlength="5" required oninput="formatCardExpAluno(this)">
+                      </div>
+                      <div class="form-group col-6">
+                        <label>CVV</label>
+                        <input type="text" id="ccCvvAluno" class="input-field" placeholder="123" maxlength="4" required onfocus="flipCardAluno(true)" onblur="flipCardAluno(false)" oninput="formatCardCvvAluno(this)">
+                      </div>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label>Opções de Pagamento</label>
+                      <select id="ccParcelasAluno" class="input-field">
+                        <option value="1">1x à vista (Débito ou Crédito)</option>
+                        <option value="2">2x sem juros</option>
+                        <option value="3">3x sem juros</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-yellow w-100 btn-lg">Pagar com Cartão</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Histórico & Graduação em Tempo Real -->
-          <div class="totem-info-card">
-            <div class="tic-header">
-              <h3>Presenças Confirmadas Hoje</h3>
-              <span class="live-dot">● Ao Vivo no Tatame</span>
+        <!-- ABA 3: MEUS TREINOS & PRESENÇAS -->
+        <div class="p-tab-pane" id="tabPane-treinos">
+          <div class="portal-treinos-wrap">
+            <div class="portal-card-box mb-4">
+              <div class="p-grad-header">
+                <div>
+                  <h3>Minha Evolução no Tatame</h3>
+                  <p class="sub-muted">Registro biométrico de presenças faciais e progresso de graduação.</p>
+                </div>
+                <div class="p-badge-treinos"><strong id="pAlunoTotalTreinos">18</strong> aulas computadas</div>
+              </div>
+
+              <div class="p-grad-bar-wrap mt-3">
+                <div class="p-grad-bar" id="pAlunoProgressBar" style="width: 75%;"></div>
+              </div>
+              <small id="pAlunoProgressTexto" class="sub-muted">18 de 24 treinos para o próximo grau (75%)</small>
             </div>
 
-            <div class="attendance-list" id="attendanceHistoryList">
-              <!-- Preenchido dinamicamente via JS -->
-            </div>
-
-            <div class="graduation-preview-box">
-              <h4>🎯 Sistema de Graduação por Frequência</h4>
-              <p class="sub-muted">Cada presença facial acumula horas de tatame para cálculo automático da troca de graus e faixas.</p>
-              <div class="grad-belt-row">
-                <span class="belt-indicator white-belt">Branca</span>
-                <span class="belt-arrow">➔</span>
-                <span class="belt-indicator blue-belt">Azul</span>
-                <span class="belt-arrow">➔</span>
-                <span class="belt-indicator purple-belt">Roxa</span>
-                <span class="belt-arrow">➔</span>
-                <span class="belt-indicator brown-belt">Marrom</span>
-                <span class="belt-arrow">➔</span>
-                <span class="belt-indicator black-belt">Preta</span>
+            <div class="portal-card-box">
+              <h3>Histórico Recente de Presenças</h3>
+              <div class="p-presencas-lista" id="pAlunoListaPresencas">
+                <!-- Preenchido via JS -->
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- MODAL DE SUCESSO FACIAL -->
-    <div class="modal-backdrop" id="facialResultModal">
-      <div class="modal-box modal-facial-success">
-        <button class="modal-close-btn" onclick="closeFacialResult()" aria-label="Fechar">&times;</button>
-        <div class="success-icon-facial">🥋</div>
-        <span class="badge-tag">ACESSO LIBERADO</span>
-        <h3 id="frAlunoNome">Carlos Silva</h3>
-        <p class="fr-details">
-          <span id="frAlunoFaixa" class="text-yellow">Faixa Azul (2º Grau)</span> • <span id="frAlunoTurma">Adulto Iniciante</span>
-        </p>
+        <!-- ABA 4: MEU CONTRATO & ASSINATURA -->
+        <div class="p-tab-pane" id="tabPane-contrato">
+          <div class="portal-contrato-wrap">
+            <div class="portal-card-box">
+              <div class="p-contrato-header mb-3">
+                <h3>Termo de Adesão e Responsabilidade</h3>
+                <span class="badge-status-ativo" id="pAlunoContratoStatus">CONTRATO ASSINADO</span>
+              </div>
 
-        <div class="fr-grad-bar-wrap">
-          <div class="fr-grad-bar" id="frAlunoProgresso" style="width: 85%;"></div>
+              <div class="p-contrato-texto">
+                <p><strong>1. DO OBJETO:</strong> O presente termo formaliza a prestação de serviços de ensino e treinamento da arte marcial Jiu-Jitsu brasileiro.</p>
+                <p><strong>2. DA CONDUTA NO TATAME:</strong> O aluno declara compromisso com o respeito aos colegas, higiene pessoal, unhas cortadas e uso de quimono limpo.</p>
+                <p><strong>3. DA SAÚDE E RISCOS:</strong> O aluno declara estar apto à prática de atividades físicas de alta intensidade e assume a responsabilidade pela ciência dos riscos inerentes ao esporte de contato.</p>
+              </div>
+
+              <div class="p-assinatura-visual mt-4">
+                <small>ASSINATURA DIGITAL REGISTRADA PELO CELULAR:</small>
+                <div class="p-assinatura-canvas-view" id="pAlunoAssinaturaImg">
+                  <!-- Exibe a imagem da assinatura ou canvas para assinar -->
+                </div>
+                <div class="p-assinatura-meta mt-2">
+                  <small>Carimbo de Autenticidade:</small>
+                  <code id="pAlunoHashContrato">SHA256: 8a7c9f0e1d4b6c3a2f5e8d9c0a1b2c3d4e5f6a7b8c9d0e1f</code>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <small id="frAlunoProgressoTexto" class="sub-muted">28/30 treinos para o 3º Grau (93%)</small>
 
-        <div class="fr-time-stamp">
-          Check-in registrado às <strong id="frAlunoDataHora">--:--</strong>
+        <!-- ABA 5: AGENDAR TREINO -->
+        <div class="p-tab-pane" id="tabPane-agendar">
+          <div class="portal-card-box">
+            <h3>Agendar Próximo Treino</h3>
+            <p class="sub-muted">Garanta seu lugar no tatame selecionando uma das aulas da semana:</p>
+            <div class="p-grade-agendamento" id="pAlunoGradeAgendamento">
+              <!-- Preenchido via JS -->
+            </div>
+          </div>
         </div>
 
-        <button class="btn btn-yellow w-100 mt-3" onclick="closeFacialResult()">
-          Bom Treino! Concluir →
-        </button>
       </div>
     </div>
+  </div>
 
-    <!-- ====================================================================
-         MÓDULO 4: COBRANÇAS AUTOMÁTICAS VIA WHATSAPP (GESTÃO FINANCEIRA)
-         ==================================================================== -->
-    <section class="system-section cobrancas-section" id="gestao-cobrancas">
-      <div class="section-container">
-        <div class="system-section-head">
-          <span class="badge-tag">RÉGUA DE COBRANÇA AUTOMÁTICA</span>
-          <h2>Cobranças & Lembretes no WhatsApp</h2>
-          <p>Disparo automático de lembretes preventivos, mensagens no dia do vencimento e avisos amigáveis com chave PIX e QR Code integrado.</p>
-        </div>
-
-        <!-- Métricas Rápidas -->
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <span class="mc-icon">👥</span>
-            <div class="mc-data">
-              <strong>148</strong>
-              <small>Alunos Ativos</small>
+  <!-- ====================================================================
+       MODAL / VIEW: PAINEL DO ADMINISTRADOR LOGADO
+       ==================================================================== -->
+  <div class="portal-overlay portal-admin-overlay" id="painelAdminView" style="display: none;">
+    <div class="portal-container admin-container">
+      
+      <!-- Topbar do Admin -->
+      <header class="portal-header admin-header">
+        <div class="ph-profile">
+          <div class="ph-avatar admin-avatar">⚙️</div>
+          <div class="ph-info">
+            <div class="ph-name-row">
+              <strong>Painel de Gestão — Academia Jiu-Jitsu</strong>
+              <span class="badge-status-admin">GESTOR</span>
             </div>
-          </div>
-
-          <div class="metric-card metric-success">
-            <span class="mc-icon">✔</span>
-            <div class="mc-data">
-              <strong>94%</strong>
-              <small>Mensalidades em Dia</small>
-            </div>
-          </div>
-
-          <div class="metric-card metric-warning">
-            <span class="mc-icon">⚡</span>
-            <div class="mc-data">
-              <strong>6</strong>
-              <small>Vencem Hoje</small>
-            </div>
-          </div>
-
-          <div class="metric-card metric-danger">
-            <span class="mc-icon">⚠️</span>
-            <div class="mc-data">
-              <strong>4</strong>
-              <small>Em Atraso (+3 dias)</small>
+            <div class="ph-sub">
+              Acesso Administrativo Completo • Modificação de Turmas, Alunos, Totem e Financeiro
             </div>
           </div>
         </div>
 
-        <!-- Painel de Disparo -->
-        <div class="cobrancas-panel">
-          <div class="cp-header">
-            <div class="cp-filters">
-              <button class="cob-filter-btn active" data-filter="all">Todos</button>
-              <button class="cob-filter-btn" data-filter="atrasado">Atrasados</button>
-              <button class="cob-filter-btn" data-filter="vence_hoje">Vencem Hoje</button>
-              <button class="cob-filter-btn" data-filter="lembrete">Lembrete Preventivo</button>
+        <div class="ph-actions">
+          <button type="button" class="btn btn-outline btn-sm" onclick="logoutAdmin()">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+            <span>Sair do Painel</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Abas de Gestão do Admin -->
+      <nav class="portal-nav-tabs admin-nav-tabs">
+        <button class="p-tab-btn active" data-atab="alunos" onclick="switchAdminTab('alunos')">
+          <span>👥 Alunos & Matrículas</span>
+        </button>
+        <button class="p-tab-btn" data-atab="totem" onclick="switchAdminTab('totem')">
+          <span>📸 Totem Facial no Tatame</span>
+        </button>
+        <button class="p-tab-btn" data-atab="cobrancas" onclick="switchAdminTab('cobrancas')">
+          <span>💬 Cobranças WhatsApp</span>
+        </button>
+        <button class="p-tab-btn" data-atab="horarios" onclick="switchAdminTab('horarios')">
+          <span>📅 Horários & Vagas</span>
+        </button>
+        <button class="p-tab-btn" data-atab="config" onclick="switchAdminTab('config')">
+          <span>⚙️ Preços & Configurações</span>
+        </button>
+      </nav>
+
+      <!-- Conteúdo do Painel Admin -->
+      <div class="portal-content">
+        
+        <!-- ABA ADMIN 1: GESTÃO DE ALUNOS -->
+        <div class="p-tab-pane active" id="adminPane-alunos">
+          <div class="admin-card-box">
+            <div class="admin-action-header mb-3">
+              <div>
+                <h3>Base de Alunos Cadastrados</h3>
+                <p class="sub-muted">Visualize, edite faixas, planos, status e adicione novos alunos.</p>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="openModalNovoAlunoAdmin()">
+                + Cadastrar Novo Aluno
+              </button>
             </div>
 
-            <button class="btn btn-yellow btn-sm" onclick="simularEnvioEmLote()">
-              🚀 Disparar Cobrança em Lote via WhatsApp
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Nome do Aluno</th>
+                    <th>CPF</th>
+                    <th>Plano</th>
+                    <th>Faixa & Graus</th>
+                    <th>Presenças</th>
+                    <th>Mensalidade</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaAdminAlunosBody">
+                  <!-- Preenchido via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA ADMIN 2: TOTEM FACIAL -->
+        <div class="p-tab-pane" id="adminPane-totem">
+          <div class="admin-card-box">
+            <div class="totem-grid">
+              <!-- Visor da Câmera Facial -->
+              <div class="totem-camera-card">
+                <div class="camera-viewport">
+                  <video id="facialVideo" autoplay playsinline muted></video>
+                  
+                  <!-- HUD Retículo de Reconhecimento -->
+                  <div class="facial-overlay" id="facialOverlay">
+                    <div class="face-target-box">
+                      <div class="corner top-left"></div>
+                      <div class="corner top-right"></div>
+                      <div class="corner bottom-left"></div>
+                      <div class="corner bottom-right"></div>
+                      <div class="biometric-mesh"></div>
+                    </div>
+                    <div class="scanner-laser" id="scannerLaser"></div>
+                  </div>
+
+                  <!-- Indicador de Status -->
+                  <div class="camera-status-hud" id="facialStatusMsg">
+                    Clique em "Ativar Câmera" para iniciar o totem facial no tatame.
+                  </div>
+                </div>
+
+                <!-- Controles do Totem -->
+                <div class="totem-controls">
+                  <button type="button" id="btnStartCamera" class="btn btn-outline" onclick="startFacialCamera()">
+                    📷 Ativar Câmera do Totem
+                  </button>
+                  <button type="button" id="btnScanFace" class="btn btn-yellow" style="display: none;" onclick="captureAndScanFace()">
+                    ⚡ Confirmar Presença Facial
+                  </button>
+                </div>
+              </div>
+
+              <!-- Histórico de Presenças -->
+              <div class="totem-info-card">
+                <div class="tic-header">
+                  <h3>Presenças Registradas Hoje</h3>
+                  <span class="live-dot">● Ao Vivo no Tatame</span>
+                </div>
+
+                <div class="attendance-list" id="attendanceHistoryList">
+                  <!-- Preenchido dinamicamente via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA ADMIN 3: COBRANÇAS WHATSAPP -->
+        <div class="p-tab-pane" id="adminPane-cobrancas">
+          <div class="admin-card-box">
+            <!-- Métricas Financeiras -->
+            <div class="metrics-grid mb-4">
+              <div class="metric-card">
+                <span class="mc-icon">👥</span>
+                <div class="mc-data">
+                  <strong id="metricAlunosTotal">148</strong>
+                  <small>Alunos Ativos</small>
+                </div>
+              </div>
+              <div class="metric-card metric-success">
+                <span class="mc-icon">💰</span>
+                <div class="mc-data">
+                  <strong id="metricPercEmDia">94%</strong>
+                  <small>Mensalidades em Dia</small>
+                </div>
+              </div>
+              <div class="metric-card metric-warning">
+                <span class="mc-icon">⚠️</span>
+                <div class="mc-data">
+                  <strong id="metricVencemHoje">3</strong>
+                  <small>Vencem Hoje</small>
+                </div>
+              </div>
+              <div class="metric-card metric-danger">
+                <span class="mc-icon">🚨</span>
+                <div class="mc-data">
+                  <strong id="metricEmAtraso">2</strong>
+                  <small>Em Atraso (+3 dias)</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabela de Cobranças -->
+            <div class="cobrancas-control-bar mb-3">
+              <div class="filter-pills">
+                <button class="cob-filter-btn active" data-filter="all" onclick="filtrarCobrancas('all')">Todos</button>
+                <button class="cob-filter-btn" data-filter="atrasado" onclick="filtrarCobrancas('atrasado')">Atrasados</button>
+                <button class="cob-filter-btn" data-filter="vence_hoje" onclick="filtrarCobrancas('vence_hoje')">Vencem Hoje</button>
+                <button class="cob-filter-btn" data-filter="pago" onclick="filtrarCobrancas('pago')">Em Dia</button>
+              </div>
+
+              <button class="btn btn-zap btn-sm" onclick="dispararCobrancaLote()">
+                ⚡ Disparar Cobranças Pendentes em Lote
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Aluno</th>
+                    <th>Telefone</th>
+                    <th>Plano</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Ação WhatsApp</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaCobrancasBody">
+                  <!-- Preenchido via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA ADMIN 4: HORÁRIOS & VAGAS -->
+        <div class="p-tab-pane" id="adminPane-horarios">
+          <div class="admin-card-box">
+            <div class="admin-action-header mb-3">
+              <div>
+                <h3>Gestão da Grade e Limite de Vagas</h3>
+                <p class="sub-muted">Ajuste o limite de alunos por treino para controle do tatame.</p>
+              </div>
+              <button class="btn btn-yellow btn-sm" onclick="abrirModalNovaAula()">
+                + Adicionar Nova Turma
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Dia</th>
+                    <th>Horário</th>
+                    <th>Turma</th>
+                    <th>Professor</th>
+                    <th>Vagas Totais</th>
+                    <th>Vagas Disponíveis</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaAdminHorariosBody">
+                  <!-- Preenchido via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA ADMIN 5: CONFIGURAÇÕES DA ACADEMIA -->
+        <div class="p-tab-pane" id="adminPane-config">
+          <div class="admin-card-box">
+            <h3>Configurações Globais da Academia</h3>
+            <p class="sub-muted">Modifique preços de planos, dados de PIX e contato de atendimento.</p>
+
+            <form id="formConfigAdmin" onsubmit="salvarConfiguracoesAdmin(event)">
+              <div class="form-row mb-3">
+                <div class="form-group col-6">
+                  <label>Preço Plano Infantil (R$/mês)</label>
+                  <input type="number" id="cfgPrecoInfantil" class="input-field" value="99" required>
+                </div>
+                <div class="form-group col-6">
+                  <label>Preço Plano Iniciante (R$/mês)</label>
+                  <input type="number" id="cfgPrecoIniciante" class="input-field" value="129" required>
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-6">
+                  <label>Preço Plano Avançado (R$/mês)</label>
+                  <input type="number" id="cfgPrecoAvancado" class="input-field" value="149" required>
+                </div>
+                <div class="form-group col-6">
+                  <label>Preço Plano Feminino (R$/mês)</label>
+                  <input type="number" id="cfgPrecoFeminino" class="input-field" value="119" required>
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-6">
+                  <label>Chave PIX da Academia (Recebedor)</label>
+                  <input type="text" id="cfgChavePix" class="input-field" value="pix@academiajiujitsu.com.br" required>
+                </div>
+                <div class="form-group col-6">
+                  <label>WhatsApp de Atendimento da Academia</label>
+                  <input type="text" id="cfgTelefoneAcademia" class="input-field" value="(91) 98123-4567" required>
+                </div>
+              </div>
+
+              <div class="form-row mb-3">
+                <div class="form-group col-6">
+                  <label>Nova Senha do Administrador</label>
+                  <input type="password" id="cfgNovaSenhaAdmin" class="input-field" placeholder="Deixe em branco para manter 1234">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-yellow btn-lg">
+                💾 Salvar Todas as Configurações
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 5: FLUXO DE MATRÍCULA ONLINE EM 5 PASSOS
+       ==================================================================== -->
+  <div class="modal-backdrop" id="modalMatriculaWizard">
+    <div class="modal-box modal-wizard">
+      <button class="modal-close-btn" onclick="closeModalMatricula()" aria-label="Fechar">&times;</button>
+      
+      <!-- Stepper Visual -->
+      <div class="wizard-stepper">
+        <div class="step-item active" data-step="1">
+          <div class="step-num">1</div>
+          <span>Plano</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="2">
+          <div class="step-num">2</div>
+          <span>Dados</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="3">
+          <div class="step-num">3</div>
+          <span>Assinatura</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="4">
+          <div class="step-num">4</div>
+          <span>Pagamento</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="5">
+          <div class="step-num">5</div>
+          <span>Carteirinha</span>
+        </div>
+      </div>
+
+      <!-- ETAPA 1: PLANO -->
+      <div class="wizard-step-content active" id="wStep1">
+        <h3>Escolha seu Plano de Jiu-Jitsu</h3>
+        <p class="sub-muted">Selecione o programa ideal para sua rotina e objetivos.</p>
+
+        <div class="plan-cards-grid mt-3">
+          <div class="plan-opt-card" data-plano="infantil" onclick="selectPlanOpt('infantil')">
+            <div class="poc-header">
+              <strong>Plano Infantil</strong>
+              <span class="poc-price" id="wizPrecoInfantil">R$ 99/mês</span>
+            </div>
+            <p>5 a 12 anos • 3x por semana • Anti-bullying e disciplina.</p>
+          </div>
+
+          <div class="plan-opt-card selected" data-plano="iniciante" onclick="selectPlanOpt('iniciante')">
+            <div class="poc-header">
+              <strong>Adulto Iniciante</strong>
+              <span class="poc-price" id="wizPrecoIniciante">R$ 129/mês</span>
+            </div>
+            <p>Base sólida • Acesso livre às turmas iniciantes • Defesa pessoal.</p>
+          </div>
+
+          <div class="plan-opt-card" data-plano="avancado" onclick="selectPlanOpt('avancado')">
+            <div class="poc-header">
+              <strong>Adulto Avançado</strong>
+              <span class="poc-price" id="wizPrecoAvancado">R$ 149/mês</span>
+            </div>
+            <p>Treino tático • Sparring avançado • Acompanhamento de faixas.</p>
+          </div>
+
+          <div class="plan-opt-card" data-plano="feminino" onclick="selectPlanOpt('feminino')">
+            <div class="poc-header">
+              <strong>Plano Feminino</strong>
+              <span class="poc-price" id="wizPrecoFeminino">R$ 119/mês</span>
+            </div>
+            <p>Turma feminina • Condicionamento • Defesa pessoal real.</p>
+          </div>
+        </div>
+
+        <div class="wizard-nav-btns mt-4">
+          <button type="button" class="btn btn-yellow btn-lg" onclick="goToWizardStep(2)">
+            Avançar para Dados do Aluno →
+          </button>
+        </div>
+      </div>
+
+      <!-- ETAPA 2: DADOS CADASTRAIS + CRIAÇÃO DE SENHA -->
+      <div class="wizard-step-content" id="wStep2">
+        <h3>Dados do Aluno e Senha de Acesso</h3>
+        <p class="sub-muted">Esses dados serão usados para seu login de cliente e sua carteirinha digital.</p>
+
+        <form id="formMatriculaDados" onsubmit="event.preventDefault(); goToWizardStep(3);">
+          <div class="form-row mb-2">
+            <div class="form-group col-12">
+              <label>Nome Completo do Aluno *</label>
+              <input type="text" id="matNome" class="input-field" placeholder="Ex: Lucas Mendes Silva" required>
+            </div>
+          </div>
+
+          <div class="form-row mb-2">
+            <div class="form-group col-6">
+              <label>CPF * (Seu Login)</label>
+              <input type="text" id="matCpf" class="input-field" placeholder="000.000.000-00" required maxlength="14" oninput="maskCPF(this)">
+            </div>
+            <div class="form-group col-6">
+              <label>Defina uma Senha *</label>
+              <input type="password" id="matSenha" class="input-field" placeholder="Mínimo 4 dígitos" required minlength="4">
+            </div>
+          </div>
+
+          <div class="form-row mb-2">
+            <div class="form-group col-6">
+              <label>WhatsApp / Celular *</label>
+              <input type="tel" id="matZap" class="input-field" placeholder="(91) 98888-7777" required>
+            </div>
+            <div class="form-group col-6">
+              <label>Data de Nascimento *</label>
+              <input type="date" id="matNascimento" class="input-field" required>
+            </div>
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="form-group col-12">
+              <label>Contato de Emergência (Nome e Telefone)</label>
+              <input type="text" id="matEmergencia" class="input-field" placeholder="Ex: Esposa / Mãe (91) 99999-0000">
+            </div>
+          </div>
+
+          <div class="wizard-nav-btns">
+            <button type="button" class="btn btn-outline" onclick="goToWizardStep(1)">← Voltar</button>
+            <button type="submit" class="btn btn-yellow btn-lg">Avançar para Assinatura →</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ETAPA 3: ASSINATURA PELO CELULAR (TOUCH CANVAS) -->
+      <div class="wizard-step-content" id="wStep3">
+        <h3>Assinar Contrato pelo Celular</h3>
+        <p class="sub-muted">Use a ponta do dedo ou caneta stylus para assinar diretamente na tela.</p>
+
+        <div class="termo-box mb-3">
+          <strong>TERMO DE ADESÃO E RESPONSABILIDADE:</strong>
+          <p>Declaro estar em plenas condições de saúde para a prática esportiva de Jiu-Jitsu. Comprometo-me a seguir a conduta marcial de respeito e disciplina no tatame.</p>
+        </div>
+
+        <div class="signature-canvas-wrap">
+          <canvas id="signatureCanvas" width="500" height="180"></canvas>
+          <div class="canvas-hint-overlay" id="canvasHint">
+            <span>✍️ Assine aqui com o dedo ou mouse</span>
+          </div>
+        </div>
+
+        <div class="signature-controls mt-2">
+          <button type="button" class="btn btn-outline btn-sm" onclick="clearSignatureCanvas()">
+            🗑️ Limpar Assinatura
+          </button>
+          <span class="digital-stamp" id="digitalHashPreview">🔒 Certificado SHA-256 Pronto</span>
+        </div>
+
+        <div class="wizard-nav-btns mt-4">
+          <button type="button" class="btn btn-outline" onclick="goToWizardStep(2)">← Voltar</button>
+          <button type="button" class="btn btn-yellow btn-lg" onclick="validarAssinaturaEAvançar()">
+            Confirmar Assinatura e Pagar →
+          </button>
+        </div>
+      </div>
+
+      <!-- ETAPA 4: PAGAMENTO AUTOMÁTICO PIX OU CARTÃO -->
+      <div class="wizard-step-content" id="wStep4">
+        <h3>Pagamento da Matrícula</h3>
+        <p class="sub-muted">Escolha pagar com PIX instantâneo ou Cartão de Débito/Crédito.</p>
+
+        <div class="pay-method-selector mb-3">
+          <button type="button" class="pay-btn active" id="wBtnPayPix" onclick="switchWizardPayMethod('pix')">
+            ⚡ Pagar com PIX
+          </button>
+          <button type="button" class="pay-btn" id="wBtnPayCard" onclick="switchWizardPayMethod('card')">
+            💳 Cartão de Crédito / Débito
+          </button>
+        </div>
+
+        <!-- PIX DO WIZARD -->
+        <div id="wPanelPix">
+          <div class="pix-checkout-card">
+            <div class="pix-qr-wrap">
+              <svg class="pix-svg-qr" viewBox="0 0 160 160" width="160" height="160">
+                <rect width="160" height="160" fill="#ffffff" rx="8"/>
+                <rect x="16" y="16" width="40" height="40" fill="#000000"/>
+                <rect x="24" y="24" width="24" height="24" fill="#ffffff"/>
+                <rect x="28" y="28" width="16" height="16" fill="#000000"/>
+                <rect x="104" y="16" width="40" height="40" fill="#000000"/>
+                <rect x="112" y="24" width="24" height="24" fill="#ffffff"/>
+                <rect x="116" y="28" width="16" height="16" fill="#000000"/>
+                <rect x="16" y="104" width="40" height="40" fill="#000000"/>
+                <rect x="24" y="112" width="24" height="24" fill="#ffffff"/>
+                <rect x="28" y="116" width="16" height="16" fill="#000000"/>
+                <circle cx="80" cy="80" r="14" fill="#ffc400"/>
+              </svg>
+              <div class="pix-timer-chip">Expira em: <span id="pixTimerWizard">14:59</span></div>
+            </div>
+
+            <div class="pix-info-wrap">
+              <strong id="wPixValorPlano">Valor: R$ 129,00</strong>
+              <div class="copia-cola-box mt-2">
+                <input type="text" id="pixCopiaColaWizard" readonly value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406129.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***630489A1">
+                <button type="button" class="btn btn-yellow btn-sm" onclick="copiarPixWizard()">Copiar</button>
+              </div>
+
+              <button type="button" class="btn btn-zap w-100 mt-3" onclick="concluirMatriculaComSucesso()">
+                ⚡ Confirmar Pagamento do PIX e Emitir Carteirinha
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARTÃO DO WIZARD -->
+        <div id="wPanelCard" style="display: none;">
+          <form onsubmit="event.preventDefault(); concluirMatriculaComSucesso();">
+            <div class="form-group mb-2">
+              <label>Número do Cartão</label>
+              <input type="text" class="input-field" placeholder="4532 •••• •••• ••••" maxlength="19" required>
+            </div>
+            <div class="form-row mb-2">
+              <div class="form-group col-6">
+                <label>Validade (MM/AA)</label>
+                <input type="text" class="input-field" placeholder="12/28" maxlength="5" required>
+              </div>
+              <div class="form-group col-6">
+                <label>CVV</label>
+                <input type="text" class="input-field" placeholder="123" maxlength="4" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-yellow w-100 btn-lg mt-2">
+              Pagar e Emitir Carteirinha
+            </button>
+          </form>
+        </div>
+
+        <div class="wizard-nav-btns mt-4">
+          <button type="button" class="btn btn-outline" onclick="goToWizardStep(3)">← Voltar</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 5: CONCLUÍDO E CARTEIRINHA EMITIDA -->
+      <div class="wizard-step-content" id="wStep5">
+        <div class="conclusao-card-box text-center">
+          <div class="success-badge-large">🎉</div>
+          <h2>Matrícula Realizada com Sucesso!</h2>
+          <p>Você agora é um atleta oficial da Academia Jiu-Jitsu. Sua carteirinha já foi emitida e sua conta de aluno está pronta.</p>
+
+          <div class="mt-4">
+            <button type="button" class="btn btn-yellow btn-lg" onclick="entrarNoPortalAposMatricula()">
+              🥋 Acessar Meu Portal de Aluno Agora
             </button>
           </div>
-
-          <!-- Alerta de Disparo em Lote -->
-          <div id="cobrancaLoteAlert" style="display: none;"></div>
-
-          <div class="table-container">
-            <table class="schedule-table cobrancas-table">
-              <thead>
-                <tr>
-                  <th>Aluno / Turma</th>
-                  <th>Valor</th>
-                  <th>Situação</th>
-                  <th>Ação Rápida WhatsApp</th>
-                </tr>
-              </thead>
-              <tbody id="tabelaCobrancasBody">
-                <!-- Renderizado via JS -->
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
-    </section>
 
-    <!-- BANNER PROFESSORES -->
-    <section class="lower" id="professores">
-      <h2>Treine com quem entende.</h2>
-      <p>Orientação técnica, evolução no seu ritmo e uma comunidade que cresce junto.</p>
-      <div class="lower-links" id="galeria">
-        <a href="#matricula-fluxo">Matricule-se Online</a>
-        <a href="#agendamento">Agende uma aula experimental</a>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR ALUNO (ADMIN) -->
+  <div class="modal-backdrop" id="modalEditarAlunoAdmin">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="fecharModalEditarAlunoAdmin()">&times;</button>
+      <h3>Editar Aluno</h3>
+      <form id="formEditarAlunoAdmin" onsubmit="salvarEdicaoAlunoAdmin(event)">
+        <input type="hidden" id="editAlunoId">
+        <div class="form-group mb-2">
+          <label>Nome do Aluno</label>
+          <input type="text" id="editAlunoNome" class="input-field" required>
+        </div>
+        <div class="form-row mb-2">
+          <div class="form-group col-6">
+            <label>Faixa</label>
+            <select id="editAlunoFaixa" class="input-field">
+              <option value="Branca">Faixa Branca</option>
+              <option value="Cinza">Faixa Cinza</option>
+              <option value="Amarela">Faixa Amarela</option>
+              <option value="Laranja">Faixa Laranja</option>
+              <option value="Verde">Faixa Verde</option>
+              <option value="Azul">Faixa Azul</option>
+              <option value="Roxa">Faixa Roxa</option>
+              <option value="Marrom">Faixa Marrom</option>
+              <option value="Preta">Faixa Preta</option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label>Graus na Faixa</label>
+            <select id="editAlunoGraus" class="input-field">
+              <option value="0">0 Graus</option>
+              <option value="1">1º Grau</option>
+              <option value="2">2º Grau</option>
+              <option value="3">3º Grau</option>
+              <option value="4">4º Grau</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row mb-2">
+          <div class="form-group col-6">
+            <label>Plano</label>
+            <select id="editAlunoPlano" class="input-field">
+              <option value="Infantil">Infantil</option>
+              <option value="Adulto — Iniciante">Adulto — Iniciante</option>
+              <option value="Adulto — Avançado">Adulto — Avançado</option>
+              <option value="Feminino">Feminino</option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label>Status de Pagamento</label>
+            <select id="editAlunoStatusPag" class="input-field">
+              <option value="pago">Em Dia (Pago)</option>
+              <option value="vence_hoje">Vence Hoje</option>
+              <option value="atrasado">Atrasado</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label>Total de Presenças</label>
+          <input type="number" id="editAlunoPresencas" class="input-field" required>
+        </div>
+        <button type="submit" class="btn btn-yellow w-100">Salvar Alterações</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL SUCESSO FACIAL TOTEM -->
+  <div class="modal-backdrop" id="facialResultModal">
+    <div class="modal-box modal-facial-success">
+      <button class="modal-close-btn" onclick="closeFacialResult()" aria-label="Fechar">&times;</button>
+      <div class="success-icon-facial">🥋</div>
+      <span class="badge-tag">PRESENÇA COMPUTADA</span>
+      <h3 id="frAlunoNome">Carlos Silva</h3>
+      <p class="fr-details">
+        <span id="frAlunoFaixa" class="text-yellow">Faixa Azul (2º Grau)</span> • <span id="frAlunoTurma">Adulto Iniciante</span>
+      </p>
+      <div class="fr-time-stamp">
+        Check-in registrado às <strong id="frAlunoDataHora">--:--</strong>
       </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer id="contato">
-    <a class="brand brand-footer" href="#inicio">
-      <img src="public/images/logo-simbolo.png" alt="Academia Jiu-Jitsu">
-      <div class="brand-text">
-        <span class="brand-sub">ACADEMIA</span>
-        <strong class="brand-main">JIU-JITSU</strong>
-      </div>
-    </a>
-    <p class="footer-tagline">Disciplina • Respeito • Evolução • Tecnologia</p>
-    <a class="footer-whatsapp" href="https://wa.me/5591999999999" target="_blank" rel="noreferrer">
-      Fale com a academia pelo WhatsApp: (91) 99999-9999
-    </a>
-    <small class="footer-copy">© <span id="year"></span> Academia Jiu-Jitsu. Todos os direitos reservados. Presença facial, assinatura móvel e pagamentos automáticos integrados.</small>
-  </footer>
-
-  <!-- BOTTOM NAVIGATION BAR PARA CELULAR -->
-  <nav class="mobile-bottom-nav">
-    <a href="#inicio" class="bottom-nav-item active">
-      <span class="bnav-icon">🏠</span>
-      <span class="bnav-text">Início</span>
-    </a>
-    <a href="#agendamento" class="bottom-nav-item">
-      <span class="bnav-icon">📅</span>
-      <span class="bnav-text">Agendar</span>
-    </a>
-    <a href="#matricula-fluxo" class="bottom-nav-item">
-      <span class="bnav-icon">📝</span>
-      <span class="bnav-text">Matricular</span>
-    </a>
-    <a href="#presenca-facial" class="bottom-nav-item">
-      <span class="bnav-icon">📸</span>
-      <span class="bnav-text">Facial</span>
-    </a>
-  </nav>
-
-  <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <a class="floating-whatsapp" href="https://wa.me/5591999999999" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.136 8.136 0 0 1-1.25-4.29c0-4.51 3.67-8.18 8.18-8.18 2.18 0 4.24.85 5.78 2.39a8.13 8.13 0 0 1 2.4 5.79c0 4.51-3.67 8.14-8.11 8.14zm4.49-6.11c-.24-.12-1.45-.71-1.68-.79-.22-.08-.39-.12-.55.12-.17.24-.63.79-.77.95-.14.16-.28.18-.52.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.24-.02-.37.1-.49.11-.11.25-.28.37-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.41-.41-.56-.42h-.47c-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.16 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
-    <span class="floating-text">Fale no WhatsApp</span>
-  </a>
+      <button class="btn btn-yellow w-100 mt-3" onclick="closeFacialResult()">Concluir</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
