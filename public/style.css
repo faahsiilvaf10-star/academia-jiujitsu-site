@@ -564,6 +564,9 @@ a {
   text-decoration: none;
   transition: transform 0.15s ease, background 0.15s ease;
   display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .price-btn:hover {

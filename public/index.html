@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Academia Jiu-Jitsu — Portal do Aluno com Carteirinha e Pagamentos, Totem Facial no Tatame, Gestão Administrativa e Cobranças no WhatsApp.">
-  <title>Academia Jiu-Jitsu | Disciplina, Defesa e Tecnologia</title>
+  <meta name="description" content="Academia Jiu-Jitsu — aprenda Jiu-Jitsu de verdade. Disciplina, defesa e confiança para todas as idades.">
+  <title>Academia Jiu-Jitsu | Disciplina, Defesa e Confiança</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,9 +12,7 @@
 </head>
 <body>
 
-  <!-- ====================================================================
-       TOPBAR DO SITE PÚBLICO
-       ==================================================================== -->
+  <!-- TOPBAR -->
   <header class="topbar">
     <a class="brand" href="#inicio" aria-label="Academia Jiu-Jitsu - Início">
       <img src="public/images/logo-simbolo.png" alt="Símbolo Academia Jiu-Jitsu" class="brand-logo">
@@ -35,14 +33,14 @@
       </a>
       <a class="nav-link" href="#aulas">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        <span>Turmas</span>
+        <span>Aulas</span>
       </a>
-      <a class="nav-link" href="#horarios">
+      <a class="nav-link" href="#academia">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
         <span>Horários</span>
       </a>
       <a class="nav-link" href="#professores">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         <span>Professores</span>
       </a>
       <a class="nav-link" href="#contato">
@@ -73,317 +71,258 @@
   </header>
 
   <main>
-    <!-- ====================================================================
-         HERO SECTION (SITE PÚBLICO LIMPO)
-         ==================================================================== -->
+    <!-- HERO SECTION -->
     <section class="hero" id="inicio">
       <div class="hero-photo" aria-hidden="true"></div>
-      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-stripes" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <span class="badge">TRADIÇÃO, DEFESA PESSOAL E DISCIPLINA</span>
-
+        <p class="hero-eyebrow">ACADEMIA DE JIU-JITSU</p>
         <h1 class="hero-title">
-          Aprenda Jiu-Jitsu da <em>verdadeira essência</em>
-          <span class="hero-title-sub">com método seguro para todas as idades</span>
+          Aprenda Jiu-Jitsu de verdade.<br>
+          <span class="hero-highlight">Disciplina, defesa e confiança.</span>
         </h1>
-
-        <p class="hero-lead">
-          Treinamento técnico estruturado para crianças, iniciantes adultos e competidores avançados.
-          Metodologia comprovada, acompanhamento individual e ambiente familiar acolhedor.
+        <p class="hero-intro">
+          Do iniciante ao faixa preta. Turmas infantil, adulto e feminino, com professores certificados.
+          Matrícula online com assinatura no celular, presença facial e pagamento por PIX ou cartão.
         </p>
 
         <div class="hero-buttons">
-          <button type="button" class="btn btn-yellow btn-lg" onclick="openModalMatricula()">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-            <span>Fazer Minha Matrícula Online</span>
+          <button type="button" class="btn-cta btn-cta-yellow" onclick="openModalMatricula()">
+            <span class="circle-icon dark-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z"/></svg>
+            </span>
+            <span>Quero me matricular</span>
           </button>
-
-          <a class="btn btn-outline btn-lg" href="#horarios">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-            <span>Consultar Horários</span>
-          </a>
-
-          <button type="button" class="btn btn-dark-subtle btn-lg" onclick="openModalLoginAluno()">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <button type="button" class="btn-cta btn-cta-glass" onclick="openModalLoginAluno()">
+            <span class="circle-icon white-circle">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </span>
             <span>Já sou Aluno (Entrar)</span>
           </button>
         </div>
 
-        <ul class="hero-stats" aria-label="Nossos pilares fundamentais">
-          <li class="stat-pill">
-            <span class="stat-icon" aria-hidden="true">🛡️</span>
-            <div>
-              <strong>Ambiente Seguro</strong>
-              <small>Tatame com proteção reforçada</small>
+        <div class="benefits-row">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
             </div>
-          </li>
-          <li class="stat-pill">
-            <span class="stat-icon" aria-hidden="true">🥋</span>
-            <div>
-              <strong>Professores Certificados</strong>
-              <small>Faixas pretas diplomados</small>
+            <div class="benefit-text">Ambiente<br>Seguro</div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
             </div>
-          </li>
-          <li class="stat-pill">
-            <span class="stat-icon" aria-hidden="true">🏆</span>
-            <div>
-              <strong>Disciplina & Respeito</strong>
-              <small>Formação de caráter e foco</small>
+            <div class="benefit-text">Professores<br>Certificados</div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
             </div>
-          </li>
-          <li class="stat-pill">
-            <span class="stat-icon" aria-hidden="true">⚡</span>
-            <div>
-              <strong>Saúde & Defesa</strong>
-              <small>Condicionamento completo</small>
+            <div class="benefit-text">Disciplina e<br>Respeito</div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
             </div>
-          </li>
-        </ul>
+            <div class="benefit-text">Mais Saúde e<br>Bem-estar</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ====================================================================
-         PROGRAMAS / TURMAS
-         ==================================================================== -->
+    <!-- PROGRAM CARDS (4 TURMAS) -->
     <section class="programs" id="aulas">
-      <div class="programs-inner">
-        <div class="programs-header">
+      <!-- Card 1: Infantil -->
+      <article class="program-card">
+        <div class="card-img-wrap">
+          <img src="public/images/turma-infantil.jpg" alt="Treino Infantil de Jiu-Jitsu" class="card-img-infantil" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+            <div class="card-titles">
+              <h3 class="card-title">Infantil</h3>
+              <span class="card-subtitle">(5 a 12 anos)</span>
+            </div>
+          </div>
+          <p class="card-desc">Disciplina, coordenação e anti-bullying, em ambiente seguro e lúdico.</p>
+          <div class="card-footer">
+            <button type="button" class="price-btn" id="chip-preco-infantil" onclick="openModalMatriculaComPlano('infantil')">R$ 99/mês</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Adulto - Iniciante -->
+      <article class="program-card">
+        <div class="card-img-wrap">
+          <picture>
+            <source srcset="public/images/turma-iniciante.webp" type="image/webp">
+            <img src="public/images/turma-iniciante.jpg" alt="Treino Adulto Iniciante de Jiu-Jitsu" class="card-img-iniciante" loading="lazy">
+          </picture>
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2.5"/><path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.4-.44-1-.7-1.64-.7-.41 0-.8.12-1.13.34L6 10.5V15h2v-3.26l2.36-1.57L9 22h2l1.62-7.27L15 17v5h2v-6.33l-2.45-2.73c.77.67 1.76 1.06 2.82 1.06H19z"/></svg>
+            </div>
+            <div class="card-titles">
+              <h3 class="card-title">Adulto — Iniciante</h3>
+              <span class="card-subtitle">Sem experiência</span>
+            </div>
+          </div>
+          <p class="card-desc">Base, posições, quedas e defesa pessoal. Sem experiência necessária.</p>
+          <div class="card-footer">
+            <button type="button" class="price-btn" id="chip-preco-iniciante" onclick="openModalMatriculaComPlano('iniciante')">R$ 129/mês</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Adulto - Avançado -->
+      <article class="program-card">
+        <div class="card-img-wrap">
+          <picture>
+            <source srcset="public/images/turma-avancado.webp" type="image/webp">
+            <img src="public/images/turma-avancado.jpg" alt="Treino Adulto Avançado de Jiu-Jitsu" class="card-img-avancado" loading="lazy">
+          </picture>
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 19h16v2H2V4h2v15zm3-2h3v-6H7v6zm5 0h3V8h-3v9zm5 0h3V4h-3v13z"/></svg>
+            </div>
+            <div class="card-titles">
+              <h3 class="card-title">Adulto — Avançado</h3>
+              <span class="card-subtitle">Competição & Sparring</span>
+            </div>
+          </div>
+          <p class="card-desc">Competição, sparring e evolução de faixa com acompanhamento.</p>
+          <div class="card-footer">
+            <button type="button" class="price-btn" id="chip-preco-avancado" onclick="openModalMatriculaComPlano('avancado')">R$ 149/mês</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Feminino -->
+      <article class="program-card">
+        <div class="card-img-wrap">
+          <img src="public/images/turma-feminino.jpg" alt="Turma Feminina de Jiu-Jitsu" class="card-img-feminino" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 17h6"/></svg>
+            </div>
+            <div class="card-titles">
+              <h3 class="card-title">Feminino</h3>
+              <span class="card-subtitle">Exclusivo para mulheres</span>
+            </div>
+          </div>
+          <p class="card-desc">Turma só para mulheres: defesa pessoal, condicionamento e confiança.</p>
+          <div class="card-footer">
+            <button type="button" class="price-btn" id="chip-preco-feminino" onclick="openModalMatriculaComPlano('feminino')">R$ 119/mês</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- SCHEDULE SECTION (HORÁRIOS DAS AULAS) -->
+    <section class="schedule" id="academia">
+      <div class="schedule-head">
+        <div class="schedule-title-block">
+          <div class="schedule-calendar-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          </div>
           <div>
-            <span class="badge">NOSSAS TURMAS</span>
-            <h2 class="section-title">Programas para Todos os Objetivos</h2>
+            <h2>Horários das aulas</h2>
+            <p>Grade da semana — marque sua aula experimental ou faça sua matrícula online.</p>
           </div>
-          <p class="section-sub">
-            Do primeiro contato até o alto rendimento competitivo, turmas separadas por idade e nível técnico.
-          </p>
         </div>
+        <button type="button" class="btn-all-hours" onclick="openModalMatricula()">Fazer Matrícula Online →</button>
+      </div>
 
-        <div class="programs-grid">
-          <!-- CARD 1: INFANTIL -->
-          <article class="card card-program">
-            <div class="card-thumb">
-              <picture>
-                <img src="public/images/turma-infantil.jpg" alt="Turma Infantil de Jiu-Jitsu" loading="lazy">
-              </picture>
-              <span class="price-chip" id="chip-preco-infantil">R$ 99/mês</span>
-            </div>
-            <div class="card-body">
-              <div class="program-title-row">
-                <span class="program-icon" aria-hidden="true">🥋</span>
-                <h3 class="program-name">Infantil (5 a 12 anos)</h3>
-              </div>
-              <p class="program-desc">
-                Disciplina, coordenação motora, respeito e anti-bullying em ambiente lúdico, seguro e motivador.
-              </p>
-              <div class="program-footer">
-                <span class="program-meta">Seg, Qua, Sex • 18:00</span>
-                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('infantil')">Matricular</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 2: ADULTO INICIANTE -->
-          <article class="card card-program">
-            <div class="card-thumb">
-              <picture>
-                <source srcset="public/images/turma-iniciante.webp" type="image/webp">
-                <img src="public/images/turma-iniciante.jpg" alt="Turma Adulto Iniciante" loading="lazy">
-              </picture>
-              <span class="price-chip" id="chip-preco-iniciante">R$ 129/mês</span>
-            </div>
-            <div class="card-body">
-              <div class="program-title-row">
-                <span class="program-icon" aria-hidden="true">🥋</span>
-                <h3 class="program-name">Adulto — Iniciante</h3>
-              </div>
-              <p class="program-desc">
-                Base sólida, pegadas, quedas suaves e defesa pessoal inteligente. Não é necessária experiência prévia.
-              </p>
-              <div class="program-footer">
-                <span class="program-meta">Seg a Sex • Manhã e Noite</span>
-                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('iniciante')">Matricular</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 3: ADULTO AVANÇADO -->
-          <article class="card card-program">
-            <div class="card-thumb">
-              <picture>
-                <source srcset="public/images/turma-avancado.webp" type="image/webp">
-                <img src="public/images/turma-avancado.jpg" alt="Turma Adulto Avançado" loading="lazy">
-              </picture>
-              <span class="price-chip" id="chip-preco-avancado">R$ 149/mês</span>
-            </div>
-            <div class="card-body">
-              <div class="program-title-row">
-                <span class="program-icon" aria-hidden="true">🥋</span>
-                <h3 class="program-name">Adulto — Avançado</h3>
-              </div>
-              <p class="program-desc">
-                Estratégias competitivas, transições avançadas, sparring de alto nível e acompanhamento detalhado de faixas.
-              </p>
-              <div class="program-footer">
-                <span class="program-meta">Seg, Qua, Sex • 19:30</span>
-                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('avancado')">Matricular</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- CARD 4: FEMININO -->
-          <article class="card card-program">
-            <div class="card-thumb">
-              <picture>
-                <img src="public/images/turma-feminino.jpg" alt="Turma Feminina de Jiu-Jitsu" loading="lazy">
-              </picture>
-              <span class="price-chip" id="chip-preco-feminino">R$ 119/mês</span>
-            </div>
-            <div class="card-body">
-              <div class="program-title-row">
-                <span class="program-icon" aria-hidden="true">🥋</span>
-                <h3 class="program-name">Feminino</h3>
-              </div>
-              <p class="program-desc">
-                Turma exclusiva para mulheres: defesa pessoal real, ganho expressivo de flexibilidade, queima calórica e autoconfiança.
-              </p>
-              <div class="program-footer">
-                <span class="program-meta">Ter e Qui • 18:30</span>
-                <button type="button" class="btn btn-yellow btn-sm" onclick="openModalMatriculaComPlano('feminino')">Matricular</button>
-              </div>
-            </div>
-          </article>
-        </div>
+      <div class="table-container">
+        <span class="table-scroll-hint">↔ Deslize para os lados para ver a grade completa</span>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Horário</th>
+              <th>Turma</th>
+              <th>Professor</th>
+              <th>Vagas Disponíveis</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="publicScheduleTableBody">
+            <!-- Renderizado dinamicamente via script.js -->
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <!-- ====================================================================
-         HORÁRIOS & AGENDAMENTOS (PÚBLICO)
-         ==================================================================== -->
-    <section class="system-section agendamento-section" id="horarios">
-      <div class="section-container">
-        <div class="system-section-head">
-          <span class="badge-tag">GRADE DE AULAS SEMANAL</span>
-          <h2>Horários das Aulas & Vagas por Turma</h2>
-          <p>Consulte a grade completa de treinos e reserve uma aula experimental com nossos professores.</p>
-        </div>
-
-        <div class="agendamento-bar">
-          <div class="day-selector-tabs" id="dayTabs">
-            <button class="day-tab active" data-day="seg">Segunda</button>
-            <button class="day-tab" data-day="ter">Terça</button>
-            <button class="day-tab" data-day="qua">Quarta</button>
-            <button class="day-tab" data-day="qui">Quinta</button>
-            <button class="day-tab" data-day="sex">Sexta</button>
-            <button class="day-tab" data-day="sab">Sábado</button>
-          </div>
-
-          <div class="category-filters">
-            <button class="filter-pill active" data-filter="all">Todas</button>
-            <button class="filter-pill" data-filter="iniciante">Iniciante</button>
-            <button class="filter-pill" data-filter="avancado">Avançado</button>
-            <button class="filter-pill" data-filter="infantil">Infantil</button>
-            <button class="filter-pill" data-filter="feminino">Feminino</button>
-          </div>
-        </div>
-
-        <div class="schedule-grid" id="scheduleListContainer">
-          <!-- Renderizado via script.js -->
-        </div>
-
-        <div class="banner-cta-matricula mt-4">
-          <div class="bcm-text">
-            <strong>Pronto para entrar no tatame?</strong>
-            <span>Faça sua matrícula online pelo celular e receba sua carteirinha digital imediatamente.</span>
-          </div>
-          <button class="btn btn-yellow btn-lg" onclick="openModalMatricula()">Matricular-se Agora</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         PROFESSORES & DIFERENCIAIS
-         ==================================================================== -->
+    <!-- PROFESSORES / BANNER SECTION -->
     <section class="lower" id="professores">
-      <div class="lower-inner">
-        <div class="card card-wide">
-          <span class="badge">MESTRES E INSTRUTORES</span>
-          <h2 class="section-title">Linhagem Tradicional com Metodologia Moderna</h2>
-          <p class="section-sub">
-            Nossa equipe técnica é formada por faixas-pretas certificados pelas principais confederações internacionais.
-            Priorizamos o aprendizado individualizado, segurança máxima e a evolução constante de cada atleta.
-          </p>
-          <div class="teachers-grid mt-4">
-            <div class="teacher-box">
-              <div class="teacher-avatar">🥋</div>
-              <strong>Mestre Rogério</strong>
-              <small>Faixa Preta 4º Grau • 22 anos de tatame</small>
-            </div>
-            <div class="teacher-box">
-              <div class="teacher-avatar">🥋</div>
-              <strong>Prof. Marcos Souza</strong>
-              <small>Faixa Preta • Especialista em Iniciantes</small>
-            </div>
-            <div class="teacher-box">
-              <div class="teacher-avatar">🥋</div>
-              <strong>Profª Amanda Lima</strong>
-              <small>Faixa Preta • Responsável pela Turma Kids</small>
-            </div>
-            <div class="teacher-box">
-              <div class="teacher-avatar">🥋</div>
-              <strong>Profª Beatriz Santos</strong>
-              <small>Faixa Marrom • Especialista em Defesa Feminina</small>
-            </div>
-          </div>
-        </div>
+      <h2>Treine com quem entende.</h2>
+      <p>Orientação técnica com faixas-pretas certificados, evolução no seu ritmo e uma comunidade que cresce junto.</p>
+      <div class="lower-links">
+        <a href="javascript:void(0)" onclick="openModalMatricula()">Matricule-se Online</a>
+        <a href="javascript:void(0)" onclick="openModalLoginAluno()">Área do Aluno (Entrar com CPF)</a>
+      </div>
+    </section>
+
+    <!-- ENROLLMENT CTA SECTION -->
+    <section class="enroll" id="matricula">
+      <div class="enroll-info">
+        <p class="enroll-eyebrow">SEU PRIMEIRO PASSO COMEÇA AQUI</p>
+        <h2>Pronto para entrar no tatame?</h2>
+        <p>Faça sua matrícula completa pelo celular com assinatura digital e receba sua carteirinha instantaneamente.</p>
+      </div>
+
+      <div class="enroll-cta-box" style="display: flex; flex-direction: column; justify-content: center; gap: 14px;">
+        <button type="button" class="btn btn-yellow btn-lg submit-btn" onclick="openModalMatricula()">
+          Iniciar Matrícula Online com Assinatura →
+        </button>
+        <button type="button" class="btn btn-outline btn-lg" onclick="openModalLoginAluno()">
+          Já possui cadastro? Acessar Portal do Aluno
+        </button>
       </div>
     </section>
   </main>
 
-  <!-- ====================================================================
-       FOOTER
-       ==================================================================== -->
+  <!-- FOOTER -->
   <footer id="contato">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="public/images/logo-simbolo.png" alt="Logo" class="footer-logo">
-        <div>
-          <strong>ACADEMIA JIU-JITSU</strong>
-          <p>Tatame de alto rendimento com tecnologia integrada.</p>
-        </div>
-      </div>
-
-      <div class="footer-links">
-        <div>
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#aulas">Turmas</a></li>
-            <li><a href="#horarios">Horários</a></li>
-            <li><a href="#professores">Professores</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Acesso Restrito</h4>
-          <ul>
-            <li><a href="javascript:void(0)" onclick="openModalLoginAluno()">🥋 Área do Aluno (Entrar com CPF)</a></li>
-            <li><a href="javascript:void(0)" onclick="openModalLoginAdmin()">⚙️ Painel do Administrador (Senha 1234)</a></li>
-            <li><a href="javascript:void(0)" onclick="openModalMatricula()">✍️ Matrícula Online com Assinatura</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Atendimento</h4>
-          <p id="footerAcademiaTelefone">WhatsApp: (91) 98123-4567</p>
-          <p>Segunda a Sexta: 06:30 às 22:00</p>
-          <p>Sábado: 08:00 às 13:00</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© <span id="year">2026</span> Academia Jiu-Jitsu. Todos os direitos reservados.</p>
+    <div class="brand brand-footer">
+      <img src="public/images/logo-simbolo.png" alt="Símbolo Academia Jiu-Jitsu" class="brand-logo">
+      <div class="brand-text">
+        <span class="brand-sub">ACADEMIA</span>
+        <strong class="brand-main">JIU-JITSU</strong>
       </div>
     </div>
+
+    <p class="footer-tagline">Disciplina, defesa e confiança para todas as idades.</p>
+
+    <div class="footer-links-row" style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+      <a href="javascript:void(0)" onclick="openModalLoginAluno()" class="footer-link-subtle" style="color: #ffc400; text-decoration: none; font-size: 13.5px; font-weight: 700;">
+        🥋 Área do Aluno (CPF)
+      </a>
+      <span style="color: #444;">•</span>
+      <a href="javascript:void(0)" onclick="openModalLoginAdmin()" class="footer-link-subtle" style="color: #999; text-decoration: none; font-size: 13.5px;">
+        ⚙️ Painel Admin (Senha 1234)
+      </a>
+    </div>
+
+    <a class="footer-whatsapp" id="footerAcademiaTelefone" href="https://wa.me/5591999999999" target="_blank" rel="noreferrer">
+      Falar no WhatsApp: (91) 98123-4567
+    </a>
+
+    <span class="footer-copy">© <span id="year">2026</span> Academia Jiu-Jitsu. Todos os direitos reservados.</span>
   </footer>
 
   <!-- BARRA DE NAVEGAÇÃO MOBILE INFERIOR -->
@@ -396,7 +335,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
       <span>Turmas</span>
     </a>
-    <a href="#horarios" class="bottom-nav-item">
+    <a href="#academia" class="bottom-nav-item">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
       <span>Horários</span>
     </a>
@@ -413,6 +352,7 @@
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
   <a href="https://wa.me/5591999999999" class="floating-whatsapp" target="_blank" rel="noreferrer" aria-label="Fale no WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.49 0-2.94-.4-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.136 8.136 0 0 1-1.25-4.29c0-4.51 3.67-8.18 8.18-8.18 2.18 0 4.24.85 5.78 2.39a8.13 8.13 0 0 1 2.4 5.79c0 4.51-3.67 8.14-8.11 8.14zm4.49-6.11c-.24-.12-1.45-.71-1.68-.79-.22-.08-.39-.12-.55.12-.17.24-.63.79-.77.95-.14.16-.28.18-.52.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.24-.02-.37.1-.49.11-.11.25-.28.37-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.41-.41-.56-.42h-.47c-.16 0-.43.06-.66.31-.22.24-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.16 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+    <span class="floating-text">Agende sua aula</span>
   </a>
 
   <!-- ====================================================================
@@ -453,8 +393,8 @@
           </button>
         </div>
 
-        <div class="auth-footer-links mt-3">
-          <p>Ainda não é aluno? <a href="javascript:void(0)" onclick="closeModalLoginAluno(); openModalMatricula();">Faça sua matrícula aqui</a></p>
+        <div class="auth-footer-links mt-3 text-center">
+          <p>Ainda não é aluno? <a href="javascript:void(0)" onclick="closeModalLoginAluno(); openModalMatricula();" style="color: #ffc400;">Faça sua matrícula aqui</a></p>
         </div>
       </form>
     </div>
@@ -480,7 +420,7 @@
         </div>
 
         <div class="form-group mb-3">
-          <div class="label-row">
+          <div class="label-row" style="display: flex; justify-content: space-between; align-items: center;">
             <label for="loginAdminSenha">Senha de Administrador</label>
             <span class="badge-hint">Senha padrão: <strong>1234</strong></span>
           </div>
@@ -545,9 +485,6 @@
         <button class="p-tab-btn" data-tab="contrato" onclick="switchPortalTab('contrato')">
           <span>✍️ Meu Contrato Assinado</span>
         </button>
-        <button class="p-tab-btn" data-tab="agendar" onclick="switchPortalTab('agendar')">
-          <span>📅 Agendar Treino</span>
-        </button>
       </nav>
 
       <!-- Conteúdo das Abas do Aluno -->
@@ -607,7 +544,7 @@
               </div>
             </div>
 
-            <div class="cv-action-row mt-3">
+            <div class="cv-action-row mt-3" style="display: flex; gap: 10px;">
               <button class="btn btn-zap btn-sm" onclick="compartilharCarteirinhaZap()">
                 💬 Enviar para meu WhatsApp
               </button>
@@ -650,7 +587,7 @@
             <div class="payment-tabs-box">
               <h3>Realizar Pagamento Agora</h3>
               
-              <div class="pay-method-selector mb-3">
+              <div class="pay-method-selector mb-3" style="display: flex; gap: 8px;">
                 <button type="button" class="pay-btn active" id="btnPayTabPix" onclick="switchAlunoPayMethod('pix')">
                   ⚡ Pagar com PIX Instantâneo
                 </button>
@@ -683,8 +620,8 @@
                     <h4>Chave PIX Copia e Cola</h4>
                     <p class="sub-muted">Abra o aplicativo do seu banco, escolha PIX Copia e Cola e conclua o pagamento.</p>
 
-                    <div class="copia-cola-box">
-                      <input type="text" id="pixCopiaColaAluno" readonly value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406149.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***6304E8A2">
+                    <div class="copia-cola-box" style="display: flex; gap: 8px; margin: 12px 0;">
+                      <input type="text" id="pixCopiaColaAluno" readonly class="input-field" value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406149.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***6304E8A2">
                       <button type="button" class="btn btn-yellow btn-sm" onclick="copiarPixAluno()">Copiar</button>
                     </div>
 
@@ -697,68 +634,25 @@
                 </div>
               </div>
 
-              <!-- PAINEL CARTÃO 3D DO ALUNO -->
+              <!-- PAINEL CARTÃO DO ALUNO -->
               <div class="pay-panel" id="panelPayCard" style="display: none;">
-                <div class="card-checkout-grid">
-                  <div class="card-preview-column">
-                    <div class="credit-card-3d" id="creditCard3dAluno">
-                      <div class="card-side card-front">
-                        <div class="card-top-row">
-                          <span class="card-chip"></span>
-                          <span class="card-brand-logo" id="cardBrandLogoAluno">VISA</span>
-                        </div>
-                        <div class="card-number-display" id="cardNumberDisplayAluno">•••• •••• •••• ••••</div>
-                        <div class="card-bottom-row">
-                          <div class="card-holder-info">
-                            <small>TITULAR</small>
-                            <strong id="cardHolderDisplayAluno">SEU NOME</strong>
-                          </div>
-                          <div class="card-exp-info">
-                            <small>VALIDADE</small>
-                            <strong id="cardExpDisplayAluno">MM/AA</strong>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-side card-back">
-                        <div class="card-mag-strip"></div>
-                        <div class="card-cvv-band">
-                          <small>CVV</small>
-                          <span id="cardCvvDisplayAluno">•••</span>
-                        </div>
-                      </div>
+                <form onsubmit="processarPagamentoCartaoAluno(event)" style="max-width: 480px;">
+                  <div class="form-group mb-2">
+                    <label>Número do Cartão</label>
+                    <input type="text" class="input-field" placeholder="4532 •••• •••• ••••" maxlength="19" required>
+                  </div>
+                  <div class="form-row mb-2" style="display: flex; gap: 12px;">
+                    <div class="form-group" style="flex: 1;">
+                      <label>Validade (MM/AA)</label>
+                      <input type="text" class="input-field" placeholder="12/28" maxlength="5" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                      <label>CVV</label>
+                      <input type="text" class="input-field" placeholder="123" maxlength="4" required>
                     </div>
                   </div>
-
-                  <form class="card-form-column" id="cardFormAluno" onsubmit="processarPagamentoCartaoAluno(event)">
-                    <div class="form-group mb-2">
-                      <label>Número do Cartão</label>
-                      <input type="text" id="ccNumeroAluno" class="input-field" placeholder="4532 •••• •••• ••••" maxlength="19" required oninput="formatCardNumberAluno(this)">
-                    </div>
-                    <div class="form-group mb-2">
-                      <label>Nome no Cartão</label>
-                      <input type="text" id="ccNomeAluno" class="input-field" placeholder="COMO ESTÁ IMPRESSO" required oninput="formatCardHolderAluno(this)">
-                    </div>
-                    <div class="form-row mb-2">
-                      <div class="form-group col-6">
-                        <label>Validade</label>
-                        <input type="text" id="ccExpAluno" class="input-field" placeholder="MM/AA" maxlength="5" required oninput="formatCardExpAluno(this)">
-                      </div>
-                      <div class="form-group col-6">
-                        <label>CVV</label>
-                        <input type="text" id="ccCvvAluno" class="input-field" placeholder="123" maxlength="4" required onfocus="flipCardAluno(true)" onblur="flipCardAluno(false)" oninput="formatCardCvvAluno(this)">
-                      </div>
-                    </div>
-                    <div class="form-group mb-3">
-                      <label>Opções de Pagamento</label>
-                      <select id="ccParcelasAluno" class="input-field">
-                        <option value="1">1x à vista (Débito ou Crédito)</option>
-                        <option value="2">2x sem juros</option>
-                        <option value="3">3x sem juros</option>
-                      </select>
-                    </div>
-                    <button type="submit" class="btn btn-yellow w-100 btn-lg">Pagar com Cartão</button>
-                  </form>
-                </div>
+                  <button type="submit" class="btn btn-yellow w-100 btn-lg mt-2">Pagar com Cartão</button>
+                </form>
               </div>
             </div>
           </div>
@@ -807,26 +701,15 @@
               </div>
 
               <div class="p-assinatura-visual mt-4">
-                <small>ASSINATURA DIGITAL REGISTRADA PELO CELULAR:</small>
+                <small style="display: block; margin-bottom: 8px;">ASSINATURA DIGITAL REGISTRADA PELO CELULAR:</small>
                 <div class="p-assinatura-canvas-view" id="pAlunoAssinaturaImg">
-                  <!-- Exibe a imagem da assinatura ou canvas para assinar -->
+                  <!-- Exibe assinatura -->
                 </div>
                 <div class="p-assinatura-meta mt-2">
                   <small>Carimbo de Autenticidade:</small>
-                  <code id="pAlunoHashContrato">SHA256: 8a7c9f0e1d4b6c3a2f5e8d9c0a1b2c3d4e5f6a7b8c9d0e1f</code>
+                  <code id="pAlunoHashContrato" style="display: block; color: #ffc400; word-break: break-all;">SHA256: 8a7c9f0e1d4b6c3a2f5e8d9c0a1b2c3d4e5f6a7b8c9d0e1f</code>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ABA 5: AGENDAR TREINO -->
-        <div class="p-tab-pane" id="tabPane-agendar">
-          <div class="portal-card-box">
-            <h3>Agendar Próximo Treino</h3>
-            <p class="sub-muted">Garanta seu lugar no tatame selecionando uma das aulas da semana:</p>
-            <div class="p-grade-agendamento" id="pAlunoGradeAgendamento">
-              <!-- Preenchido via JS -->
             </div>
           </div>
         </div>
@@ -948,7 +831,7 @@
                 </div>
 
                 <!-- Controles do Totem -->
-                <div class="totem-controls">
+                <div class="totem-controls mt-3" style="display: flex; gap: 10px;">
                   <button type="button" id="btnStartCamera" class="btn btn-outline" onclick="startFacialCamera()">
                     📷 Ativar Câmera do Totem
                   </button>
@@ -1009,8 +892,8 @@
             </div>
 
             <!-- Tabela de Cobranças -->
-            <div class="cobrancas-control-bar mb-3">
-              <div class="filter-pills">
+            <div class="cobrancas-control-bar mb-3" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div class="filter-pills" style="display: flex; gap: 6px;">
                 <button class="cob-filter-btn active" data-filter="all" onclick="filtrarCobrancas('all')">Todos</button>
                 <button class="cob-filter-btn" data-filter="atrasado" onclick="filtrarCobrancas('atrasado')">Atrasados</button>
                 <button class="cob-filter-btn" data-filter="vence_hoje" onclick="filtrarCobrancas('vence_hoje')">Vencem Hoje</button>
@@ -1083,41 +966,41 @@
             <p class="sub-muted">Modifique preços de planos, dados de PIX e contato de atendimento.</p>
 
             <form id="formConfigAdmin" onsubmit="salvarConfiguracoesAdmin(event)">
-              <div class="form-row mb-3">
-                <div class="form-group col-6">
+              <div class="form-row mb-3" style="display: flex; gap: 12px;">
+                <div class="form-group" style="flex: 1;">
                   <label>Preço Plano Infantil (R$/mês)</label>
                   <input type="number" id="cfgPrecoInfantil" class="input-field" value="99" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group" style="flex: 1;">
                   <label>Preço Plano Iniciante (R$/mês)</label>
                   <input type="number" id="cfgPrecoIniciante" class="input-field" value="129" required>
                 </div>
               </div>
 
-              <div class="form-row mb-3">
-                <div class="form-group col-6">
+              <div class="form-row mb-3" style="display: flex; gap: 12px;">
+                <div class="form-group" style="flex: 1;">
                   <label>Preço Plano Avançado (R$/mês)</label>
                   <input type="number" id="cfgPrecoAvancado" class="input-field" value="149" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group" style="flex: 1;">
                   <label>Preço Plano Feminino (R$/mês)</label>
                   <input type="number" id="cfgPrecoFeminino" class="input-field" value="119" required>
                 </div>
               </div>
 
-              <div class="form-row mb-3">
-                <div class="form-group col-6">
+              <div class="form-row mb-3" style="display: flex; gap: 12px;">
+                <div class="form-group" style="flex: 1;">
                   <label>Chave PIX da Academia (Recebedor)</label>
                   <input type="text" id="cfgChavePix" class="input-field" value="pix@academiajiujitsu.com.br" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group" style="flex: 1;">
                   <label>WhatsApp de Atendimento da Academia</label>
                   <input type="text" id="cfgTelefoneAcademia" class="input-field" value="(91) 98123-4567" required>
                 </div>
               </div>
 
-              <div class="form-row mb-3">
-                <div class="form-group col-6">
+              <div class="form-row mb-3" style="display: flex; gap: 12px;">
+                <div class="form-group" style="flex: 1;">
                   <label>Nova Senha do Administrador</label>
                   <input type="password" id="cfgNovaSenhaAdmin" class="input-field" placeholder="Deixe em branco para manter 1234">
                 </div>
@@ -1228,23 +1111,23 @@
             </div>
           </div>
 
-          <div class="form-row mb-2">
-            <div class="form-group col-6">
+          <div class="form-row mb-2" style="display: flex; gap: 12px;">
+            <div class="form-group" style="flex: 1;">
               <label>CPF * (Seu Login)</label>
               <input type="text" id="matCpf" class="input-field" placeholder="000.000.000-00" required maxlength="14" oninput="maskCPF(this)">
             </div>
-            <div class="form-group col-6">
+            <div class="form-group" style="flex: 1;">
               <label>Defina uma Senha *</label>
               <input type="password" id="matSenha" class="input-field" placeholder="Mínimo 4 dígitos" required minlength="4">
             </div>
           </div>
 
-          <div class="form-row mb-2">
-            <div class="form-group col-6">
+          <div class="form-row mb-2" style="display: flex; gap: 12px;">
+            <div class="form-group" style="flex: 1;">
               <label>WhatsApp / Celular *</label>
               <input type="tel" id="matZap" class="input-field" placeholder="(91) 98888-7777" required>
             </div>
-            <div class="form-group col-6">
+            <div class="form-group" style="flex: 1;">
               <label>Data de Nascimento *</label>
               <input type="date" id="matNascimento" class="input-field" required>
             </div>
@@ -1257,7 +1140,7 @@
             </div>
           </div>
 
-          <div class="wizard-nav-btns">
+          <div class="wizard-nav-btns" style="display: flex; justify-content: space-between;">
             <button type="button" class="btn btn-outline" onclick="goToWizardStep(1)">← Voltar</button>
             <button type="submit" class="btn btn-yellow btn-lg">Avançar para Assinatura →</button>
           </div>
@@ -1281,14 +1164,14 @@
           </div>
         </div>
 
-        <div class="signature-controls mt-2">
+        <div class="signature-controls mt-2" style="display: flex; justify-content: space-between; align-items: center;">
           <button type="button" class="btn btn-outline btn-sm" onclick="clearSignatureCanvas()">
             🗑️ Limpar Assinatura
           </button>
           <span class="digital-stamp" id="digitalHashPreview">🔒 Certificado SHA-256 Pronto</span>
         </div>
 
-        <div class="wizard-nav-btns mt-4">
+        <div class="wizard-nav-btns mt-4" style="display: flex; justify-content: space-between;">
           <button type="button" class="btn btn-outline" onclick="goToWizardStep(2)">← Voltar</button>
           <button type="button" class="btn btn-yellow btn-lg" onclick="validarAssinaturaEAvançar()">
             Confirmar Assinatura e Pagar →
@@ -1301,7 +1184,7 @@
         <h3>Pagamento da Matrícula</h3>
         <p class="sub-muted">Escolha pagar com PIX instantâneo ou Cartão de Débito/Crédito.</p>
 
-        <div class="pay-method-selector mb-3">
+        <div class="pay-method-selector mb-3" style="display: flex; gap: 8px;">
           <button type="button" class="pay-btn active" id="wBtnPayPix" onclick="switchWizardPayMethod('pix')">
             ⚡ Pagar com PIX
           </button>
@@ -1332,8 +1215,8 @@
 
             <div class="pix-info-wrap">
               <strong id="wPixValorPlano">Valor: R$ 129,00</strong>
-              <div class="copia-cola-box mt-2">
-                <input type="text" id="pixCopiaColaWizard" readonly value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406129.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***630489A1">
+              <div class="copia-cola-box mt-2" style="display: flex; gap: 8px;">
+                <input type="text" id="pixCopiaColaWizard" readonly class="input-field" value="00020126580014BR.GOV.BCB.PIX0136academia@jiujitsu.com.br5204000053039865406129.005802BR5920ACADEMIA JIU JITSU6009SAO PAULO62070503***630489A1">
                 <button type="button" class="btn btn-yellow btn-sm" onclick="copiarPixWizard()">Copiar</button>
               </div>
 
@@ -1351,12 +1234,12 @@
               <label>Número do Cartão</label>
               <input type="text" class="input-field" placeholder="4532 •••• •••• ••••" maxlength="19" required>
             </div>
-            <div class="form-row mb-2">
-              <div class="form-group col-6">
+            <div class="form-row mb-2" style="display: flex; gap: 12px;">
+              <div class="form-group" style="flex: 1;">
                 <label>Validade (MM/AA)</label>
                 <input type="text" class="input-field" placeholder="12/28" maxlength="5" required>
               </div>
-              <div class="form-group col-6">
+              <div class="form-group" style="flex: 1;">
                 <label>CVV</label>
                 <input type="text" class="input-field" placeholder="123" maxlength="4" required>
               </div>
@@ -1401,8 +1284,8 @@
           <label>Nome do Aluno</label>
           <input type="text" id="editAlunoNome" class="input-field" required>
         </div>
-        <div class="form-row mb-2">
-          <div class="form-group col-6">
+        <div class="form-row mb-2" style="display: flex; gap: 12px;">
+          <div class="form-group" style="flex: 1;">
             <label>Faixa</label>
             <select id="editAlunoFaixa" class="input-field">
               <option value="Branca">Faixa Branca</option>
@@ -1416,7 +1299,7 @@
               <option value="Preta">Faixa Preta</option>
             </select>
           </div>
-          <div class="form-group col-6">
+          <div class="form-group" style="flex: 1;">
             <label>Graus na Faixa</label>
             <select id="editAlunoGraus" class="input-field">
               <option value="0">0 Graus</option>
@@ -1427,8 +1310,8 @@
             </select>
           </div>
         </div>
-        <div class="form-row mb-2">
-          <div class="form-group col-6">
+        <div class="form-row mb-2" style="display: flex; gap: 12px;">
+          <div class="form-group" style="flex: 1;">
             <label>Plano</label>
             <select id="editAlunoPlano" class="input-field">
               <option value="Infantil">Infantil</option>
@@ -1437,7 +1320,7 @@
               <option value="Feminino">Feminino</option>
             </select>
           </div>
-          <div class="form-group col-6">
+          <div class="form-group" style="flex: 1;">
             <label>Status de Pagamento</label>
             <select id="editAlunoStatusPag" class="input-field">
               <option value="pago">Em Dia (Pago)</option>

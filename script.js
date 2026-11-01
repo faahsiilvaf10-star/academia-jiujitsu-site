@@ -264,51 +264,37 @@ function atualizarPrecosPublicos() {
 }
 
 /* ==========================================================================
-   4. GRADE DE HORÁRIOS PÚBLICA
+   4. GRADE DE HORÁRIOS PÚBLICA (TABELA OFICIAL)
    ========================================================================== */
 function renderPublicSchedule() {
-  const container = document.querySelector('#scheduleListContainer');
-  if (!container) return;
+  const tbody = document.querySelector('#publicScheduleTableBody');
+  if (!tbody) return;
 
-  const dia = appState.activeScheduleDay;
-  const filtro = appState.activeScheduleFilter;
+  const diasNomes = {
+    seg: 'Segunda-feira',
+    ter: 'Terça-feira',
+    qua: 'Quarta-feira',
+    qui: 'Quinta-feira',
+    sex: 'Sexta-feira',
+    sab: 'Sábado'
+  };
 
-  const aulas = appState.db.horarios.filter(h => {
-    const matchDia = h.dia === dia;
-    const matchTag = filtro === 'all' || h.tag === filtro;
-    return matchDia && matchTag;
-  });
-
-  if (aulas.length === 0) {
-    container.innerHTML = `
-      <div class="schedule-empty-state">
-        <p>Nenhuma aula desta categoria encontrada para este dia.</p>
-      </div>`;
-    return;
-  }
-
-  container.innerHTML = aulas.map(aula => {
+  const aulas = appState.db.horarios;
+  tbody.innerHTML = aulas.map(aula => {
     const vagasLivres = Math.max(0, aula.total - aula.ocupadas);
-    const badgeVagas = vagasLivres <= 3
-      ? `<span class="badge-vagas urgent">Restam apenas ${vagasLivres} vagas!</span>`
-      : `<span class="badge-vagas">${vagasLivres} de ${aula.total} vagas disponíveis</span>`;
-
     return `
-      <div class="schedule-card-item">
-        <div class="sci-time">
-          <strong>${aula.hora}</strong>
-          <small>${aula.prof}</small>
-        </div>
-        <div class="sci-info">
-          <h4>${aula.turma}</h4>
-          ${badgeVagas}
-        </div>
-        <div class="sci-action">
+      <tr>
+        <td><strong>${diasNomes[aula.dia] || aula.dia.toUpperCase()}</strong></td>
+        <td>${aula.hora}</td>
+        <td><strong>${aula.turma}</strong></td>
+        <td>${aula.prof}</td>
+        <td><span style="color: #ffc400; font-weight: 700;">${vagasLivres} de ${aula.total} vagas</span></td>
+        <td>
           <button type="button" class="btn btn-yellow btn-sm" onclick="reservarVagaPublica(${aula.id})">
             Reservar Aula
           </button>
-        </div>
-      </div>
+        </td>
+      </tr>
     `;
   }).join('');
 }
